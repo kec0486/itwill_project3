@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>요청작업성공!!!!</h1>
-<a href="/">홈으로</a>
+<a href="login">홈으로</a>
 </body>
 </html>
