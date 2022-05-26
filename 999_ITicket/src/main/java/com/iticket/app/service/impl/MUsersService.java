@@ -1,5 +1,7 @@
 package com.iticket.app.service.impl;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,5 +31,8 @@ public class MUsersService {
 	}
 	public CustomUserDetail userDetail(String user_id) {
 		return dao.userDetail(user_id);
+	}
+	public UsersVO isMember(HashMap<String, String> map) {
+		return dao.isMember(map);
 	}
 }

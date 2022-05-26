@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>관리자  메인페이지입니다.</h1>
-<a href="logout">로그아웃</a>
-
+	<h1>관리자  메인페이지입니다.</h1>
+	<form:form method="post" action="logout">
+		<a href="../login">로그아웃</a>
+	</form:form>
 </body>
 </html>

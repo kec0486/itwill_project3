@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>로그인페이지</title>
 <style type="text/css">
+	.header {
+		height: 300px;
+	}
 	.loginForm {
 		width: 450px;
 	    height: 750px;
@@ -40,6 +43,7 @@
 </style>
 </head>
 <body>
+<div class="header"></div>
 <div class="loginForm">
 	<form:form method="post" action="login" class="login">
 		<div class="login_iInput">

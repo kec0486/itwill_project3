@@ -1,5 +1,7 @@
 package com.iticket.app.dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,5 +23,8 @@ public class MUsersDao {
 	}
 	public CustomUserDetail userDetail(String user_id) {
 		return sqlSession.selectOne(NAMESPACE + ".getAuths",user_id);
+	}
+	public UsersVO isMember(HashMap<String, String> map) {
+		return sqlSession.selectOne(NAMESPACE + ".isMember",map);
 	}
 }

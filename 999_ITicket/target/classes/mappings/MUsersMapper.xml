@@ -23,4 +23,7 @@
 	<insert id="auth_add" parameterType="com.iticket.app.vo.AuthVO">
 		insert into authorities values(#{authority},#{user_id})
 	</insert>
+	<select id="isMember" parameterType="hashmap" resultType="com.iticket.app.vo.UsersVO">
+		select * from users where user_id=#{user_id} and user_pw=#{user_pw}
+	</select>
 </mapper>
