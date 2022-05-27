@@ -13,7 +13,7 @@
 <!--아이콘  -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=dev ice-width, initial-scale=1">
 <!--  -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

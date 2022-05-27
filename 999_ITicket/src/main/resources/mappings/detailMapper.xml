@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="detailDAO">
+  	<select id="getDetail" parameterType="com.iticket.app.vo.DetailVO" resultType="com.iticket.app.vo.DetailVO">
+  		select * from genre_detail
+		where gr_num = #{gr_num}
+		and gd_title = #{gd_title}
+  	</select>
+  </mapper>

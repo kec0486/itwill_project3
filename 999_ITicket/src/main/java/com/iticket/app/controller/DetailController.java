@@ -1,13 +1,29 @@
 package com.iticket.app.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.iticket.app.service.impl.DetailService;
+import com.iticket.app.vo.DetailVO;
 
 @Controller
 public class DetailController {
+	@Autowired
+	private DetailService detailService;
 	
 	@RequestMapping
 	public String goReserv() {
 		return "reserv";
 	}
+	
+	@GetMapping("genreDetail")
+	public String getDetail(DetailVO vo, Model model) {
+		DetailVO detail = detailService.getDetail(vo);
+		model.addAttribute("detail", detail);
+		return "reserv";
+	}
+	
 }
