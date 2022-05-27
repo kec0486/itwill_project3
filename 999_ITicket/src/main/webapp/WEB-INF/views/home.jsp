@@ -12,5 +12,6 @@
 	<jsp:include page="nav.jsp"></jsp:include>
 	<jsp:include page="container.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
+	
 </body>
 </html>
