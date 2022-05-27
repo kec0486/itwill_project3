@@ -8,6 +8,6 @@
 	}
 </style>
 <div class="container">
-	
+	<a href="reserv">예매사이트 및 정보</a>
 
 </div>
