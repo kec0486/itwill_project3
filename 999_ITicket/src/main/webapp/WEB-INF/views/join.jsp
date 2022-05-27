@@ -46,13 +46,22 @@
 	  color: #D4D4D4;
 	  font-style: italic;
 	}
+	.join_title {
+		width: 93%;
+	    display: inline-block;
+	    text-align: center;
+	}
+	.headerLogo {
+		 display: inline-block;
+	}
 </style>
 </head>
 <body>
 <div class="header">
-	<a href="/member/main" class="headerLogo">
+	<a href="./" class="headerLogo">
 		<span class="blind">ITicket</span>
 	</a>
+	<span class="join_title">정보입력</span>
 </div>
 <div class="contents">
 	<div class="contents_join">

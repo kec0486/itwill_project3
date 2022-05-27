@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기-아이티켓</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style type="text/css">
 	body {
 		margin: 0;
@@ -43,13 +44,64 @@
 	    background-color: #fff;
 	}
 	.SearchTab {
-		color: #ef3e42;
-		display: block;
+		display: inline-block;
+    	width: 100%;
 	    line-height: 45px;
 	    text-align: center;
 	    font-size: 15px;
 	}
-	
+	.SearchTab_id, .SearchTab_pw {
+		display: inline-block;
+	    width: 250px;
+	}
+	.SearchTab_id {
+	    border: 1px solid red;
+    	border-bottom: white;
+    	float: left;
+    	color: #ef3e42;
+	}
+	.SearchTab_pw {
+		color: gray;
+		border: 1px solid #e9e5e5;
+		border-bottom: 1px solid red;
+		float: left;
+		background-color: snow;
+		text-decoration: none;
+	}
+	.Search_notice {
+		padding: 15px 0;
+	    font-size: 13px;
+	    color: #AAAAAA;
+	}
+	.findBtn {
+		border: 0;
+    	background: white;
+    	width: 500px;
+	    height: 40px;
+	    text-align: left;
+	    cursor: pointer;
+	}
+	.Search_title {
+    	border-bottom: 1px solid #e3dada;
+	}
+	.Search_contents {
+		display: none;
+	}
+	.iinput {
+		width: 500px;
+	    height: 35px;
+	    margin: 5px 0;
+	    border: 1px solid gainsboro;
+	    padding-left: 10px;
+	}
+	.FindBtn {
+		width: 514px;
+	    height: 45px;
+	    background: #ef3e42;
+	    border: none;
+	    color: #fff;
+	    font-size: 15px;
+	}
 </style>
 </head>
 <body>
@@ -58,19 +110,26 @@
 	</div>
 	<div class="contentsWrap">
 		<div class="SearchTab">
-			<a class="SearchTab_id">아이디 찾기</a><a class="SearchTab_pw">비밀번호 찾기</a><br>
+			<a class="SearchTab_id">아이디 찾기</a>
+			<a href="pwFind" class="SearchTab_pw">비밀번호 찾기</a><br>
 		</div>
-		아이디를 찾을 방법을 선택해주세요.<br>
-		<button onclick="findPhone" class="findBtn">등록된 휴대폰번호로 찾기</button>
-		<div>
-			<input type="text" placeholder="이름"><br>
-			<input type="text" placeholder="휴대폰(-없이 입력)"><br>
-			<input type="button" value="확인" class="FindBtn"><br>
+		<div class="Search_notice">
+			아이디를 찾을 방법을 선택해주세요.<br>
 		</div>
-		<button onclick="findEmail" class="findBtn">등록된 이메일로 찾기</button>
-		<div hidden="hidden">
-			<input type="text" placeholder="이름"><br>
-			<input type="text" placeholder="이메일"><br>
+		<div class="Search_title">
+			<button type="button" class="findBtn" id="Search">등록된 휴대폰번호로 찾기</button>
+			<div class="Search_contents" id="Search_contents">
+				<input type="text" placeholder="이름" class="iinput"><br>
+				<input type="text" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
+				<input type="button" value="확인" class="FindBtn"><br>
+			</div>
+		</div>
+		<div class="Search_title">
+			<button onclick="findEmail" class="findBtn" id="Search1">등록된 이메일로 찾기</button>
+		</div>
+		<div class="Search_contents" id="Search_contents1">
+			<input type="text" placeholder="이름" class="iinput"><br>
+			<input type="text" placeholder="이메일" class="iinput"><br>
 			<input type="button" value="확인" class="FindBtn"><br>
 		</div>
 	</div>
@@ -78,6 +137,18 @@
 	function winClose() {
 		window.close();
 	}
+	$(function() {
+		$("#Search").click(function(){
+			$("#Search_contents1").slideUp("fast", function(){
+				$("#Search_contents").slideToggle("fast");
+			});
+		});
+		$("#Search1").click(function(){
+			$("#Search_contents").slideUp("fast", function(){
+				$("#Search_contents1").slideToggle("fast");
+			});
+		});
+	});
 </script>
 </body>
 </html>

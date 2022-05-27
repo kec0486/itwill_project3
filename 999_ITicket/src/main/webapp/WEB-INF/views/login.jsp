@@ -55,7 +55,7 @@
 		</form:form>
 		<div class="login_findjoin">
 			<a href="#" class="findjoin" onclick="idFind()">아이디 찾기</a> | 
-			<a href="#" class="findjoin" onclick="idFind()">비밀번호 찾기</a> | 
+			<a href="#" class="findjoin" onclick="pwFind()">비밀번호 찾기</a> | 
 			<a href="join" class="findjoin">회원가입</a>
 		</div>
 	</div>
@@ -63,6 +63,9 @@
 <script type="text/javascript">
 	function idFind() {
 		window.open("idFind","인터파크","popup,width=550,height=800");
+	}
+	function pwFind() {
+		window.open("pwFind","인터파크","popup,width=550,height=800");
 	}
 </script>
 </body>
