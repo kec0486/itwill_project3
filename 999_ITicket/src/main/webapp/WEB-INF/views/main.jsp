@@ -5,12 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>인터파크니까 믿으니까 - 아이티켓</title>
 </head>
 <body>
-	<h1>회원  메인페이지입니다.</h1>
-	<form:form method="post" action="logout">
-		<a href="../login">로그아웃</a>
-	</form:form>
+	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="container.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

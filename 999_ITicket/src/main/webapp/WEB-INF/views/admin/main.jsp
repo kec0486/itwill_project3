@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>인터파크니까 믿으니까 - 아이티켓 </title>
 </head>
 <body>
 	<h1>관리자  메인페이지입니다.</h1>

@@ -13,9 +13,9 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
-	@GetMapping("/member/main")
+	@GetMapping("/main")
 	public String member() {
-		return "member/main";
+		return "main";
 	}
 	@GetMapping("/admin/main")
 	public String admin() {

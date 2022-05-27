@@ -7,14 +7,12 @@
 <meta charset="UTF-8">
 <title>로그인페이지</title>
 <style type="text/css">
-	.header {
-		height: 300px;
-	}
 	.loginForm {
 		width: 450px;
 	    height: 750px;
 	    margin: 0 auto;
 	    text-align: center;
+	    margin-top: 100px;
 	}
 	.iInput {
 	 	width: 400px;
@@ -43,23 +41,29 @@
 </style>
 </head>
 <body>
-<div class="header"></div>
-<div class="loginForm">
-	<form:form method="post" action="login" class="login">
-		<div class="login_iInput">
-			<input type="text" name="username" placeholder="아이디" class="iInput" maxlength="100"><br>
-			<input type="password" name="password" placeholder="비밀번호" class="iInput" maxlength="100"><br>
-			<input type="submit" value="로그인" class="loginBtn"><br>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div class="loginForm">
+		<form:form method="post" action="login" class="login">
+			<div class="login_iInput">
+				<input type="text" name="username" placeholder="아이디" class="iInput" maxlength="100"><br>
+				<input type="password" name="password" placeholder="비밀번호" class="iInput" maxlength="100"><br>
+				<input type="submit" value="로그인" class="loginBtn"><br>
+			</div>
+			<div class="login_ckboxForm">
+				<input type="checkbox" class="login_ckbox"> 자동로그인 <input type="checkbox" class="login_ckbox"> 아이디저장
+			</div>
+		</form:form>
+		<div class="login_findjoin">
+			<a href="#" class="findjoin" onclick="idFind()">아이디 찾기</a> | 
+			<a href="#" class="findjoin" onclick="idFind()">비밀번호 찾기</a> | 
+			<a href="join" class="findjoin">회원가입</a>
 		</div>
-		<div class="login_ckboxForm">
-			<input type="checkbox" class="login_ckbox"> 자동로그인 <input type="checkbox" class="login_ckbox"> 아이디저장
-		</div>
-	</form:form>
-	<div class="login_findjoin">
-		<a href="idFind" class="findjoin">아이디 찾기</a> | 
-		<a href="pwFind" class="findjoin">비밀번호 찾기</a> | 
-		<a href="join" class="findjoin">회원가입</a>
 	</div>
-</div>
+	<jsp:include page="footer.jsp"></jsp:include>
+<script type="text/javascript">
+	function idFind() {
+		window.open("idFind","인터파크","popup,width=550,height=800");
+	}
+</script>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		if(roleName.contains("ROLE_ADMIN")) {
 			response.sendRedirect(request.getContextPath()+"/admin/main");
 		}else if(roleName.contains("ROLE_MEMBER")) {
-			response.sendRedirect(request.getContextPath()+"/member/main");
+			response.sendRedirect(request.getContextPath()+"/main");
 		}else {
 			response.sendRedirect(request.getContextPath()+"/");
 		}

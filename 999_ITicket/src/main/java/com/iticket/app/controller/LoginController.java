@@ -21,6 +21,14 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
+	@GetMapping("/idFind")
+	public String idFind() {
+		return "idFind";
+	}
+	@GetMapping("/pwFind")
+	public String pwFind() {
+		return "pwFind";
+	}
 //	@PostMapping("/login")
 //	public String login(UsersVO vo,HttpSession session,Model model) {
 //		HashMap<String , String> map=new HashMap<String, String>();
