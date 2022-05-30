@@ -13,5 +13,4 @@
 	<jsp:include page="container.jsp"></jsp:include><!-- 메인 컨테이너 -->
 	<jsp:include page="footer.jsp"></jsp:include><!-- 하단 회사정보 등 -->
 </body>
-</body>
 </html>
