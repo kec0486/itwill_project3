@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappings.MUsersMapper">
+	<resultMap type="com.iticket.app.sec.CustomUserDetail" id="userDetail">
+		<id property="user_id" column="user_id"/>
+		<result property="user_pw" column="user_pw"/>
+		<result property="enabled" column="enabled"/>
+		<collection property="authoList" ofType="com.iticket.app.vo.AuthVO">
+			<result property="authority" column="authority"/>
+			<result property="user_id" column="user_id"/>
+		</collection>
+	</resultMap>
+	<select id="getAuths" parameterType="string" resultMap="userDetail">
+		select * from users u, authorities a
+		where u.user_id=a.user_id and u.user_id= #{user_id}
+	</select>
+	
+	<insert id="muser_add" parameterType="com.iticket.app.vo.UsersVO">
+		insert into users values(#{user_id},#{user_pw},#{user_name},#{email},#{phone},sysdate,1)
+	</insert>
+	<insert id="auth_add" parameterType="com.iticket.app.vo.AuthVO">
+		insert into authorities values(#{authority},#{user_id})
+	</insert>
+	<select id="isMember" parameterType="hashmap" resultType="com.iticket.app.vo.UsersVO">
+		select * from users where user_id=#{user_id} and user_pw=#{user_pw}
+	</select>
+</mapper>
