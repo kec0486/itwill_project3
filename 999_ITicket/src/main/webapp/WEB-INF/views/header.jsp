@@ -42,8 +42,7 @@
 							</sec:authorize>
                        		<sec:authorize access="isAuthenticated()"> <!-- 인증된 사용자 -->
 								<li>
-									<sec:authentication property="principal.username"/>님 반갑습니다.
-									<form:form method="post" action="logout">
+									<form:form action="logout" method="post">
 										<a href="logout">로그아웃</a>
 									</form:form>
 								</li>
@@ -53,34 +52,7 @@
                             </li>
 
                             <li class="mypageli">
-                                <a href="#">마이페이지<img src="resources/images/gateway_arrow.gif" alt></a>
-                                <div class="mypage">
-                                    <ul>
-                                        <li><a href="#">&#8226;My티켓</a></li>
-                                        <li><a href="#">&#8226;예매대기</a></li>
-                                        <li><a href="#">&#8226;공연할인쿠폰</a></li>
-                                        <li><a href="#">&#8226;티켓캐스트</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="#">고객센터</a>
-                            </li>
-
-                            <li>
-                                <a href="#">모바일APP</a>
-                            </li>
-
-                            <li class="langli">
-                                <a href="#">Language<img src="resources/images/gateway_arrow.gif" alt></a>
-                                <div class="lang">
-                                    <ul>
-                                        <li><a href="#">&#8226;English</a></li>
-                                        <li><a href="#">&#8226;日本語</a></li>
-                                        <li><a href="#">&#8226;中文</a></li>
-                                    </ul>
-                                </div>
+                                <a href="#">마이페이지</a>
                             </li>
                         </ul>
                     </div>
@@ -90,7 +62,7 @@
             <div id="wrapGNB">
                 <div class="wrapGNB_wrap">
                     <h1>
-                        <a href="index.html"><img src="resources/images/logo.GIF" alt="로고"></a>
+                        <a href="./"><img src="resources/images/logo.GIF" alt="로고"></a>
                     </h1>
                     <div class="search">
                         <form>
@@ -100,15 +72,8 @@
                                     <input type="text" title="검색어입력">
                                     <a href="#"><img src="resources/images/btn_search.gif" alt="검색"></a>
                                 </div>
-                                <div class="btn">
-                                    <a href="#"><img src="resources/images/btn_playDb.jpg" alt="Play DB"></a>
-                                    <a href="#"><img src="resources/images/btn_movie.gif" alt="영화"></a>
-                                </div>
                             </fieldset>
                         </form>
-                    </div>
-                    <div class="gnbbanner">
-                        <a href="#"><img src="resources/images/GnbBanner_a84509a8-e545-485a-bce3-3871a5551735.jpg" alt="모래시계"></a>
                     </div>
                 </div>
             </div>

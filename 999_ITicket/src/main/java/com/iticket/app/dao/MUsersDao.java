@@ -27,4 +27,7 @@ public class MUsersDao {
 	public UsersVO isMember(HashMap<String, String> map) {
 		return sqlSession.selectOne(NAMESPACE + ".isMember",map);
 	}
+	public UsersVO check(String user_id) {
+		return sqlSession.selectOne(NAMESPACE + ".check",user_id);
+	}
 }

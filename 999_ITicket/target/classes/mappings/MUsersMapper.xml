@@ -26,4 +26,8 @@
 	<select id="isMember" parameterType="hashmap" resultType="com.iticket.app.vo.UsersVO">
 		select * from users where user_id=#{user_id} and user_pw=#{user_pw}
 	</select>
+	 <select id="check" parameterType="string" resultType="com.iticket.app.vo.UsersVO">
+  		select * from users
+  		where user_id = #{user_id}
+  </select>
 </mapper>

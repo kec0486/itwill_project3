@@ -20,7 +20,7 @@
 		<sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<sec:intercept-url pattern="/**"  access="permitAll"/>
 		<sec:form-login login-page="/login" authentication-success-handler-ref="loginSuccessHandler" authentication-failure-url="/?error=loginError"/>
-		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/"/>
+		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/login"/>
 		<sec:csrf disabled="true"/>
 	</sec:http>
 	<sec:authentication-manager>

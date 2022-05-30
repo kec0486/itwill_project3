@@ -14,7 +14,7 @@ public class DetailController {
 	@Autowired
 	private DetailService detailService;
 	
-	@RequestMapping
+	@RequestMapping("reserv")
 	public String goReserv() {
 		return "reserv";
 	}

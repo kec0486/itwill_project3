@@ -11,8 +11,8 @@
 <script src="resources/js/motion.js"></script>
 </head>
 <body>
-	<img src="resources/images/22000970_p_s.jpg">
 	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include><!-- 매거진 -->
 	<jsp:include page="container.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
