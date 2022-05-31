@@ -35,4 +35,7 @@ public class MUsersService {
 	public UsersVO isMember(HashMap<String, String> map) {
 		return dao.isMember(map);
 	}
+	public UsersVO check(String user_id) {
+		return dao.check(user_id);
+	}
 }

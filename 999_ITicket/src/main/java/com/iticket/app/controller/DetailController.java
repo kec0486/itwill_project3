@@ -14,12 +14,12 @@ public class DetailController {
 	@Autowired
 	private DetailService detailService;
 	
-	@RequestMapping
+	@RequestMapping("reserv")
 	public String goReserv() {
 		return "reserv";
 	}
 	
-	@GetMapping("genreDetail")
+	@RequestMapping("getDetail")
 	public String getDetail(DetailVO vo, Model model) {
 		DetailVO detail = detailService.getDetail(vo);
 		model.addAttribute("detail", detail);

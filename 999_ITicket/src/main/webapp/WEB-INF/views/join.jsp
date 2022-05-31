@@ -15,7 +15,7 @@
 	}
 	.contents {
 		width: 500px;
-    	height: 950px;
+    	height: 700px;
     	margin: 100px auto 50px;
 	}
 	.joinstyle {

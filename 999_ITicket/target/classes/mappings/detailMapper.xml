@@ -5,7 +5,12 @@
   <mapper namespace="detailDAO">
   	<select id="getDetail" parameterType="com.iticket.app.vo.DetailVO" resultType="com.iticket.app.vo.DetailVO">
   		select * from genre_detail
-		where gr_num = #{gr_num}
-		and gd_title = #{gd_title}
+		where gd_num = #{gd_num}
+  	</select>
+  	
+  	<select id="getMusicalName" resultType="com.iticket.app.vo.DetailVO">
+  		SELECT * FROM GENRE_DETAIL
+  		WHERE GR_NUM = 1
+  		ORDER BY GD_TITLE
   	</select>
   </mapper>

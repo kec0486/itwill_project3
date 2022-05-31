@@ -2,90 +2,90 @@ package com.iticket.app.vo;
 
 public class DetailVO {
 	private int gd_num;
-	private int gd_actor;
-	private int gd_startTime;
-	private int gd_endTime;
-	private int gd_title;
-	private int gd_location;
-	private int gd_age;
-	private int gd_term;
-	private int gd_plan;
-	private int gd_runningtime;
-	private int gd_servicenumber;
-	private int gd_average;
+	private String gd_actor;
+	private String gd_startTime;
+	private String gd_endTime;
+	private String gd_title;
+	private String gd_location;
+	private String gd_age;
+	private String gd_term;
+	private String gd_plan;
+	private String gd_runningtime;
+	private String gd_servicenumber;
+	private String gd_average;
 	private int gd_price;
 	private int hl_buildingnum;
-	
+	private int gr_num;
 	public int getGd_num() {
 		return gd_num;
 	}
 	public void setGd_num(int gd_num) {
 		this.gd_num = gd_num;
 	}
-	public int getGd_actor() {
+	public String getGd_actor() {
 		return gd_actor;
 	}
-	public void setGd_actor(int gd_actor) {
+	public void setGd_actor(String gd_actor) {
 		this.gd_actor = gd_actor;
 	}
-	public int getGd_startTime() {
+	public String getGd_startTime() {
 		return gd_startTime;
 	}
-	public void setGd_startTime(int gd_startTime) {
+	public void setGd_startTime(String gd_startTime) {
 		this.gd_startTime = gd_startTime;
 	}
-	public int getGd_endTime() {
+	public String getGd_endTime() {
 		return gd_endTime;
 	}
-	public void setGd_endTime(int gd_endTime) {
+	public void setGd_endTime(String gd_endTime) {
 		this.gd_endTime = gd_endTime;
 	}
-	public int getGd_title() {
+	public String getGd_title() {
 		return gd_title;
 	}
-	public void setGd_title(int gd_title) {
+	public void setGd_title(String gd_title) {
 		this.gd_title = gd_title;
 	}
-	public int getGd_location() {
+	public String getGd_location() {
 		return gd_location;
 	}
-	public void setGd_location(int gd_location) {
+	public void setGd_location(String gd_location) {
 		this.gd_location = gd_location;
 	}
-	public int getGd_age() {
+	public String getGd_age() {
 		return gd_age;
 	}
-	public void setGd_age(int gd_age) {
+	public void setGd_age(String gd_age) {
 		this.gd_age = gd_age;
 	}
-	public int getGd_term() {
+	public String getGd_term() {
 		return gd_term;
 	}
-	public void setGd_term(int gd_term) {
+	public void setGd_term(String gd_term) {
 		this.gd_term = gd_term;
 	}
-	public int getGd_plan() {
+	public String getGd_plan() {
 		return gd_plan;
 	}
-	public void setGd_plan(int gd_plan) {
+	public void setGd_plan(String gd_plan) {
 		this.gd_plan = gd_plan;
 	}
-	public int getGd_runningtime() {
+	public String getGd_runningtime() {
 		return gd_runningtime;
 	}
-	public void setGd_runningtime(int gd_runningtime) {
+	public void setGd_runningtime(String gd_runningtime) {
 		this.gd_runningtime = gd_runningtime;
 	}
-	public int getGd_servicenumber() {
+	public String getGd_servicenumber() {
 		return gd_servicenumber;
 	}
-	public void setGd_servicenumber(int gd_servicenumber) {
+	public void setGd_servicenumber(String gd_servicenumber) {
 		this.gd_servicenumber = gd_servicenumber;
 	}
-	public int getGd_average() {
+	public String getGd_average() {
 		return gd_average;
 	}
-	public void setGd_average(int gd_average) {
+	public void setGd_average(String gd_average) {
 		this.gd_average = gd_average;
 	}
 	public int getGd_price() {
@@ -106,7 +106,6 @@ public class DetailVO {
 	public void setGr_num(int gr_num) {
 		this.gr_num = gr_num;
 	}
-	private int gr_num;
 	
 	@Override
 	public String toString() {
@@ -116,6 +115,7 @@ public class DetailVO {
 				+ ", gd_servicenumber=" + gd_servicenumber + ", gd_average=" + gd_average + ", gd_price=" + gd_price
 				+ ", hl_buildingnum=" + hl_buildingnum + ", gr_num=" + gr_num + "]";
 	}
+	
 	
 	
 }
