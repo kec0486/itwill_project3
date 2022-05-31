@@ -370,7 +370,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">랭킹</a>
+                            <a href="ranking">랭킹</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">랭킹</a>
