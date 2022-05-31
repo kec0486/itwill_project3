@@ -85,19 +85,13 @@
 		});
 	});
 	
-	function whichGenre() {
-		if ($(detailVO.gr_num) == 1){
-			let inHtml = "";
-			inHtml += "<p>예매가능시간: 관람 5시간 전까지</p>";
-			inHtml += "<p>회차당 1인 4매 구매 가능합니다.</p>";
-		}
-	}
+	
 </script>
 <body>
 
 	<h1>예약 페이지</h1>
 	<div>
-		<h2>뮤지컬 제목 (Musical dataBase needed)</h2>
+		<h2>${detail.gd_title }</h2>
 		<div class="likePart">
 			<div class="prdLikeIcon">
 				<!-- 별이든 하트든 별점 평균점수에 맞춰서 채워짐 -->
@@ -112,7 +106,7 @@
 		<div class="info">
 			<ul>
 				<li>
-					<a class="audiBtn" href="genreDetail">공연정보</a>
+					<a class="audiBtn" href="#">공연정보</a>
 				</li> 
 				<li>
 					<a class="detailBtn" href="#">부가정보</a>

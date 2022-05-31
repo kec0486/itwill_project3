@@ -171,7 +171,7 @@
                             </div>
                         </li>
                         <li class="musical">
-                            <a href="#">뮤지컬</a>
+                            <a href="musical">뮤지컬</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">뮤지컬</a>

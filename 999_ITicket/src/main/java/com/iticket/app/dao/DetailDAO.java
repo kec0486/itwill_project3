@@ -1,5 +1,7 @@
 package com.iticket.app.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,6 +15,10 @@ public class DetailDAO {
 	
 	public DetailVO getDetail(DetailVO vo) {
 		return mybatis.selectOne("detailDAO.getDetail", vo);
+	}
+
+	public List<DetailVO> getNameList(DetailVO vo) {
+		return mybatis.selectList("detailDAO.getMusicalName");
 	}
 
 }
