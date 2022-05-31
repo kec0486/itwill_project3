@@ -14,10 +14,10 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
-	@GetMapping("/logout")
-	public String logout() {
-		return "logout";
-	}
+//	@GetMapping("/logout")
+//	public String logout() {
+//		return "logout";
+//	}
 	@GetMapping("/idFind")
 	public String idFind() {
 		return "idFind";

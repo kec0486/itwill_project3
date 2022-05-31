@@ -19,8 +19,10 @@
 		<sec:intercept-url pattern="/users/**" access="hasRole('ROLE_MEMBER')" />
 		<sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<sec:intercept-url pattern="/**"  access="permitAll"/>
-		<sec:form-login login-page="/login" authentication-success-handler-ref="loginSuccessHandler" authentication-failure-url="/?error=loginError"/>
-		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/login"/>
+		<sec:form-login login-page="/login" authentication-success-handler-ref="loginSuccessHandler" authentication-failure-url="/login?error=loginError"/>
+		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/login" delete-cookies="JSESSIONID,remember-me"/>
+		<sec:remember-me key="kimcoder" token-validity-seconds="604800"
+			authentication-success-handler-ref="loginSuccessHandler"/> <!-- 자동로그인 설정 -->
 		<sec:csrf disabled="true"/>
 	</sec:http>
 	<sec:authentication-manager>
