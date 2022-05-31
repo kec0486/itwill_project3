@@ -5,6 +5,13 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <!-- header.jsp -->
+<style>
+	.logout {
+		font-size: 11px;
+	    margin-right: 12px;
+	    color: #666666;
+	}
+</style>
 <header id="header" class="header_bg">
         <div class="header_wrap">
             <div id="gateway">
@@ -43,7 +50,7 @@
                        		<sec:authorize access="isAuthenticated()"> <!-- 인증된 사용자 -->
 								<li>
 									<form:form action="logout" method="post">
-										<a href="logout">로그아웃</a>
+										<a href="logout" class="logout">로그아웃</a>
 									</form:form>
 								</li>
 							</sec:authorize>
