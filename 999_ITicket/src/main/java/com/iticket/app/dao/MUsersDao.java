@@ -30,4 +30,13 @@ public class MUsersDao {
 	public UsersVO check(String user_id) {
 		return sqlSession.selectOne(NAMESPACE + ".check",user_id);
 	}
+	public int insertN() {
+		return sqlSession.insert(NAMESPACE + ".insertN");
+	}
+	public UsersVO naverChk(UsersVO vo) {
+		return sqlSession.selectOne(NAMESPACE + ".naverChk", vo);
+	}
+	public int updateN(UsersVO vo) {
+		return sqlSession.update(NAMESPACE + ".updateN", vo);
+	}
 }

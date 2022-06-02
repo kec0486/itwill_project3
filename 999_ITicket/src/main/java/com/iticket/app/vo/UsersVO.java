@@ -2,6 +2,12 @@ package com.iticket.app.vo;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UsersVO {
 	private String user_id;
 	private String user_pw;
@@ -10,9 +16,12 @@ public class UsersVO {
 	private String phone;
 	private Date regdate;
 	private String enabled;
-	public UsersVO() {}
+	private String naverLogin;
+	public UsersVO() {
+		// TODO Auto-generated constructor stub
+	}
 	public UsersVO(String user_id, String user_pw, String user_name, String email, String phone, Date regdate,
-			String enabled) {
+			String enabled, String naverLogin) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -21,6 +30,7 @@ public class UsersVO {
 		this.phone = phone;
 		this.regdate = regdate;
 		this.enabled = enabled;
+		this.naverLogin = naverLogin;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -64,11 +74,20 @@ public class UsersVO {
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
 	}
+	public String getNaverLogin() {
+		return naverLogin;
+	}
+	public void setNaverLogin(String naverLogin) {
+		this.naverLogin = naverLogin;
+	}
 	@Override
 	public String toString() {
-		return "UsersVo [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", email=" + email
-				+ ", phone=" + phone + ", regdate=" + regdate + ", enabled=" + enabled + "]";
+		return "UsersVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", email=" + email
+				+ ", phone=" + phone + ", regdate=" + regdate + ", enabled=" + enabled + ", naverLogin=" + naverLogin
+				+ "]";
 	}
+	
+	
 	
 	
 	

@@ -70,6 +70,9 @@
 			<a href="#" class="findjoin" onclick="idFind()">아이디 찾기</a> | 
 			<a href="#" class="findjoin" onclick="pwFind()">비밀번호 찾기</a> | 
 			<a href="join" class="findjoin">회원가입</a>
+			<div id="naver_id_login">
+				<a href="${naverUrl }">네이버 아이디로 로그인</a>
+			</div>
 		</div>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>

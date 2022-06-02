@@ -1,10 +1,14 @@
 package com.iticket.app.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.iticket.app.auth.NaverLogin;
 import com.iticket.app.service.impl.MUsersService;
 
 @Controller
@@ -12,7 +16,11 @@ public class LoginController {
 	@Autowired private MUsersService service;
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(String error, String logout, Model model, HttpSession session) {
+//      log.info("error: " + error);
+//      log.info("logout: " + logout);
+		String naverUrl = NaverLogin.getAuthorizationUrl(session);
+		model.addAttribute("naverUrl", naverUrl);
 		return "login";
 	}
 //	@GetMapping("/logout")

@@ -38,4 +38,13 @@ public class MUsersService {
 	public UsersVO check(String user_id) {
 		return dao.check(user_id);
 	}
+	public UsersVO naverChk(UsersVO vo) {
+		return dao.naverChk(vo);
+	}
+	public int insertN() {
+		return dao.insertN();
+	}
+	public int updateN(UsersVO vo) {
+		return dao.updateN(vo);
+	}
 }

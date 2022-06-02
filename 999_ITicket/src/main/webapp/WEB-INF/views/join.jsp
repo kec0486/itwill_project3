@@ -67,7 +67,7 @@
 	<div class="contents_join">
 		<form:form action="join" method="post">
 			<div class="joinstyle">
-			아이디<input type="text" name="user_id" class="joinInput" placeholder="6~20자 영문, 숫자"><br>
+			아이디<input type="text" name="user_id" class="joinInput" placeholder="6~20자 영문, 숫자" value="${user.user_id }"><br>
 			<div></div>
 			</div>
 			<div class="joinstyle">
@@ -77,10 +77,10 @@
 			비밀번호확인<input type="password" id="user_pw" class="joinInput" placeholder="8~12자 영문, 숫자, 특수문자"><br>
 			</div>
 			<div class="joinstyle">
-			이름<input type="text" name="user_name" class="joinInput"><br>
+			이름<input type="text" name="user_name" class="joinInput" value="${user.user_name }"><br>
 			</div>
 			<div class="joinstyle">
-			이메일<input type="email" name="email" class="joinInput"><br>
+			이메일<input type="email" name="email" class="joinInput" value="${user.email }"><br>
 			</div>
 			<div class="joinstyle">
 			휴대폰<input type="text" name="phone" class="joinInput" placeholder="010 1234 5678"><br>
@@ -90,6 +90,5 @@
 		</form:form>
 	</div>
 </div>
-<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
