@@ -26,7 +26,7 @@ public class HallController {
 
 	@RequestMapping("insert_hall")
 	public String go_hall_insert() {
-		return "/hall/hall_insert";
+		return "/reserv/hall_insert";
 	}
 	
 	@RequestMapping("delete_hall")
