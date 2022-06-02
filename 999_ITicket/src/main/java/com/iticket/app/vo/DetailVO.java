@@ -16,6 +16,12 @@ public class DetailVO {
 	private int gd_price;
 	private int hl_buildingnum;
 	private int gr_num;
+	private String poster;
+	private String img1;
+	private String img2;
+	private String searchKeyword;
+	private String deletesearchKeyword;
+	
 	public int getGd_num() {
 		return gd_num;
 	}
@@ -106,6 +112,18 @@ public class DetailVO {
 	public void setGr_num(int gr_num) {
 		this.gr_num = gr_num;
 	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public String getDeletesearchKeyword() {
+		return deletesearchKeyword;
+	}
+	public void setDeletesearchKeyword(String deletesearchKeyword) {
+		this.deletesearchKeyword = deletesearchKeyword;
+	}
 	
 	@Override
 	public String toString() {
@@ -113,9 +131,40 @@ public class DetailVO {
 				+ ", gd_endTime=" + gd_endTime + ", gd_title=" + gd_title + ", gd_location=" + gd_location + ", gd_age="
 				+ gd_age + ", gd_term=" + gd_term + ", gd_plan=" + gd_plan + ", gd_runningtime=" + gd_runningtime
 				+ ", gd_servicenumber=" + gd_servicenumber + ", gd_average=" + gd_average + ", gd_price=" + gd_price
-				+ ", hl_buildingnum=" + hl_buildingnum + ", gr_num=" + gr_num + "]";
+				+ ", hl_buildingnum=" + hl_buildingnum + ", gr_num=" + gr_num + ", poster=" + poster + ", img1=" + img1
+				+ ", img2=" + img2 + ", searchKeyword=" + searchKeyword + ", deletesearchKeyword=" + deletesearchKeyword
+				+ "]";
+	}
+	//--------------------------------------
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	public String getImg1() {
+		return img1;
+	}
+	public void setImg1(String img1) {
+		this.img1 = img1;
+	}
+	public String getImg2() {
+		return img2;
+	}
+	public void setImg2(String img2) {
+		this.img2 = img2;
 	}
 	
-	
-	
+
+
+
+
+
 }
+	
+	
+	
+	
+	
+	
+

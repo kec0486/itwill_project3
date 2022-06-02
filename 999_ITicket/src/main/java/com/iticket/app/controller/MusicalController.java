@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.iticket.app.service.impl.DetailService;
+import com.iticket.app.service.impl.SeatService;
 import com.iticket.app.vo.DetailVO;
+import com.iticket.app.vo.SeatVO;
 
 @Controller
 public class MusicalController {
@@ -18,10 +20,12 @@ public class MusicalController {
 	@Autowired
 	private DetailService detailService;
 	
+	
 	@GetMapping("/musical")
-	public String goMusical(DetailVO vo, Model model) {
-		List<DetailVO> list = detailService.getNameList(vo);
+	public String goMusical(DetailVO dvo, Model model) {
+		List<DetailVO> list = detailService.getNameList(dvo);
 		model.addAttribute("getNameList", list);
 		return "musical";
 	}
+
 }

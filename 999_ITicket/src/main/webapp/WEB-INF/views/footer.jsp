@@ -26,11 +26,11 @@
 
 <footer>
 	<div class="footer">
-		<div class="footer_logo"><img alt="" src="">Logo</div>
+		<div class="footer_logo"><img alt="로고" src="resources/images/itiketLogo.jpg" width="200" height="80"></div>
 		<div class="company">
 			<div>주식회사 아이티켓</div>
-			<div>06234 서울특별시 강남구 테헤란로 124 4층 1강의장 ㅣ 대표이사 황주희 ㅣ 사업자등록번호 123-45-56789</div>
-			<div>통신판매업신고 2022-서울강남-98765 ㅣ Copyright 2022 ITICKET All rights reserved.</div>
+			<div>06168 서울시 강남구 삼성로 512 삼성동빌딩 10층(삼성동) ㅣ 대표이사 김강세 ㅣ 사업자등록번호 824-81-02515</div>
+			<div>통신판매업신고 2022-서울강남-02179 ㅣ Copyright 2015 INTERPARK All rights reserved.</div>
 		</div>
 	</div>
 </footer>
