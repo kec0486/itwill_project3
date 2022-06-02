@@ -16,6 +16,7 @@ public class DetailVO {
 	private int gd_price;
 	private int hl_buildingnum;
 	private int gr_num;
+	
 	public int getGd_num() {
 		return gd_num;
 	}

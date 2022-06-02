@@ -307,5 +307,6 @@
                 </div>
             </section>
 	<a href="reserv">예매사이트 및 정보</a>
+	<a href="reserv_ssh">예매하러가기</a>
 
 </div>

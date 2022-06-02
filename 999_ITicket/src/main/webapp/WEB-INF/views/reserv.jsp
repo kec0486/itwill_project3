@@ -119,7 +119,10 @@
 				</li>
 			</ul>
 		
-			<br><br><br><br><br>
+			<br><br><br><br>
+			 <a href="seat">좌석으로</a>
+			
+			<br>
 		
 		<!-- <a class="audiInfo">공연정보 입니다. 이건 원래 보이는 거에요 알겠냐구요</a>
 		<a class="detailInfo">부가 정보입니다. 이건 원래 안보이다가 이제 보여야 되는 거에요</a>		 -->
