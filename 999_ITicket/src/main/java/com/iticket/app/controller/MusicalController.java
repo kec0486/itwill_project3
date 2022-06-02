@@ -24,10 +24,7 @@ public class MusicalController {
 	@GetMapping("/musical")
 	public String goMusical(DetailVO dvo, Model model) {
 		List<DetailVO> list = detailService.getNameList(dvo);
-		
 		model.addAttribute("getNameList", list);
-		
-		
 		return "musical";
 	}
 

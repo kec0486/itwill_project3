@@ -13,4 +13,10 @@
   		WHERE GR_NUM = 1
   		ORDER BY GD_TITLE
   	</select>
+  	
+ 	<select id="getExhiNames" resultType="com.iticket.app.vo.DetailVO">
+ 		SELECT * FROM GENRE_DETAIL
+ 		WHERE GR_NUM = 4
+ 		ORDER BY GD_TITLE
+ 	</select>
   </mapper>

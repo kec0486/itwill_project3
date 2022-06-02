@@ -321,7 +321,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">전시/행사</a>
+                            <a href="exhibition">전시/행사</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">전시/행사</a>

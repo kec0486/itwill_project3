@@ -22,7 +22,10 @@ public class DetailImpl implements DetailService{
 	public List<DetailVO> getNameList(DetailVO vo) {
 		return detailDAO.getNameList(vo);
 	}
-	
 
+	@Override
+	public List<DetailVO> getExhiName() {
+		return detailDAO.getExhiNames();
+	}
 	
 }
