@@ -23,9 +23,6 @@ public class DetailImpl implements DetailService{
 		return detailDAO.getNameList(vo);
 	}
 	
-	@Override
-	public List<DetailVO> getList(DetailVO vo) {
-		return detailDAO.getList(vo);
-	}
+
 	
 }

@@ -21,9 +21,6 @@ public class DetailDAO {
 		return mybatis.selectList("detailDAO.getMusicalName");
 	}
 	
-	public List<DetailVO> getList(DetailVO vo) {
-		return mybatis.selectList("detailDAO.getList");
-	}
-	
+
 	
 }
