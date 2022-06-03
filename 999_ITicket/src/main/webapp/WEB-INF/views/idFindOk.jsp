@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 찾기-아이티켓</title>
+<title>아이디 찾기-아이티켓</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style type="text/css">
 	body {
@@ -55,18 +55,18 @@
 	    width: 250px;
 	}
 	.SearchTab_id {
-	    color: gray;
+	    border: 1px solid red;
+    	border-bottom: white;
+    	float: left;
+    	color: #ef3e42;
+	}
+	.SearchTab_pw {
+		color: gray;
 		border: 1px solid #e9e5e5;
 		border-bottom: 1px solid red;
 		float: left;
 		background-color: snow;
 		text-decoration: none;
-	}
-	.SearchTab_pw {
-		border: 1px solid red;
-    	border-bottom: white;
-    	float: left;
-    	color: #ef3e42;
 	}
 	.Search_notice {
 		padding: 15px 0;
@@ -102,41 +102,52 @@
 	    color: #fff;
 	    font-size: 15px;
 	}
+	.Search_resultleft {
+		display: block;
+    	float: left;
+    	font-size: 14px;
+    	font-weight: bold;
+	}
+	.Search_resultright {
+	 	text-align: right;
+	    display: block;
+	    font-size: 14px;
+	    color: gray;
+	}
+	.Search_result_title {
+		font-weight: bold;
+    	margin: 15px 0;
+	}
+	.notiText {
+		margin: 15px 0;
+    	color: gray;
+	}
+	.Search_result {
+		padding-left: 10px;
+	}
+	
 </style>
 </head>
 <body>
 	<div class="popHeaderWrap">
-		<span class="popTitle">비밀번호 찾기<a class="btnClose" onclick="winClose()"></a></span>
+		<span class="popTitle">아이디 찾기<a class="btnClose" onclick="winClose()"></a></span>
 	</div>
 	<div class="contentsWrap">
 		<div class="SearchTab">
-			<a href="idFind" class="SearchTab_id">아이디 찾기</a>
-			<a class="SearchTab_pw">비밀번호 찾기</a><br>
+			<a class="SearchTab_id">아이디 찾기</a>
+			<a href="pwFind" class="SearchTab_pw">비밀번호 찾기</a><br>
 		</div>
-		<div class="Search_notice">
-			비밀번호를 찾을 방법을 선택해주세요.<br>
+		<div class="Search_result_title">
+			아이디 찾기 결과
 		</div>
-		<div class="Search_title">
-			<button type="button" class="findBtn" id="Search">등록된 휴대폰번호로 찾기</button>
-			<div class="Search_contents" id="Search_contents">
-				<form action="pwFindPhone" method="post">
-					<input type="text" name="user_id" placeholder="아이디" class="iinput"><br>
-					<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
-					<input type="text" name="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
-					<input type="submit" value="확인" class="FindBtn"><br>
-				</form>
-			</div>
+		<div class="Search_result">
+			<span class="Search_resultleft">${user.user_id }</span><span class="Search_resultright">${user.regdate } 가입</span>
 		</div>
-		<div class="Search_title">
-			<button onclick="findEmail" class="findBtn" id="Search1">등록된 이메일로 찾기</button>
+		<div class="notiText">
+			개인정보 보호를 위해 아이디 뒷자리는 ***로 표시합니다.
 		</div>
-		<div class="Search_contents" id="Search_contents1">
-			<form action="pwFindEmail" method="post">
-				<input type="text" name="user_id" placeholder="아이디" class="iinput"><br>
-				<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
-				<input type="text" name="email" placeholder="이메일" class="iinput"><br>
-				<input type="submit" value="확인" class="FindBtn"><br>
-			</form>
+		<div>
+			<button onclick="winClose()" class="FindBtn">로그인</button>
 		</div>
 	</div>
 <script type="text/javascript">

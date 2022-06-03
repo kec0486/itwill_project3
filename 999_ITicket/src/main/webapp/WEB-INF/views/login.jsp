@@ -11,6 +11,13 @@
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 <script src="resources/js/jquery-3.6.0.js"></script>
 <script src="resources/js/motion.js"></script>
+<script type="text/javascript">
+	window.onpageshow = function(event) {
+	    if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+	        location.reload();
+	    }
+	}
+</script>
 <style type="text/css">
 	.loginForm {
 		width: 450px;
@@ -48,7 +55,10 @@
 		color: red;
 	    text-align: left;
 	    margin-left: 20px;
-	}	
+	}
+	.naver_id_login {
+		margin: 20px 0;
+	}
 </style>
 </head>
 <body>
@@ -70,8 +80,8 @@
 			<a href="#" class="findjoin" onclick="idFind()">아이디 찾기</a> | 
 			<a href="#" class="findjoin" onclick="pwFind()">비밀번호 찾기</a> | 
 			<a href="join" class="findjoin">회원가입</a>
-			<div id="naver_id_login">
-				<a href="${naverUrl }">네이버 아이디로 로그인</a>
+			<div class="naver_id_login">
+				<a href="${naverUrl }"><img src="resources/images/naverBtn.png"></a>
 			</div>
 		</div>
 	</div>

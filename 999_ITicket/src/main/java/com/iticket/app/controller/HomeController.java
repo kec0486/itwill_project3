@@ -1,5 +1,7 @@
 package com.iticket.app.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -32,25 +34,30 @@ public class HomeController {
 //	public String member() {
 //		return "main";
 //	}
+//	@GetMapping("/main")
+//	public ModelAndView main(Model model,Authentication authentication,HttpSession session) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		//String userName = authentication.getName();
+//		UserDetails user = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		LoginManager manager = LoginManager.getInstance();
+//		session.setMaxInactiveInterval(3600 * 6); //세션 유효시간 
+//		UsersVO vo = service.check(user.getUsername());
+//
+//		if(manager.isUsing(vo.getUser_id()) == false ) {
+//			model.addAttribute("loginStatus",false);
+//		}
+//		
+//		manager.setSession(session, vo.getUser_id());
+//
+//		session.setAttribute("vo", vo);
+//		model.addAttribute("user",user);
+//		mv.setViewName("main");
+//		return mv;
+//	}
 	@GetMapping("/main")
-	public ModelAndView main(Model model,Authentication authentication,HttpSession session) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		//String userName = authentication.getName();
-		UserDetails user = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		LoginManager manager = LoginManager.getInstance();
-		session.setMaxInactiveInterval(3600 * 6); //세션 유효시간 
-		UsersVO vo = service.check(user.getUsername());
-
-		if(manager.isUsing(vo.getUser_id()) == false ) {
-			model.addAttribute("loginStatus",false);
-		}
-		
-		manager.setSession(session, vo.getUser_id());
-
-		session.setAttribute("vo", vo);
-		model.addAttribute("user",user);
-		mv.setViewName("main");
-		return mv;
+	public String member(HttpSession session,Principal principal) {
+		session.setAttribute("user", principal.getName());
+		return "main";
 	}
 	@GetMapping("/admin/main")
 	public String admin() {

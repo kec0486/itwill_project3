@@ -47,4 +47,23 @@ public class MUsersService {
 	public int updateN(UsersVO vo) {
 		return dao.updateN(vo);
 	}
+	public UsersVO idFindPhone(UsersVO vo) {
+		return dao.idFindPhone(vo);
+	}
+	public UsersVO idFindEmail(UsersVO vo) {
+		return dao.idFindEmail(vo);
+	}
+	public UsersVO pwFindPhone(UsersVO vo) {
+		return dao.pwFindPhone(vo);
+	}
+	public UsersVO pwFindEmail(UsersVO vo) {
+		return dao.pwFindEmail(vo);
+	}
+	public int updatepw(UsersVO vo) {
+		String pwd=vo.getUser_pw();
+		System.out.println(pwd);
+		vo.setUser_pw(passwordEncoder.encode(pwd));
+		dao.updatepw(vo);
+		return 1;
+	}
 }

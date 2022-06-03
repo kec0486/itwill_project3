@@ -83,7 +83,7 @@
 			이메일<input type="email" name="email" class="joinInput" value="${user.email }"><br>
 			</div>
 			<div class="joinstyle">
-			휴대폰<input type="text" name="phone" class="joinInput" placeholder="010 1234 5678"><br>
+			휴대폰<input type="text" name="phone" class="joinInput" placeholder="01012345678"><br>
 			</div>
 			만 14세 미만 회원은 법정대리인(부모님) 동의를 받은 경우만 회원가입이 가능합니다.<br>
 			<input type="submit" value="가입완료" class="join_btn">

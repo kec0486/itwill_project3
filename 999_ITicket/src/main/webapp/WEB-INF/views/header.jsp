@@ -44,13 +44,13 @@
                     <div class="gnbArea_right">
                         <ul>
 							<sec:authorize access="isAnonymous()"> <!-- 인증되지 않은 사용자 -->	
-								<li><a href="login"><span>로그인</span></a></li>
+								<li><a href="login" ><span>로그인</span></a></li>
 	                            <li><a href="join"><span>회원가입</span></a></li>
 							</sec:authorize>
                        		<sec:authorize access="isAuthenticated()"> <!-- 인증된 사용자 -->
 								<li>
 									<form:form action="logout" method="post">
-										<a href="logout" class="logout">로그아웃</a>
+										<a href="logout" class="logout" >로그아웃</a>
 									</form:form>
 								</li>
 							</sec:authorize>

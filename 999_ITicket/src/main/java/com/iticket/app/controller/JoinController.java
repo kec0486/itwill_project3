@@ -18,6 +18,6 @@ public class JoinController {
 	@PostMapping("/join")
 	public String join(UsersVO vo) {
 		service.insert(vo);
-		return "success";
+		return "main";
 	}
 }

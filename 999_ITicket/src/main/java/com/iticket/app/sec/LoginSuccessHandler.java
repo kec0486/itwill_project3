@@ -29,5 +29,4 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		}
 		
 	}
-
 }

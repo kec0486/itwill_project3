@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,45 +103,75 @@
 	    color: #fff;
 	    font-size: 15px;
 	}
+	.Search_resultleft {
+		display: block;
+    	float: left;
+    	font-size: 14px;
+    	font-weight: bold;
+	}
+	.Search_resultright {
+	 	text-align: right;
+	    display: block;
+	    font-size: 14px;
+	    color: gray;
+	}
+	.Search_result_title {
+		font-weight: bold;
+    	margin: 15px 0;
+	}
+	.notiText {
+		margin: 15px 0;
+    	color: gray;
+    	font-size: 14px;
+	}
+	.Search_result {
+		background-color: #fff2f2;
+	    padding: 10px 10px;
+	    margin: 10px 0;
+	}
 </style>
 </head>
 <body>
 	<div class="popHeaderWrap">
-		<span class="popTitle">비밀번호 찾기<a class="btnClose" onclick="winClose()"></a></span>
+		<span class="popTitle">비밀번호 재설정<a class="btnClose" onclick="winClose()"></a></span>
 	</div>
 	<div class="contentsWrap">
 		<div class="SearchTab">
-			<a href="idFind" class="SearchTab_id">아이디 찾기</a>
-			<a class="SearchTab_pw">비밀번호 찾기</a><br>
+			<a class="SearchTab_id">아이디 찾기</a>
+			<a href="pwFind" class="SearchTab_pw">비밀번호 찾기</a><br>
 		</div>
-		<div class="Search_notice">
-			비밀번호를 찾을 방법을 선택해주세요.<br>
+		<div class="Search_result_title">
+			비밀번호  재설정
 		</div>
-		<div class="Search_title">
-			<button type="button" class="findBtn" id="Search">등록된 휴대폰번호로 찾기</button>
-			<div class="Search_contents" id="Search_contents">
-				<form action="pwFindPhone" method="post">
-					<input type="text" name="user_id" placeholder="아이디" class="iinput"><br>
-					<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
-					<input type="text" name="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
-					<input type="submit" value="확인" class="FindBtn"><br>
-				</form>
-			</div>
+		<div class="notiText">
+			비밀번호 재설정을 위한 본인 확인이 완료되었습니다.<br>
+			새로운 비밀번호를 등록 후 사용해주세요
 		</div>
-		<div class="Search_title">
-			<button onclick="findEmail" class="findBtn" id="Search1">등록된 이메일로 찾기</button>
-		</div>
-		<div class="Search_contents" id="Search_contents1">
-			<form action="pwFindEmail" method="post">
-				<input type="text" name="user_id" placeholder="아이디" class="iinput"><br>
-				<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
-				<input type="text" name="email" placeholder="이메일" class="iinput"><br>
-				<input type="submit" value="확인" class="FindBtn"><br>
+		<div class="Search_result">아이디 ${user.user_id }</div>
+			<form action="updatepw" method="post">
+				<input type="hidden" name="user_id" value="${user.user_id }">
+				<input type="password" name="user_pw" placeholder="새 비밀번호" class="iinput"><br>
+				<input type="password" name="user_pw1" placeholder="새 비밀번호 확인" class="iinput">
+				
+				<div class="notiText">
+					비밀번호는 8~12자 이내로 영문(대,소문자), 숫자, 특수문자 3가지 조합 중 2가지<br>
+					이상을 조합하셔서 만드시면 됩니다.
+				</div>
+				<div>
+					<input type="submit" value="변경" class="FindBtn">
+				</div>
+				<script type="text/javascript">
+					updatepw()
+				</script>
 			</form>
-		</div>
 	</div>
 <script type="text/javascript">
 	function winClose() {
+		window.close();
+	}
+	function updatepw() {
+		let name = "<c:out value='${user.user_name}'/>";
+		alert(name + " 회원님께서 요청하신 새로운 비밀번호로 변경 하였습니다.");
 		window.close();
 	}
 	$(function() {

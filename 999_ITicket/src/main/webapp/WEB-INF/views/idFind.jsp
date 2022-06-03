@@ -119,23 +119,30 @@
 		<div class="Search_title">
 			<button type="button" class="findBtn" id="Search">등록된 휴대폰번호로 찾기</button>
 			<div class="Search_contents" id="Search_contents">
-				<input type="text" placeholder="이름" class="iinput"><br>
-				<input type="text" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
-				<input type="button" value="확인" class="FindBtn"><br>
+				<form action="idFindPhone" method="post">
+					<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
+					<input type="text" name="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
+					<input type="submit" value="확인" class="FindBtn"><br>
+				</form>
 			</div>
 		</div>
 		<div class="Search_title">
 			<button onclick="findEmail" class="findBtn" id="Search1">등록된 이메일로 찾기</button>
 		</div>
 		<div class="Search_contents" id="Search_contents1">
-			<input type="text" placeholder="이름" class="iinput"><br>
-			<input type="text" placeholder="이메일" class="iinput"><br>
-			<input type="button" value="확인" class="FindBtn"><br>
+			<form action="idFindEmail" method="post">
+				<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
+				<input type="text" name="email" placeholder="이메일" class="iinput"><br>
+				<input type="submit" value="확인" class="FindBtn"><br>
+			</form>
 		</div>
 	</div>
 <script type="text/javascript">
 	function winClose() {
 		window.close();
+	}
+	function idFindPhone() {
+		location.href = "idFindEmailOk";
 	}
 	$(function() {
 		$("#Search").click(function(){
