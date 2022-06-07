@@ -21,5 +21,11 @@ public class SeatImpl implements SeatService{
 	public SeatVO get_seat(SeatVO vo) {
 		return SeatDAO.get_seat(vo);
 	}
+
+	@Override
+	public List<SeatVO> getseatList_choose(SeatVO vo) {
+		// TODO Auto-generated method stub
+		return SeatDAO.getseatList_choose(vo);
+	}
 	
 }

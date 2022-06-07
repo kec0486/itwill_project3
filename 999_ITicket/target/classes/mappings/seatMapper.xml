@@ -5,15 +5,19 @@
 
 <mapper namespace="seatDAO">
 
-	<select id="getseatList"
-		parameterType="com.iticket.app.vo.SeatVO"
-		resultType="com.iticket.app.vo.SeatVO">
+	<select id="getseatList" parameterType="com.iticket.app.vo.SeatVO" resultType="com.iticket.app.vo.SeatVO">
 		select * from seat order by st_num  
 	</select>
 
 	<select id="get_seat" parameterType="com.iticket.app.vo.SeatVO" resultType="com.iticket.app.vo.SeatVO">
 		select * from seat
 		where st_num = #{st_num}
+	</select>
+	
+	<select id="getseatList_choose" parameterType="com.iticket.app.vo.SeatVO" resultType="com.iticket.app.vo.SeatVO">
+		select * from seat 
+		where hl_buildingnum = #{hl_buildingnum}
+		order by st_num  
 	</select>
 
 </mapper>

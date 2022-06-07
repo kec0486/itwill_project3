@@ -24,5 +24,8 @@ public class DetailDAO {
 	public List<DetailVO> getExhiNames() {
 		return mybatis.selectList("detailDAO.getExhiNames");
 	}
-
+	
+	public List<DetailVO> getDetail_list() {
+		return mybatis.selectList("detailDAO.getDetail_list");
+	}
 }

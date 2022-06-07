@@ -8,4 +8,5 @@ public interface DetailService {
 	DetailVO getDetail(DetailVO vo);
 	List<DetailVO> getNameList(DetailVO vo);
 	List<DetailVO> getExhiName();
+	List<DetailVO> getDetail_list(DetailVO vo);
 }

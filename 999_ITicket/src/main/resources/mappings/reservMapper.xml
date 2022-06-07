@@ -15,11 +15,9 @@
 	</select>
 	
 
-	<insert id="insert_reserv" parameterType="com.iticket.app.vo.ReservationVO">
-		INSERT INTO RESERVATION (RV_NUM, RV_CNT,ST_NUM)
-		VALUES ((SELECT NVL(MAX(RV_NUM),0) + 1 FROM RESERVATION),#{rv_cnt},#{st_num})
-
-<!-- (SELECT NVL(MAX(RV_NUM),0) + 1 FROM RESERVATION) -->
+ 	<insert id="insert_reserv" parameterType="com.iticket.app.vo.ReservationVO">
+		INSERT INTO RESERVATION (RV_NUM, RV_CNT,ST_NUM ,USER_ID)
+		VALUES ((SELECT NVL(MAX(RV_NUM),0) + 1 FROM RESERVATION),#{rv_cnt},#{st_num},#{user_id})
 	</insert>
 	
 	<update id="update_reserv" parameterType="com.iticket.app.vo.ReservationVO">

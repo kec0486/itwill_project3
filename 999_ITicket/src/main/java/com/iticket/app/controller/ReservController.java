@@ -3,23 +3,34 @@ package com.iticket.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.iticket.app.service.impl.DetailService;
 import com.iticket.app.service.impl.ReservService;
-import com.iticket.app.vo.ReservationVO;
-
+import com.iticket.app.service.impl.SeatSaveService;
 import com.iticket.app.service.impl.SeatService;
+
+import com.iticket.app.vo.DetailVO;
+import com.iticket.app.vo.ReservationVO;
+import com.iticket.app.vo.SeatSaveVO;
 import com.iticket.app.vo.SeatVO;
 
 @Controller
 public class ReservController {
 	@Autowired
 	private ReservService reservService;
+	@Autowired
 	private SeatService seatService;
+	@Autowired
+	private DetailService detailService;
+	@Autowired
+	private SeatSaveService seatsaveService;
 
 	@GetMapping("reserv_ssh")
 	public String get_reserv_List(ReservationVO vo, Model model) {
@@ -36,14 +47,22 @@ public class ReservController {
 		model.addAttribute("get_reserv", get_reserv);
 		return "/reserv/reserv_delete";
 	}
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¹ï¿½ï¿½Â°
+	@GetMapping("/insert_reserv")
+	public String go_reserv_insert(DetailVO vo, Model model) {
+		List<DetailVO> detail_list = detailService.getDetail_list(vo);
+		model.addAttribute("getDetail_list", detail_list);
 
-// seatcontroller¿¡ ÀÖÀ½. ¿©±â¼± ¾ÈµÇ´Âµ¥ ½ÃÆ®ÄÁÆ®·Ñ·¯¿¡¼­´Â ÀÛµ¿ÇÔ ¿Ö±×·±Áö´Â ³ªµµ ¸ô?·ç
-//	@GetMapping("insert_reserv")
-//	public String go_reserv_ins(SeatVO svo, Model model) {	
-//		List<SeatVO> seat_list = seatService.getseatList(svo);
-//		model.addAttribute("getseatList", seat_list);
-//		return "/reserv/reserv_insert";
-//	}
+		return "/reserv/reserv_insert";
+	}
+	
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ç¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ ï¿½Þ¼Òµï¿½
+	@RequestMapping("get_Detail_insert")
+	public String reserv_insert_1(DetailVO dvo, Model model) {
+		DetailVO detail = detailService.getDetail(dvo);
+		model.addAttribute("detail", detail);
+		return "/reserv/reserv_insert";
+	}
 
 	@RequestMapping("delete_reserv")
 	public String go_reserv_delete(ReservationVO vo, Model model) {
@@ -58,9 +77,17 @@ public class ReservController {
 	}
 
 	@RequestMapping("insert_reserv_do")
-	public String insert_reserv(ReservationVO rvo, Model model) {
+	public String insert_reserv(ReservationVO rvo,int sd_num, Model model) {
 		System.out.println(">>> reserv insert");
 		System.out.println("insert vo : " + rvo);
+		System.out.println("sd_num  : " + sd_num);
+		
+		SeatSaveVO save_vo = new SeatSaveVO();
+		save_vo.setSeat_able(1);
+		save_vo.setSd_num(sd_num);
+		save_vo.setSt_num(rvo.getSt_num());
+		System.out.println("save_vo  : " + save_vo);
+		seatsaveService.seatsave_insert(save_vo);
 		reservService.insert_reserv(rvo);
 
 		return "/reserv/reserv_ssh";
@@ -68,7 +95,7 @@ public class ReservController {
 
 	@RequestMapping("update_reserv_do")
 	public String update_reserv(ReservationVO vo) {
-		System.out.println(">>> °Ô½Ã±Û ¼öÁ¤");
+		System.out.println(">>> ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		System.out.println("vo : " + vo);
 
 		reservService.update_reserv(vo);
@@ -77,7 +104,7 @@ public class ReservController {
 
 	@RequestMapping("delete_reserv_do")
 	public String delete_reserv(ReservationVO vo) {
-		System.out.println(">>> °Ô½Ã±Û »èÁ¦");
+		System.out.println(">>> ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		System.out.println("vo : " + vo);
 
 		reservService.delete_reserv(vo);

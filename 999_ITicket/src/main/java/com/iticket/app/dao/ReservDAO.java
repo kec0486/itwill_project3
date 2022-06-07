@@ -16,30 +16,31 @@ public class ReservDAO {
 	
 	
 	public List<ReservationVO> get_reserv_list(ReservationVO vo) {
-		System.out.println("===> MyBatis »ç¿ë get_reserv_list() ½ÇÇà");
+		System.out.println("===> MyBatis ì‚¬ìš© get_reserv_list() ì‹¤í–‰");
 		return mybatis.selectList("reservDAO.get_reserv_List");
 	}
 	
 	public ReservationVO get_reserv(ReservationVO vo) {
-		System.out.println("===> MyBatis »ç¿ë get_reserv() ½ÇÇà");
+		System.out.println("===> MyBatis ì‚¬ìš© get_reserv() ì‹¤í–‰");
 		return mybatis.selectOne("reservDAO.get_reserv",vo);
 	}
 	
-	//±Û ÀÔ·Â
+	//ê¸€ ìž…ë ¥
 	public void insert_reserv(ReservationVO vo) {
-		System.out.println("===> MyBatis »ç¿ë insert_reserv() ½ÇÇà");
+		System.out.println("===> MyBatis ì‚¬ìš© insert_reserv() ì‹¤í–‰");
+		System.out.println("DAOì—ì„œ ë“¤ì–´ê°€ëŠ” VO : " + vo);
 		mybatis.insert("reservDAO.insert_reserv", vo);
 	}
 	
-	//±Û ¼öÁ¤
+	//ê¸€ ìˆ˜ì •
 	public void update_reserv(ReservationVO vo) {
-		System.out.println("===> MyBatis »ç¿ë update_reserv() ½ÇÇà");
+		System.out.println("===> MyBatis ì‚¬ìš© update_reserv() ì‹¤í–‰");
 		mybatis.update("reservDAO.update_reserv", vo);
 	}
 
-	//±Û »èÁ¦
+	//ê¸€ ì‚­ì œ
 	public void delete_reserv(ReservationVO vo) {
-		System.out.println("===> MyBatis »ç¿ë delete_reserv() ½ÇÇà");
+		System.out.println("===> MyBatis ì‚¬ìš© delete_reserv() ì‹¤í–‰");
 		mybatis.delete("reservDAO.delete_reserv", vo);
 	}
 }
