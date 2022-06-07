@@ -9,6 +9,11 @@
 		select * from reservation
 	</select>
 	
+	<select id="get_reserv_List_id" parameterType="com.iticket.app.vo.ReservationVO" resultType="com.iticket.app.vo.ReservationVO">
+		select * from reservation
+		where user_id = #{user_id}
+	</select>
+	
 	<select id="get_reserv" parameterType="com.iticket.app.vo.ReservationVO" resultType="com.iticket.app.vo.ReservationVO">
 		select * from reservation
 		where rv_num = #{rv_num}
@@ -16,13 +21,9 @@
 	
 
  	<insert id="insert_reserv" parameterType="com.iticket.app.vo.ReservationVO">
-		INSERT INTO RESERVATION (RV_NUM, RV_CNT,ST_NUM ,USER_ID)
-		VALUES ((SELECT NVL(MAX(RV_NUM),0) + 1 FROM RESERVATION),#{rv_cnt},#{st_num},#{user_id})
+		INSERT INTO RESERVATION (RV_NUM, RV_CNT,ST_NUM ,USER_ID,SD_NUM)
+		VALUES ((SELECT NVL(MAX(RV_NUM),0) + 1 FROM RESERVATION),#{rv_cnt},#{st_num},#{user_id},#{sd_num})
 	</insert>
-	
-	<update id="update_reserv" parameterType="com.iticket.app.vo.ReservationVO">
-		UPDATE RESERVATION SET RV_CNT = #{rv_cnt} WHERE RV_NUM = #{rv_num}
-	</update>
 	
 	<delete id="delete_reserv" parameterType="com.iticket.app.vo.ReservationVO">
 		DELETE FROM RESERVATION WHERE RV_NUM = #{rv_num}

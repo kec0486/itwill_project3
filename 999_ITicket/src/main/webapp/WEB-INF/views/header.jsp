@@ -207,8 +207,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="seat">
-                            <a href="seat">시트</a>
+                        <li class="#">
+                            <a href="#">콘서트</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">콘서트</a>
