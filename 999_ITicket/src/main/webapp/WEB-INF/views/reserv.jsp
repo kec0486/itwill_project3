@@ -88,6 +88,30 @@
 	/* .detailInformation li {
 		float: left;
 	} */
+	.reviewInfo {
+		display: inline-block;
+		width: 800px;
+	}
+	.writeBtn {
+		border: solid;
+		color: white;
+		background-color: #333333;
+		width: 120.92px;
+		height: 34px;
+		border-radius: 8px;
+  		padding: 5px;
+  		float: right;
+	}
+	.writeBtn a {
+		text-align: center;
+		color: white;
+		display: block;
+		text-decoration: none;
+		margin-top: 5px;
+	}
+	.comCnt {
+		float: left;
+	}
 </style>
 </head>
 <script>
@@ -201,10 +225,6 @@
 			</ul>
 		</div>
 		
-		<div id="navbar">
-			<a class="active" ></a>
-		
-		</div>
 		<br><br><br>
 		
 		<div class="information">
@@ -239,19 +259,34 @@
 				</c:if>
 			</div>
 			<div class="detailInfo">
+			
 				숨겨왔던 부가정보 입니다... 보고 싶지 않으셨다면 다른 버튼을 눌러주세요
 			</div>
 			<div class="reviewInfo">
-				리뷰 정보입니다. 여긴 뮤지컬이나 공연에 대한 리뷰가 써지는 곳이에요
+				<strong>꼭 읽어주세요</strong>
+				<p>게시판 운영 규정에 어긋난다고 판단되는 게시글은 사전 통보없이 블라인드 처리될 수 있습니다.</p>
+				<p>특히 티켓 매매 및 양도의 댓글은 발견 즉시 임의 삭제 되며 전화번호, 이메일 등의 개인정보는 악용될 우려가 있으므로 게시를 삼가 주시기 바랍니다.</p>
+				<br>
+				<h2>이용 평점</h2>
+				<br>
+				<div>
+					<div class="comCnt">
+						<p>총 67개의 이용후기가 등록되었습니다. </p>
+					</div>
+					<!-- 검색창이랑 글쓰기 버튼 있음 -->
+					<div class="writeBtn">
+						<a href="writeR?gd_num=${detail.gd_num }">이용후기 작성</a>					
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	
 	<jsp:include page="footer.jsp"></jsp:include><!-- 하단 회사정보 등 -->
 </body>
+
 <script>
 	window.onscroll = function() {stickyF()};
-	
 	let navbar = document.getElementById("infoId");
 	let sticky = navbar.offsetTop;
 	
