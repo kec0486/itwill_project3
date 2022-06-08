@@ -27,5 +27,11 @@ public class DetailImpl implements DetailService{
 	public List<DetailVO> getExhiName() {
 		return detailDAO.getExhiNames();
 	}
+
+	@Override
+	public List<DetailVO> getDetail_list(DetailVO vo) {
+		// TODO Auto-generated method stub
+		return detailDAO.getDetail_list();
+	}
 	
 }

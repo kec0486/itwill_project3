@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="reivewDAO">
+  	<insert id="insertReview" parameterType="com.iticket.app.vo.ReviewVO">
+  		INSERT INTO REVIEW (rv_num, rv_content, user_id, gd_num, rv_likecnt)
+		VALUES ((SELECT NVL(MAX(RV_NUM), 0) + 1 FROM REVIEW),
+        		#{rv_content}, #{user_id}, #{gd_num}, #{rv_likecnt})
+  	</insert>
+  </mapper>

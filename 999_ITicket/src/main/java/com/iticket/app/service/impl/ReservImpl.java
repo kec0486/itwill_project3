@@ -16,11 +16,12 @@ public class ReservImpl implements ReservService{
 	private ReservDAO reservDAO;
 
 	public ReservImpl() {
-		System.out.println(">> ReservImpl() ��ü ����");
+		System.out.println(">> ReservImpl() 실행");
 	}
 	
 	@Override
 	public void insert_reserv(ReservationVO vo) {
+		System.out.println(">> reserv 서비스에서 들어가는 vo : " + vo);
 		reservDAO.insert_reserv(vo);
 	}
 

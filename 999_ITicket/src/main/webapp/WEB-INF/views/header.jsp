@@ -53,6 +53,7 @@
 										<a href="logout" class="logout" >로그아웃</a>
 									</form:form>
 								</li>
+								<li><a href="userinfo">회원정보</a></li>
 							</sec:authorize>
                             <li>
                                 <a href="#">예매확인/취소</a>
@@ -207,8 +208,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="seat">
-                            <a href="seat">시트</a>
+                        <li class="#">
+                            <a href="#">콘서트</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">콘서트</a>

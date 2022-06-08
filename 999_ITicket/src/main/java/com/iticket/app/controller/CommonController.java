@@ -1,5 +1,7 @@
 package com.iticket.app.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -50,7 +52,7 @@ public class CommonController {
 
 	// 네이버 로그인 성공시 callback호출
 	@RequestMapping(value="/logincallback", method= {RequestMethod.GET,RequestMethod.POST})
-        public String callBack(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, HttpServletRequest request) throws Exception{
+        public String callBack(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, HttpServletRequest request,Principal principal) throws Exception{
             OAuth2AccessToken oauthToken;
             oauthToken = naverlogin.getAccessToken(session, code, state);
             
@@ -96,7 +98,7 @@ public class CommonController {
             System.out.println(naverIdChk);
             //1.쌩판 홈페이지에 연동된 정보가 없는경우=>등록된 네이버 이메일x,네이버고유번호idx , 회원 가입절차 시작
             if (naverIdChk == null) {
-                    session.setAttribute("user", member);
+                    session.setAttribute("users", member);
                     return "join";
             //2.가입된 이메일은 있으나 네이버와의 연동이 안된경우        
             }else if(naverIdChk.getNaverLogin() == null && naverIdChk.getEmail() !=null) {
@@ -113,7 +115,7 @@ public class CommonController {
                     securityContext.setAuthentication(authentication);
                     session = request.getSession(true);
                     session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-                    return "redirect:./";
+                    return "redirect:main";
  
             //3.둘다 아니라면 네이버로 가입 된 상태임. 네이버 로그인시 바로 로그인됨
             }else {
@@ -128,7 +130,7 @@ public class CommonController {
                     securityContext.setAuthentication(authentication);
                     session = request.getSession(true);
                     session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-                    return "redirect:./";
+                    return "redirect:main";
             }
 	}
 	// 회원가입 창으로 이동

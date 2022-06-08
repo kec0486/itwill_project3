@@ -20,4 +20,8 @@ public class SeatDAO {
 	public List<SeatVO> getseatList(SeatVO vo) {
 		return mybatis.selectList("seatDAO.getseatList");
 	}
+	
+	public List<SeatVO> getseatList_choose(SeatVO vo) {
+		return mybatis.selectList("seatDAO.getseatList_choose",vo);
+	}
 }
