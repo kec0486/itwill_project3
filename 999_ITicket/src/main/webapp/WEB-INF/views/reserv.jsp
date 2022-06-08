@@ -281,6 +281,7 @@
 			</div>
 		</div>
 	</div>
+	<a href="get_schedule_list?gd_num=${detail.gd_num }">상영시간 선택하기</a><br>
 	
 	<jsp:include page="footer.jsp"></jsp:include><!-- 하단 회사정보 등 -->
 </body>

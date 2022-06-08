@@ -2,10 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="reivewDAO">
+  <mapper namespace="reviewDAO">
   	<insert id="insertReview" parameterType="com.iticket.app.vo.ReviewVO">
-  		INSERT INTO REVIEW (rv_num, rv_content, user_id, gd_num, rv_likecnt)
+  		INSERT INTO REVIEW 
+  		(RV_NUM, GD_TITLE, WATCH_DATE, RV_TITLE, RV_LIKECNT, RV_CONTENT, USER_ID, GD_NUM)
 		VALUES ((SELECT NVL(MAX(RV_NUM), 0) + 1 FROM REVIEW),
-        		#{rv_content}, #{user_id}, #{gd_num}, #{rv_likecnt})
+        		#{gd_title}, #{watch_date}, #{rv_title}, #{rv_likecnt},
+        		#{rv_content}, #{user_id}, #{gd_num})
   	</insert>
+  	<select id="getReservDate" parameterType="com.iticket.app.vo.ReviewVO" resultType="com.iticket.app.vo.ForReservationVO">
+  		SELECT TO_CHAR(SCH.sd_date, 'YYYY-MM-DD') sd_date, SCH.start_time, g.gd_title, r.rv_num
+		FROM RESERVATION R, schedule SCH, GENRE_DETAIL G
+		WHERE r.sd_num = sch.sd_num
+        AND sch.gd_num = G.GD_NUM
+        AND r.user_id = #{user_id}
+		AND sch.gd_num = #{gd_num}
+  	</select>
+  	<select id="getOneResDate" parameterType="com.iticket.app.vo.ReviewVO" resultType="com.iticket.app.vo.ScheduleVO">
+  		
+  	</select>
   </mapper>

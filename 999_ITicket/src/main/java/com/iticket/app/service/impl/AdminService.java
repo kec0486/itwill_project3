@@ -13,5 +13,6 @@ public interface AdminService {
 	void getinsert(DetailVO vo);
 	List<DetailVO> getDetailList(DetailVO vo);
 	List<UsersVO> getuserlist(UsersVO vo);
-
+	void updateBoard(DetailVO vo);
+	DetailVO getboard(DetailVO vo);
 }

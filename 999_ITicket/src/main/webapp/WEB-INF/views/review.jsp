@@ -58,13 +58,18 @@
 		float: right;
 		background-color: lightblue;
 		border-radius: 8px;
-		padding: 2px;
+		padding: 3px;
+		padding-top: 1px;
+		padding-bottom: 3px;
+		padding-left: 8px;
+		padding-right: 8px;
 		border: 1px solid black;
 	}
 	.realBtn {
 		border: 1px solid lightblue;
 		background-color: lightblue;
 		font-size: 13px;
+		cursor: pointer;
 	}
 	.Rnotice {
 		border: 1px solid gray;
@@ -74,6 +79,13 @@
 	.Rnotice strong {
 		color: #DA6464;
 	}
+	.searchDate {
+		border: 1px solid black;
+		background-color: lightblue;
+		color: black;
+		padding: 3px;
+	}
+	
 </style>
 </head>
 <body>
@@ -81,52 +93,55 @@
 <jsp:include page="header.jsp"></jsp:include><!-- 최상단 상단 (로그인,회원가입,예매확인/취소, 마이페이지) -->
 <div class="Rcontainer">
 	<h2>공연관람후기</h2>
-	<form action="insertReview" method="post" enctype="multipart/form-data">
+	<form action="insertReview" name="writeForm" method="post">
 	<table class="reviewTable">
 		<tr>
 			<th width="100" height="40">상품명<th>
 			<td>
-				<input class="writeBox" type="text" name="goodsTitle" readonly value="${detail.gd_title }">
+				<input class="writeBox" id="writeTitle" type="text" name="gd_title" readonly value="${detail.gd_title }">
 			</td>
 		</tr>
 		<tr>
 			<th>관람일시<th>
 			<td>
-				<input class="writeBox" type="text" name="watchDate" readonly value="예매내역에서 가져오기">
+				<input class="writeBox" id="getDate" type="text" name="watch_date" readonly value="">
+				<a href="#" onclick="openReservDate()" class="searchDate">
+					검색
+				</a>
 			</td>
 		</tr>
 		<tr>
 			<th>제목<th>
 			<td>
-				<input class="writeBox" type="text" name="reviewTitle">
+				<input class="writeBox" type="text" name="rv_title">
 			</td>
 		</tr>
 		<tr>
 			<th>별점<th>
 			<td height="30">
-				<input type="radio" name="starPoint" value="5">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="5">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				 <a>강력 좋음</a>
-				<input type="radio" name="starPoint" value="4">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="4">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>좋음</a>
-				<input type="radio" name="starPoint" value="3">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="3">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>보통임</a>
-				<input type="radio" name="starPoint" value="2">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="2">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>약간 아쉽</a>
-				<input type="radio" name="starPoint" value="1">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="1">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>실망 그 자체</a>
 			</td>
@@ -134,7 +149,7 @@
 		<tr>
 			<th>내용<th>
 			<td>
-				<textarea name="content" rows="15" cols="105"></textarea>
+				<textarea name="rv_content" rows="15" cols="105"></textarea>
 			</td>
 		</tr>
 	</table>
@@ -148,12 +163,17 @@
 			</p>
 		</div>
 		<br>
+		<input type="hidden" name="user_id" value=${user }>
+		<input type="hidden" name="gd_num" value=${detail.gd_num }>
+		
+		<%-- <input type="hidden" name="gd_num" value="${detail.gd_num }"> --%>
+		
 		<div class="buttons">
 			<div class="backListBtn">
 				<a href="#" onclick="history.back()">목록</a>
 			</div>
 			<div class="goListBtn">
-				<input type="submit" value="확인" class="realBtn">
+				<a class="realBtn" onclick="checkReview()">확인</a>
 			</div>
 		</div>
 	</form>
@@ -164,4 +184,30 @@
 
 <jsp:include page="footer.jsp"></jsp:include><!-- 하단 회사정보 등 -->
 </body>
+<script>
+	function checkReview() {
+		var writeDate = $('input[name=gd_regdate]'); //날짜
+		var rvTitle = $('input[name=rv_title]'); //리뷰제목
+		var scoreStar = $('input[name=rv_likecnt]').is(':checked'); //별점
+		console.log("scoreStar.val() : " + scoreStar);
+		var writeCon = $('input[name=rv_content]'); //내용
+		
+		if (writeDate.val() == ''){
+			alert("날짜를 선택해주세요!");
+		} else if (rvTitle.val() == ''){
+			alert("제목을 입력해주세요!");
+		} else if (scoreStar == false){
+			alert("별점을 선택해주세요!");
+		} else if (writeCon.val() == ''){
+			alert("내용을 입력해주세요!");
+		}
+		writeForm.submit();
+	}
+	
+	function openReservDate() {
+		//alert("openReservDate() 실행");
+		window.open("getReservDate?user_id=${user }&gd_num=${detail.gd_num }", "new", "resizable=yes, width=300, height=400, left=0. top=0" );
+		
+	}
+</script>
 </html>

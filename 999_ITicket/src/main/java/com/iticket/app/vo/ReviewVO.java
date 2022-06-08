@@ -10,6 +10,10 @@ public class ReviewVO {
 	private int gd_num;
 	private Date rv_regdate;
 	private int rv_cnt;
+	private String rv_title;
+	private String gd_title;
+	private String watch_date;
+	
 	public int getRv_num() {
 		return rv_num;
 	}
@@ -52,9 +56,29 @@ public class ReviewVO {
 	public void setRv_cnt(int rv_cnt) {
 		this.rv_cnt = rv_cnt;
 	}
+	public String getRv_title() {
+		return rv_title;
+	}
+	public void setRv_title(String rv_title) {
+		this.rv_title = rv_title;
+	}
+	public String getGd_title() {
+		return gd_title;
+	}
+	public void setGd_title(String gd_title) {
+		this.gd_title = gd_title;
+	}
+	public String getWatch_date() {
+		return watch_date;
+	}
+	public void setWatch_date(String watch_date) {
+		this.watch_date = watch_date;
+	}
 	@Override
 	public String toString() {
 		return "ReviewVO [rv_num=" + rv_num + ", rv_content=" + rv_content + ", rv_likecnt=" + rv_likecnt + ", user_id="
-				+ user_id + ", gd_num=" + gd_num + ", rv_regdate=" + rv_regdate + ", rv_cnt=" + rv_cnt + "]";
+				+ user_id + ", gd_num=" + gd_num + ", rv_regdate=" + rv_regdate + ", rv_cnt=" + rv_cnt + ", rv_title="
+				+ rv_title + ", gd_title=" + gd_title + ", watch_date=" + watch_date + "]";
 	}
+	
 }

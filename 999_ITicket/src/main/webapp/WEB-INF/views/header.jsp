@@ -11,6 +11,12 @@
 	    margin-right: 12px;
 	    color: #666666;
 	}
+	.searchBtn {
+		display: inline-block;
+	    position: absolute;
+	    margin-left: -57px;
+	    margin-top: 2px;
+	}
 </style>
 <header id="header" class="header_bg">
         <div class="header_wrap">
@@ -53,13 +59,14 @@
 										<a href="logout" class="logout" >로그아웃</a>
 									</form:form>
 								</li>
+								<li><a href="userinfo">회원정보</a></li>
 							</sec:authorize>
                             <li>
                                 <a href="#">예매확인/취소</a>
                             </li>
 
                             <li class="mypageli">
-                                <a href="#">마이페이지</a>
+                                <a href="mypage">마이페이지</a>
                             </li>
                         </ul>
                     </div>
@@ -72,12 +79,12 @@
                         <a href="./"><img src="resources/images/logo.GIF" alt="로고"></a>
                     </h1>
                     <div class="search">
-                        <form>
+                        <form action="search" method="post">
                             <fieldset>
                                 <legend>검색폼</legend>
                                 <div class="box">
-                                    <input type="text" title="검색어입력">
-                                    <a href="#"><img src="resources/images/btn_search.gif" alt="검색"></a>
+                                    <input type="text" title="검색어입력" name="keyword">
+                                    <button type="submit" class="searchBtn"><img src="resources/images/btn_search.gif" alt="검색"></button>
                                 </div>
                             </fieldset>
                         </form>
@@ -88,7 +95,7 @@
             <div class="gnbWrap">
                 <nav>
                     <ul class="gnb">
-                        <li>
+                        <!-- <li>
                             <a href="#"><img src="resources/images/menu.GIF" alt="전체메뉴보기"></a>
                             <div class="allmenu">
                                 <ul>
@@ -105,23 +112,6 @@
                                         <a href="#">연극</a>
                                         <a href="#">전체</a>
                                         <a href="#">패키지공연</a>
-                                        <a href="#">주간랭킹순</a>
-                                        <a href="#">MD샵</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">스포츠</a>
-                                        <a href="#">야구</a>
-                                        <a href="#">축구</a>
-                                        <a href="#">E스포츠</a>
-                                        <a href="#">MD샵</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">전시/행사</a>
-                                        <a href="#">전시</a>
-                                        <a href="#">뮤지엄</a>
-                                        <a href="#">아동체험전</a>
-                                        <a href="#">행사/축제</a>
-                                        <a href="#">클래스</a>
                                         <a href="#">주간랭킹순</a>
                                         <a href="#">MD샵</a>
                                     </li>
@@ -149,13 +139,6 @@
                                         <a href="#">주간랭킹순</a>
                                     </li>
                                     <li>
-                                        <a href="#">아동/가족</a>
-                                        <a href="#">뮤지컬</a>
-                                        <a href="#">연극</a>
-                                        <a href="#">클래식/무용</a>
-                                        <a href="#">전시/행사</a>
-                                    </li>
-                                    <li>
                                         <a href="#">랭킹</a>
                                         <a href="#">뮤지컬</a>
                                         <a href="#">콘서트</a>
@@ -166,17 +149,14 @@
                                         <a href="#">스포츠</a>
                                         <a href="#">레저</a>
                                     </li>
+                                   
+                                   
                                 </ul>
                                 <ul>
-                                    <li><a href="#">지역별 예매</a></li>
-                                    <li><a href="#">날짜별 예매</a></li>
-                                    <li><a href="#">공연장</a></li>
-                                    <li><a href="#">쿠폰존</a></li>
-                                    <li><a href="#">티켓오픈공지</a></li>
-                                    <li><a href="#">커뮤니티</a></li>
+                                    
                                 </ul>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="musical">
                             <a href="musical">뮤지컬</a>
                             <ul>
