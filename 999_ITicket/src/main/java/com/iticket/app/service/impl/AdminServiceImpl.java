@@ -18,7 +18,6 @@ public class AdminServiceImpl implements AdminService {
 	// 상품조회리스트
 	@Override
 	public List<DetailVO> getDetailList(DetailVO vo) {
-
 		return adminDAO.getDetailList(vo);
 	}
 
@@ -37,8 +36,19 @@ public class AdminServiceImpl implements AdminService {
 	//회원조회
 	@Override
 	public List<UsersVO> getuserlist(UsersVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return adminDAO.getusersList(vo);
+	}
+	//업데이트
+	@Override
+	public void updateBoard(DetailVO vo) {
+		adminDAO.updateBoard(vo);
+		
+	}
+
+	@Override
+	public DetailVO getboard(DetailVO vo) {
+		
+		return adminDAO.getboard(vo);
 	}
 
 }

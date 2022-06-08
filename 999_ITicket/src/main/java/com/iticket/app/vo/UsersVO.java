@@ -17,20 +17,9 @@ public class UsersVO {
 	private Date regdate;
 	private String enabled;
 	private String naverLogin;
+	private String userlistKeyword;
 	public UsersVO() {
 		// TODO Auto-generated constructor stub
-	}
-	public UsersVO(String user_id, String user_pw, String user_name, String email, String phone, Date regdate,
-			String enabled, String naverLogin) {
-		super();
-		this.user_id = user_id;
-		this.user_pw = user_pw;
-		this.user_name = user_name;
-		this.email = email;
-		this.phone = phone;
-		this.regdate = regdate;
-		this.enabled = enabled;
-		this.naverLogin = naverLogin;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -80,13 +69,18 @@ public class UsersVO {
 	public void setNaverLogin(String naverLogin) {
 		this.naverLogin = naverLogin;
 	}
+	public String getUserlistKeyword() {
+		return userlistKeyword;
+	}
+	public void setUserlistKeyword(String userlistKeyword) {
+		this.userlistKeyword = userlistKeyword;
+	}
 	@Override
 	public String toString() {
 		return "UsersVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", email=" + email
 				+ ", phone=" + phone + ", regdate=" + regdate + ", enabled=" + enabled + ", naverLogin=" + naverLogin
-				+ "]";
+				+ ", userlistKeyword=" + userlistKeyword + "]";
 	}
-	
 	
 	
 	

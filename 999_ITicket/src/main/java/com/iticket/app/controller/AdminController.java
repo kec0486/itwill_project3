@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,40 +27,49 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;// 이름이 겹쳐도됨
 	
-	/*
-	 * // 상품전체리스트조회
-	 * 
-	 * @GetMapping("/admin/productlist") public String getBoardList(DetailVO vo,
-	 * Model model) {
-	 * 
-	 * System.out.println("게시글 전체목록 보여주기"); List<DetailVO> DetailVOList =
-	 * adminService.getDetailList(vo);
-	 * 
-	 * model.addAttribute("getDetailList", DetailVOList); return
-	 * "admin/productlist"; }
-	 */
+	// 회원정보리스트조회
+	@GetMapping("/admin/userlist")
+	public String getUserList(UsersVO vo, Model model) {
+
+		System.out.println("게시글 전체목록 보여주기");
+		List<UsersVO> userList = adminService.getuserlist(vo);
+		model.addAttribute("userList", userList);
+		adminService.getuserlist(vo);
+		return "admin/userslist";
+	}
 	
-	
-	
-	
-	
-	  //회원정보조회
-	  @GetMapping("/admin/userlist")
-	  public String getUserList(UsersVO vo, Model model) {
-	  
-		  System.out.println("게시글 전체목록 보여주기");
-		  
-		  List<UsersVO> userList = adminService.getuserlist(vo);
-		  model.addAttribute("userList", userList);
-		  adminService.getuserlist(vo);
-		  return "admin/member";
-	  }
-	 
+	//상품상세페이지 
+	@RequestMapping("/admin/getboard")
+	public String geteBoard(DetailVO vo,Model model) {
+		System.out.println("getboard");
+		System.out.println("Vo"+vo);
+		
+		DetailVO board=adminService.getboard(vo);
+		model.addAttribute("board",board);
+		
+		return "admin/write"; 
+	}
+	//업데이트 컨트롤러
+	@GetMapping("/admin/updateBoard")
+	public String updateBoard(DetailVO vo,Model model) {
+		System.out.println("게시물수정");
+		System.out.println("vo"+vo);
+		
+		adminService.updateBoard(vo);
+		return getBoardList(vo, model);
+	}
+	//업데이트 주소만 가는 컨트롤러
+	@GetMapping("/admin/update")
+	public String update(DetailVO vo, Model model) {
+		System.out.println("게시물 상세로 가는거");
+		 
+		return "admin/write";
+	}
 
 	// 주소만 가는 controller(상품삭제)
 	@GetMapping("/admin/prodelete")
 	public String productdelete1(DetailVO vo, Model model) {
-		return "admin/productdelete";
+		return "admin/write";
 	}
 
 	// 상품삭제처리
