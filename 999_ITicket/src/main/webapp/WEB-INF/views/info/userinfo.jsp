@@ -63,27 +63,27 @@
 		<div class="infoLogo"><b>IT</b>icket</div>
 		<div class="infoUser">${user }님 회원정보관리</div>
 		<div class="userInfoTab">
-			<a href="userUpdate" class="infoTablink">
+			<a href="userinfoMain?order=1" class="infoTablink">
 				<span class="infoTab">
 					<i class="icon"><img src="resources/images/infoimg.png" class="iconimg"></i>
 					<span class="title">회원정보수정</span><br>
 					<span class="noti">내정보를 수정하세요.</span>
 				</span>
 			</a>				
-			<a href="userPwupdate" class="infoTablink">
+			<a href="userinfoMain?order=2" class="infoTablink">
 				<span class="infoTab">
 					<i class="icon"><img src="resources/images/infoimg.png" class="iconimg"></i>
 					<span class="title">비밀번호변경</span><br>
 					<span class="noti">내정보를 보호하세요.</span>
 				</span>
 			</a>				
-			<a href="userLog" class="infoTablink">
+			<a href="userinfoMain?order=3" class="infoTablink">
 				<span class="infoTab">
 					<i class="icon"><img src="resources/images/infoimg.png" class="iconimg"></i>
 					<span class="title">로그인관리</span><br>
 				</span>
 			</a>				
-			<a href="userDrob" class="infoTablink">
+			<a href="userinfoMain?order=4" class="infoTablink">
 				<span class="infoTab">
 					<i class="icon"><img src="resources/images/infoimg.png" class="iconimg"></i>
 					<span class="title">회원탈퇴</span><br>

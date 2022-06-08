@@ -100,10 +100,10 @@
 		<div class="infoLogo"><b>IT</b>icket</div>
 		<div class="infoTab">
 			<div class="Info">${user }님의<br> 회원정보관리입니다.</div>
-			<div><a href="userUpdate" class="info_a info_b">회원정보수정</a></div>
-			<div><a href="userPwupdate" class="info_a">비밀번호변경</a></div>
-			<div><a href="userLog" class="info_a">로그인관리</a></div>
-			<div><a href="userDrob" class="info_a">회원탈퇴</a></div>
+			<div><a href="userinfoMain?order=1" class="info_a info_b">회원정보수정</a></div>
+			<div><a href="userinfoMain?order=2" class="info_a">비밀번호변경</a></div>
+			<div><a href="userinfoMain?order=3" class="info_a">로그인관리</a></div>
+			<div><a href="userinfoMain?order=4" class="info_a">회원탈퇴</a></div>
 		</div>
 		<div class="infoMain">
 			<div>비밀번호인증</div>
@@ -113,7 +113,7 @@
 				<span class="infoText_red">비밀번호를 다시 한 번 확인합니다.</span><br>
 				<div class="infoText_sub">비밀번호가 타인에게 노출되지 않도록 항상 주의해주세요.</div>
 			</div>
-			<form action="userUpdate" method="post">
+			<form action="userinfoMainOk?order=${order }" method="post">
 				<span class="infoAuth">아이디</span><span class="infoAuth_text">${user }</span><br>
 				<span class="infoAuth">비밀번호</span><input type="password" name="user_pw" class="infoAuth_text"><br>
 				<div id="pw_value" class="pw_value"></div>
