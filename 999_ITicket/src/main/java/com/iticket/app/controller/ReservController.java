@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iticket.app.service.impl.DetailService;
 import com.iticket.app.service.impl.ReservService;
@@ -18,6 +21,7 @@ import com.iticket.app.service.impl.SeatService;
 
 import com.iticket.app.vo.DetailVO;
 import com.iticket.app.vo.ReservationVO;
+import com.iticket.app.vo.ScheduleVO;
 import com.iticket.app.vo.SeatSaveVO;
 import com.iticket.app.vo.SeatVO;
 
@@ -39,7 +43,7 @@ public class ReservController {
 		model.addAttribute("get_reserv_List", reserv_list);
 		return "/reserv/reserv_ssh";
 	}
-	
+
 	// 예약 삭제 메소드
 	@GetMapping("get_reserv_del")
 	public String get_reserv_del(ReservationVO vo, Model model) {
@@ -48,6 +52,26 @@ public class ReservController {
 		model.addAttribute("get_reserv", get_reserv);
 		return "/reserv/reserv_delete";
 	}
+
+	@GetMapping("test_do")
+	public String test_do(ReservationVO vo, Model model) {
+
+		ReservationVO get_reserv = reservService.get_reserv(vo);
+		model.addAttribute("get_reserv", get_reserv);
+		return "/reserv/reserv_ssh";
+	}
+
+	// 선택한 예약 리스트 출력
+	@GetMapping("get_reserv_List_id")
+	public String get_reserv_List_id(ReservationVO vo, Model model) {
+		System.out.println("get_reserv_List_id 실행");
+		System.out.println("받아온 vo : " + vo);
+		List<ReservationVO> reserv_List_id = reservService.get_reserv_List_id(vo);
+		System.out.println("받아온 reserv_List_id : " + reserv_List_id);
+		model.addAttribute("get_reserv_List_id", reserv_List_id);
+		return "/reserv/reserv_search_id";
+	}
+
 	// insert_reserv 창으로 진입(행사 데이터 리스트 삽입)
 	@GetMapping("/insert_reserv")
 	public String go_reserv_insert(DetailVO vo, Model model) {
@@ -56,7 +80,7 @@ public class ReservController {
 
 		return "/reserv/reserv_insert";
 	}
-	
+
 	// insert_reserv창으로 진입, 이때 삽입되는 데이터는 get_Detail_insert로 하나만 삽입
 	@RequestMapping("get_Detail_insert")
 	public String reserv_insert_1(DetailVO dvo, Model model) {
@@ -64,7 +88,7 @@ public class ReservController {
 		model.addAttribute("detail", detail);
 		return "/reserv/reserv_insert";
 	}
-	
+
 	// 예약 삭제창으로 이동( 추후 삭제할 메소드임 )
 	@RequestMapping("delete_reserv")
 	public String go_reserv_delete(ReservationVO vo, Model model) {
@@ -73,13 +97,13 @@ public class ReservController {
 		return "/reserv/reserv_delete";
 	}
 
-	//reservation 테이블과 seatsave 테이블에 각각 데이터를 삽입
+	// reservation 테이블과 seatsave 테이블에 각각 데이터를 삽입
 	@RequestMapping("insert_reserv_do")
 	public String insert_reserv(ReservationVO rvo, Model model) {
 		System.out.println(">>> reserv insert");
 		System.out.println("insert vo : " + rvo);
 		System.out.println("sd_num  : " + rvo.getSd_num());
-		
+
 		SeatSaveVO save_vo = new SeatSaveVO();
 		save_vo.setSeat_able(1);
 		save_vo.setSd_num(rvo.getSd_num());
@@ -91,15 +115,31 @@ public class ReservController {
 		return "/reserv/reserv_ssh";
 	}
 
-
-	//삽입된 rv_num에 해당하는 데이터 삭제
+	// 삽입된 rv_num에 해당하는 데이터 삭제
 	@RequestMapping("delete_reserv_do")
 	public String delete_reserv(ReservationVO vo) {
 		System.out.println(">>> delete_reserv 실행");
 		System.out.println("vo : " + vo);
+		SeatSaveVO save_vo = new SeatSaveVO();
+		save_vo.setSd_num(vo.getSd_num());
+		save_vo.setSt_num(vo.getSt_num());
 
+		System.out.println("save_vo : " + save_vo);
+
+		seatsaveService.seatsave_delete(save_vo);
 		reservService.delete_reserv(vo);
 		return "/reserv/reserv_ssh";
 	}
 
+	@RequestMapping("reserv_test_do")
+	public String test_do(String view_cnt,ScheduleVO vo, Model model) {
+		int cnt =  Integer.parseInt(view_cnt);
+		System.out.println("view_cnt : " + view_cnt );
+		System.out.println("cnt : " + cnt );
+		System.out.println("Schedule vo : " + vo);
+		model.addAttribute("Schedule",vo);
+		model.addAttribute("cnt",cnt );
+		return "/reserv/reserv_ssh";
+	}
+		
 }
