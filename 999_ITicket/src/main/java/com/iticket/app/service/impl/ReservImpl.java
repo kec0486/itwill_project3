@@ -45,5 +45,10 @@ public class ReservImpl implements ReservService{
 		return reservDAO.get_reserv_list(vo);
 	}
 
+	@Override
+	public List<ReservationVO> get_reserv_List_id(ReservationVO vo) {
+		return reservDAO.get_reserv_List_id(vo);
+	}
+
 
 }

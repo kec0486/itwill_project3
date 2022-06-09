@@ -1,86 +1,147 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>¿¹¾àÇÏ±â ÀÎ¼­Æ®</title>
+<title>ì˜ˆì•½í•˜ê¸° ì¸ì„œíŠ¸</title>
+<style>
+.thing {
+	color: yellow;
+}
+</style>
+
 
 <script>
-	
+function checkOnlyOne(element) {
+	  
+	  const checkboxes 
+	      = document.getElementsByName("view_cnt");
+	  
+	  checkboxes.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  element.checked = true;
+}
+
+
 <%int a = 0;%>
 	
 </script>
 </head>
 <body>
-	¿¹¾àÇÏ±â ÀÎ¼­Æ®
+
 	<br>
 	<c:forEach var="Detail" items="${getDetail_list }">
-		<li><a href="get_Detail_insert?gd_num=${Detail.gd_num }">${Detail.gd_title }</a>
-		</li>
+		<table border="1" width="400" height="100">
+			<tr align="center">
+				<td><a href="get_Detail_insert?gd_num=${Detail.gd_num }">${Detail.gd_title }</a>
+				</td>
+			</tr>
+		</table>
+		<%-- 		<li><a href="get_Detail_insert?gd_num=${Detail.gd_num }">${Detail.gd_title }</a>
+		</li> --%>
 	</c:forEach>
+
 	<c:if test="${not empty detail }">
-		¼±ÅÃµÈ µ¥ÀÌÅÍ ±âº»Å° : ${detail.gd_num }<br>
-		¼±ÅÃµÈ µ¥ÀÌÅÍ Á¦¸ñ : ${detail.gd_title }<br>
-		¼±ÅÃµÈ hl_ºôµù³Ñ : ${detail.hl_buildingnum }<br>
-		<a href="get_schedule_list?gd_num=${detail.gd_num }">»ó¿µ½Ã°£ ¼±ÅÃÇÏ±â</a>
+		<a href="get_schedule_list?gd_num=${detail.gd_num }">ìƒì˜ì‹œê°„ ì„ íƒí•˜ê¸°</a>
 		<br>
 	</c:if>
 
 	<c:if test="${not empty get_schedule_list }">
-		get_schedule_list if¹®
 		<c:forEach var="schedule" items="${get_schedule_list }">
-			<li><a href="get_schedule?sd_num=${schedule.sd_num }">${schedule.sd_date }
-					: ${schedule.start_time }</a></li>
+			<table border="1" width="400" height="100">
+				<tr align="center">
+					<td><a href="get_schedule?sd_num=${schedule.sd_num }">${schedule.sd_date }
+							: ${schedule.start_time }</a></td>
+				</tr>
+			</table>
+
 		</c:forEach>
 	</c:if>
 
 	<%-- 	<c:if test="${not empty Schedule }">
-		Schedule µ¥ÀÌÅÍ : ${Schedule}<br>
-		<a href="choose_seat?hl_buildingnum=${Schedule.hl_buildingnum }">ÁÂ¼® ¼±ÅÃÇÏ±â</a><br>
+		Schedule ë°ì´í„° : ${Schedule}<br>
+		<a href="choose_seat?hl_buildingnum=${Schedule.hl_buildingnum }">ì¢Œì„ ì„ íƒí•˜ê¸°</a><br>
 	</c:if> --%>
-
 
 	<br>
 	<c:if test="${not empty getseatList_choose }">
+		Schedule.sd_num : ${Schedule.sd_num }
+		<c:if test="${empty cnt}">
+			<form action="reserv_test_do">
+				ê´€ëŒ ì¸ì› ìˆ˜ <br> 
+				<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this)' />1ëª…
+				<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this)' />2ëª…
+				<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this)' />3ëª… 
+				<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this)' />4ëª… <br>
+				<input type='submit' value="ì˜ˆë§¤ì™„ë£Œ"/>
+			</form>
+		</c:if>
+	
+		<c:set var="i" value="0" />
+		<c:set var="j" value="5" />
+
+		
+
 
 		<c:forEach var="seat" items="${getseatList_choose }">
 			<c:if test="${get_seatsave_list.size() eq 0}">
-				<a href="get_seat?st_num=${seat.st_num }&sd_num=${Schedule.sd_num}">${seat.st_num }</a><br>
+				<a href="get_seat?st_num=${seat.st_num }&sd_num=${Schedule.sd_num}">${seat.st_num }</a>
+				<c:set var="i" value="${i+1 }" />
 			</c:if>
 			<c:forEach var="seatsave" items="${get_seatsave_list }">
 				<c:choose>
-					<c:when test = "${seatsave.st_num eq seat.st_num && seatsave.seat_able eq 1}">
-						¼±ÅÃÇÒ ¼ö ¾ø´Â ÁÂ¼® ¹øÈ£ : ${seat.st_num }<br>
+					<c:when
+						test="${seatsave.st_num eq seat.st_num && seatsave.seat_able eq 1}">
+						${seat.st_num }
+						<c:set var="i" value="${i+1 }" />
 					</c:when>
 					<c:otherwise>
-						<%a++;
-						pageContext.setAttribute("test_size", a);%>
+						<%
+							a++;
+						pageContext.setAttribute("test_size", a);
+						%>
 					</c:otherwise>
 				</c:choose>
 
 				<c:if test="${get_seatsave_list.size() eq test_size}">
 					<a href="get_seat?st_num=${seat.st_num }&sd_num=${Schedule.sd_num}">${seat.st_num }</a>
-					<br>
+					<c:set var="i" value="${i+1 }" />
+
 				</c:if>
 			</c:forEach>
-			<%a = 0;%>
+			<%
+				a = 0;
+			%>
+			<c:if test="${i%j ==0 }">
+				<br />
+			</c:if>
 		</c:forEach>
 	</c:if>
 
-
 	<c:if test="${not empty seat.st_num }">
 		<form action="insert_reserv_do">
-			<!-- ±âº»Å° :  <input type="text" name="rv_num" value=1><br> -->
-			ÀÎ¿ø : <input type="text" name="rv_cnt" value=1><br> 
-			¼±ÅÃÇÑ ÁÂ¼® : <input name="st_num" value=${seat.st_num }><br> 
-			³» ID : <input name="user_id" value="test"> ÀÓ½Ã¾ÆÀÌµğ <br> 
-			<input type="hidden" name="sd_num" value=${save_vo.sd_num }><br>
-			<input type="submit" value="¿¹¸Å¿Ï·á" /><br>
+			<!-- ê¸°ë³¸í‚¤ :  <input type="text" name="rv_num" value=1><br> -->
+			ì¸ì› : <input type="text" name="rv_cnt" value=1><br> 
+			ì„ íƒí•œ ì¢Œì„ : <input name="st_num" value=${seat.st_num }><br> 
+			<input type="hidden" name="user_id" value=${user }> 
+			<input type="hidden" name="sd_num" value=${save_vo.sd_num }>
+			<input type="submit" value="ì˜ˆë§¤ì™„ë£Œ" /><br>
 		</form>
 		
-		¼±ÅÃÁÂ¼® : ${seat.st_num }
+		ì„ íƒì¢Œì„ : ${seat.st_num }
 	</c:if>
+
+	<br />
+	<br />
+	<a href="reserv_ssh">ë’¤ë¡œê°€ê¸°</a>
+	
+
+
 </body>
 </html>

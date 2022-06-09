@@ -77,12 +77,12 @@
 					<span class="noti">내정보를 보호하세요.</span>
 				</span>
 			</a>				
-			<a href="userinfoMain?order=3" class="infoTablink">
+			<!-- <a href="userinfoMain?order=3" class="infoTablink">
 				<span class="infoTab">
 					<i class="icon"><img src="resources/images/infoimg.png" class="iconimg"></i>
 					<span class="title">로그인관리</span><br>
 				</span>
-			</a>				
+			</a> -->				
 			<a href="userinfoMain?order=4" class="infoTablink">
 				<span class="infoTab">
 					<i class="icon"><img src="resources/images/infoimg.png" class="iconimg"></i>

@@ -122,6 +122,7 @@
 				<form action="idFindPhone" method="post">
 					<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
 					<input type="text" name="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
+					<div>${msg }</div>
 					<input type="submit" value="확인" class="FindBtn"><br>
 				</form>
 			</div>
@@ -133,6 +134,7 @@
 			<form action="idFindEmail" method="post">
 				<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
 				<input type="text" name="email" placeholder="이메일" class="iinput"><br>
+				<div>${msg }</div>
 				<input type="submit" value="확인" class="FindBtn"><br>
 			</form>
 		</div>

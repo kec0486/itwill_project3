@@ -54,7 +54,7 @@ public class CustomUserDetail implements UserDetails{
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return "1".equals(enabled) ? true : false;
 	}
 	
 }

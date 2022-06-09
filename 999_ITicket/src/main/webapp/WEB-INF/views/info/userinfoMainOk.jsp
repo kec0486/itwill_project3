@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원정보수정-아이티켓</title>
+<title>회원정보관리-아이티켓</title>
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 <script src="resources/js/jquery-3.6.0.js"></script>
 <script src="resources/js/motion.js"></script>
@@ -99,6 +99,9 @@
 	.infoMain_Text span {
 		color: red;
 	}
+	.infoMain_Text div {
+		color: gray;
+	}
 	.infoMain_Text {
 	    margin: 50px 0;
 	    text-align: center;
@@ -111,6 +114,11 @@
 	    padding: 5px 10px;
 	    font-size: 15px;
 	}
+	.info_Text_sub {
+		font-size: 0.8em;
+	    text-align: left;
+    	margin-top: 50px;
+	}
 </style>
 </head>
 <body>
@@ -119,9 +127,9 @@
 		<div class="infoLogo"><b>IT</b>icket</div>
 		<div class="infoTab">
 			<div class="Info">${user }님의<br> 회원정보관리입니다.</div>
-			<div><a href="userinfoMain?order=1" class="info_a info_b">회원정보수정</a></div>
+			<div><a href="userinfoMain?order=1" class="info_a">회원정보수정</a></div>
 			<div><a href="userinfoMain?order=2" class="info_a">비밀번호변경</a></div>
-			<div><a href="userinfoMain?order=3" class="info_a">로그인관리</a></div>
+			<!-- <div><a href="userinfoMain?order=3" class="info_a">로그인관리</a></div> -->
 			<div><a href="userinfoMain?order=4" class="info_a">회원탈퇴</a></div>
 		</div>
 		<c:if test="${param.order eq 1 }">
@@ -129,11 +137,11 @@
 				<div>회원정보수정</div>
 				<hr>
 				<div class="infoMain_title">기본정보</div>
-				<form action="#">
+				<form action="userUpdate" method="post" onsubmit="userUpdate()">
 					<span class="infoAuth">아이디</span><span class="infoAuth_text">${user }</span><br>
-					<span class="infoAuth">이름</span><input type="text" name="user_name" class="infoAuth_text"><br>
-					<span class="infoAuth">휴대폰번호</span><input type="text" name="phone" class="infoAuth_text"><br>
-					<span class="infoAuth">이메일</span><input type="text" name="phone" class="infoAuth_text"><br>
+					<span class="infoAuth">이름</span><input type="text" name="user_name" value="${info.user_name }" class="infoAuth_text"><br>
+					<span class="infoAuth">휴대폰번호</span><input type="text" name="phone" value="${info.phone }" class="infoAuth_text"><br>
+					<span class="infoAuth">이메일</span><input type="text" name="email" value="${info.email }" class="infoAuth_text"><br>
 					<a href="userinfo"><button class="infoBtn_re">취소</button></a>
 					<button type="submit" class="infoBtn_smt">수정</button>
 				</form>
@@ -147,7 +155,7 @@
 					주기적인 <span >비밀번호 변경</span>을 통해<br>
 					개인정보를 안전하게 보호하세요.
 				</div>
-				<form action="#">
+				<form action="pwUpdate" method="post" onsubmit="pwUpdate()">
 					<input type="text" name="user_pw" class="infoAuth_text_sub" placeholder="새 비밀번호"><br>
 					<div></div>
 					<input type="text" name="user_pw1" class="infoAuth_text_sub" placeholder="새 비밀번호 확인"><br>
@@ -161,34 +169,59 @@
 				</form>
 			</div>
 		</c:if>
-		<c:if test="${param.order eq 3 }">
+		<%-- <c:if test="${param.order eq 3 }">
 			<div class="infoMain">
 				<div>로그인관리</div>
 				<hr>
 				<div class="infoMain_Text">
-					자동로그인 내역 확인을 통해<br>
+					로그인 내역 확인을 통해<br>
 					<span>계정을 안전하게 관리하세요.</span><br>
-					<div>아이티켓 사이트(Pc/Mobile)의 자동로그인 유지 내역 입니다.</div>
+					<div>아이티켓 사이트(Pc/Mobile)의 방문 내역 입니다.</div>
 				</div>
 				<span class="infoAuth">최근 접속 일시</span><span>접속 일</span><br>
 				<span class="infoAuth">운영체제</span><span>pc/window</span><br>
 				<span class="infoAuth">브라우저/앱</span><span>chrome</span><br>
 				<span class="infoAuth">IP(국가)</span><span>ip주소</span><br>
 			</div>
-		</c:if>
+		</c:if> --%>
 		<c:if test="${param.order eq 4 }">
 			<div class="infoMain">
 				<div>회원탈퇴</div>
 				<hr>
 				<div class="infoMain_Text">
 					아이티켓 서비스를 이용하시는데<br>
-					불편함이 있으셨나요? 정말 탈퇴하시겠습니까?
+					불편함이 있으셨나요? <span>정말 탈퇴하시겠습니까?</span>
+					<br>
+					<div class="info_Text_sub">
+						<span>탈퇴시 주의사항</span><br>
+						<div>
+							회원 탈퇴 시, 즉시 탈퇴 처리되며 기존에 가입하셨던 아이디로 재가입(재사용)이
+							불가능합니다.
+						</div>
+						<span>탈퇴 후 7일 이내 재가입 불가 및 정보보관</span><br>
+						<div>
+							회원 탈퇴 후 7일간 휴대전화번호 / 이메일주소 / 개인식별정보(CI/DI)가 저장되며
+							동일 정보로 사이트 가입이 불가능합니다.
+						</div>	
+					</div>
 				</div>
 				<a href="userinfo"><button class="infoBtn_re">취소</button></a>
-				<a href="userdrop"><button type="submit" class="infoBtn_smt">탈퇴</button></a>
+				<a href="#"><button type="submit" class="infoBtn_smt" onclick="userdrop()">탈퇴</button></a>
 			</div>
 		</c:if>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
+<script type="text/javascript">
+	function userUpdate() {
+		alert("회원정보가 정상적으로 수정되었습니다.")
+	}
+	function pwUpdate() {
+		alert("비밀번호가 정상적으로 수정되었습니다.")
+	}
+	function userdrop() {
+		alert("탈퇴가 완료되었습니다.\n아이티켓을 이용해 주셔서 감사합니다.");
+		location.href = "userDrop";
+	}
+</script>
 </body>
 </html>

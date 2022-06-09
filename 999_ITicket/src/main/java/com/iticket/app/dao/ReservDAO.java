@@ -19,6 +19,11 @@ public class ReservDAO {
 		System.out.println("===> MyBatis 사용 get_reserv_list() 실행");
 		return mybatis.selectList("reservDAO.get_reserv_List");
 	}
+
+	public List<ReservationVO> get_reserv_List_id(ReservationVO vo){
+		System.out.println("===> MyBatis 사용 get_reserv_List_id() 실행");
+		return mybatis.selectList("reservDAO.get_reserv_List_id",vo);
+	}
 	
 	public ReservationVO get_reserv(ReservationVO vo) {
 		System.out.println("===> MyBatis 사용 get_reserv() 실행");
