@@ -121,7 +121,7 @@
 				<span class="infoAuth">아이디</span><span class="infoAuth_text">${user }</span><br>
 				<span class="infoAuth">비밀번호</span><input type="password" name="user_pw" class="infoAuth_text"><br>
 				<div id="info_filter" class="info_filter">${msg }</div>
-				<a href="#"><button class="infoBtn_re">취소</button></a>
+				<button type="button" class="infoBtn_re" onclick="goMain()">취소</button>
 				<button type="submit" class="infoBtn_smt">확인</button>
 			</form>
 		</div>
@@ -138,7 +138,9 @@
 		}
 		return true;
 	}
-
+	function goMain() {
+		location.href = "userinfo";
+	}
 </script>
 </body>
 </html>

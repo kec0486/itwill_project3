@@ -137,12 +137,12 @@
 				<div>회원정보수정</div>
 				<hr>
 				<div class="infoMain_title">기본정보</div>
-				<form action="userUpdate" method="post" onsubmit="userUpdate()">
+				<form action="userUpdate" method="post" onsubmit="return userUpdate()">
 					<span class="infoAuth">아이디</span><span class="infoAuth_text">${user }</span><br>
 					<span class="infoAuth">이름</span><input type="text" name="user_name" value="${info.user_name }" class="infoAuth_text"><br>
 					<span class="infoAuth">휴대폰번호</span><input type="text" name="phone" value="${info.phone }" class="infoAuth_text"><br>
 					<span class="infoAuth">이메일</span><input type="text" name="email" value="${info.email }" class="infoAuth_text"><br>
-					<a href="userinfo"><button class="infoBtn_re">취소</button></a>
+					<button type="button" class="infoBtn_re" onclick="goMain()">취소</button>
 					<button type="submit" class="infoBtn_smt">수정</button>
 				</form>
 			</div>
@@ -164,7 +164,7 @@
 						비밀번호는 8~12자 이내로 영문(대,소문자), 숫자, 특수문자 3가지 조합 중 2가지
 						이상을 조합하셔서 만드시면 됩니다.
 					</div>
-					<a href="userinfo"><button class="infoBtn_re">취소</button></a>
+					<button type="button" class="infoBtn_re" onclick="goMain()">취소</button>
 					<button type="submit" class="infoBtn_smt">수정</button>
 				</form>
 			</div>
@@ -205,8 +205,8 @@
 						</div>	
 					</div>
 				</div>
-				<a href="userinfo"><button class="infoBtn_re">취소</button></a>
-				<a href="#"><button type="submit" class="infoBtn_smt" onclick="userdrop()">탈퇴</button></a>
+				<button type="button" class="infoBtn_re" onclick="goMain()">취소</button>
+				<button type="submit" class="infoBtn_smt" onclick="userdrop()">탈퇴</button>
 			</div>
 		</c:if>
 	</div>
@@ -221,6 +221,9 @@
 	function userdrop() {
 		alert("탈퇴가 완료되었습니다.\n아이티켓을 이용해 주셔서 감사합니다.");
 		location.href = "userDrop";
+	}
+	function goMain() {
+		location.href = "userinfo";
 	}
 </script>
 </body>
