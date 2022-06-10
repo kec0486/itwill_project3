@@ -14,37 +14,28 @@
 </style>
 
 <script>
-	function getJsonBoardData() {
-		alert("getJsonBoardData() 실행~~")
-		//let vo = { seq: 1};
-		let vo = {};
-		vo.seq = 1;
-		console.log(vo);
-		console.log(JSON.stringify(vo));
-		console.log(view_cnt);
-		console.log(JSON.stringify(view_cnt));
-		
-		$.ajax("test.do", {
-			type: "post",
-			//data: "seq=1", // key-value 형태
-			data: JSON.stringify(vo), // {"seq":1} 문자열 서버로 전송(JSON 문자열)
-			contentType: "application/json", //서버로 전송하는 컨텐츠 유형(JSON 형식)
-			dataType: "json", //서버로 부터 응답받을 데이터 형식
-			success: function(data){
-				alert("성공~~");
-				console.log(data);
-				
-				let dispHtml = "<ul><li>";
-				dispHtml += data["cnt"] + ", ";
-				dispHtml += "</li><ul>";
-				$("#listDisp").html(dispHtml);
-			},
-			error: function(){
-				alert("실패~~")
-			}
-		});
+var reserv_cnt=0;
+
+function getCheckboxValue(cnt)  {
+	  // 선택된 목록 가져오기
+	  const query = 'input[name="view_cnt"]:checked';
+	  reserv_cnt = cnt; 
+	  const selectedEls = 
+	      document.querySelectorAll(query);
+	  
+	  // 선택된 목록에서 value 찾기
+	  let result = '';
+	  selectedEls.forEach((el) => {
+	    result += el.value + ' ';
+	  });
+	  console.log(reserv_cnt);
+	  // 출력
+	document.getElementById('result').innerText = result; 
+	  
 	}
 	
+	
+	//하나만 선택가능하게 해주는 함수
 	function checkOnlyOne(element) {
 		  const checkboxes 
 		      = document.getElementsByName("view_cnt");
@@ -74,31 +65,14 @@
 	<br>
 
 	<c:if test="${empty cnt}">
-		<form action="javascript:getJsonBoardData()">
-			관람 인원 수 <br> <input type='checkbox' name='view_cnt' value='1'
-				onclick='checkOnlyOne(this)' />1명 <input type='checkbox'
-				name='view_cnt' value='2' onclick='checkOnlyOne(this)' />2명 <input
-				type='checkbox' name='view_cnt' value='3'
-				onclick='checkOnlyOne(this)' />3명 <input type='checkbox'
-				name='view_cnt' value='4' onclick='checkOnlyOne(this)' />4명 <br>
-
-
-			<input type='submit' value="예매완료" />
-		</form>
+			관람 인원 수 <br> 
+			<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this);getCheckboxValue(1)' />1명 
+			<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this);getCheckboxValue(2)' />2명 
+			<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this);getCheckboxValue(3)' />3명 
+			<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this);getCheckboxValue(4)' />4명 <br>
 	</c:if>
-
-	<div id="listDisp">
-		<ul>
-			<li>데이터 가져와서 출력하기</li>
-		</ul>
-	</div>
-
-	<c:if test="${not empty cnt}">
-		전달받은 get_seatsave_list : ${get_seatsave_list}<br>
-		전달받은 Schedule : ${Schedule}<br>
-		전달받은 getseatList_choose : ${getseatList_choose}<br>
-		전달받은 인원수 : ${cnt}<br>
-	</c:if>
+	
+	<div id='result'></div><br>
 
 	<br />
 	<a href="reserv_ssh">뒤로가기</a>

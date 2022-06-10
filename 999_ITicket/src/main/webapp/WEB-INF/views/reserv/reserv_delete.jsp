@@ -28,21 +28,21 @@
 	<br> st_num : ${get_reserv.st_num }
 	<br> sd_num : ${get_reserv.sd_num }
 	<br> user_id : ${get_reserv.user_id }
+	<br> rv_date : ${get_reserv.rv_date }
 	<br> 웹에 선언된 user_id : ${user}
 	<br>
 
 	<c:if test="${not empty get_reserv.rv_num }">
 		<form action="delete_reserv_do">
 			<!-- 기본키 :  <input type="text" name="rv_num" value=1><br> -->
-			삭제할 예약 rv_num : <input name="rv_num" value=${get_reserv.rv_num }>
-			<br> 삭제할 예약 st_num : <input name="st_num"
-				value=${get_reserv.st_num }> <br> 삭제할 예약 sd_num : <input
-				name="sd_num" value=${get_reserv.sd_num }> <br>
+			삭제할 예약 rv_num : <input name="rv_num" value=${get_reserv.rv_num }><br> 
+			삭제할 예약 st_num : <input name="st_num" value=${get_reserv.st_num }><br>
+			 삭제할 예약 sd_num : <input name="sd_num" value=${get_reserv.sd_num }> <br>
 			<button class="button" type="submit">삭제하기</button>
 		</form>
 	</c:if>
-	
-	
+
+
 
 
 	<br>

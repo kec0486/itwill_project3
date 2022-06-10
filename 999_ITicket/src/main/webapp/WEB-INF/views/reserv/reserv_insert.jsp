@@ -16,6 +16,26 @@
 
 
 <script>
+var reserv_cnt = 0;
+
+function getCheckboxValue(cnt)  {
+	  // 선택된 목록 가져오기
+	  const query = 'input[name="view_cnt"]:checked';
+	  reserv_cnt = cnt; 
+	  const selectedEls = 
+	      document.querySelectorAll(query);
+	  
+	  // 선택된 목록에서 value 찾기
+	  let result = '';
+	  selectedEls.forEach((el) => {
+	    result += el.value + ' ';
+	  });
+	  console.log(cnt);
+	  // 출력
+	document.getElementById('result').innerText = result; 	  
+	}
+
+
 function checkOnlyOne(element) {
 	  
 	  const checkboxes 
@@ -72,16 +92,13 @@ function checkOnlyOne(element) {
 	<br>
 	<c:if test="${not empty getseatList_choose }">
 		Schedule.sd_num : ${Schedule.sd_num }
-		<c:if test="${empty cnt}">
-			<form action="reserv_test_do">
-				관람 인원 수 <br> 
-				<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this)' />1명
-				<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this)' />2명
-				<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this)' />3명 
-				<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this)' />4명 <br>
-				<input type='submit' value="예매완료"/>
-			</form>
-		</c:if>
+		관람 인원 수 <br> 
+		<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this);getCheckboxValue(1)' />1명 
+		<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this);getCheckboxValue(2)' />2명 
+		<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this);getCheckboxValue(3)' />3명 
+		<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this);getCheckboxValue(4)' />4명 <br>
+		
+		<div id='result'></div><br>
 	
 		<c:set var="i" value="0" />
 		<c:set var="j" value="5" />

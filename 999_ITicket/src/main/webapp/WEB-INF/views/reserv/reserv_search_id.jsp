@@ -14,10 +14,10 @@
 		<c:forEach var="reserv" items="${get_reserv_List_id }">
 			<tr>
 				<td>rv_num : ${reserv.rv_num }</td>
-				<td>rv_cnt : ${reserv.rv_cnt }</td>
 				<td>st_num : ${reserv.st_num}</td>
 				<td>sd_num : ${reserv.sd_num}</td>
 				<td>user_id : ${reserv.user_id}</td>
+				<td>rv_date : ${reserv.rv_date }</td>
 				<br>
 			</tr>
 		</c:forEach>
