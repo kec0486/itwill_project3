@@ -20,6 +20,7 @@ import com.iticket.app.service.impl.SeatSaveService;
 import com.iticket.app.service.impl.SeatService;
 
 import com.iticket.app.vo.DetailVO;
+import com.iticket.app.vo.ForReservationVO;
 import com.iticket.app.vo.ReservationVO;
 import com.iticket.app.vo.ScheduleVO;
 import com.iticket.app.vo.SeatSaveVO;
@@ -48,7 +49,7 @@ public class ReservController {
 	@GetMapping("get_reserv_del")
 	public String get_reserv_del(ReservationVO vo, Model model) {
 
-		ReservationVO get_reserv = reservService.get_reserv(vo);
+		ForReservationVO get_reserv = reservService.get_one_reserv_history(vo);
 		model.addAttribute("get_reserv", get_reserv);
 		return "/reserv/reserv_delete";
 	}
@@ -66,9 +67,9 @@ public class ReservController {
 	public String get_reserv_List_id(ReservationVO vo, Model model) {
 		System.out.println("get_reserv_List_id 실행");
 		System.out.println("받아온 vo : " + vo);
-		List<ReservationVO> reserv_List_id = reservService.get_reserv_List_id(vo);
-		System.out.println("받아온 reserv_List_id : " + reserv_List_id);
-		model.addAttribute("get_reserv_List_id", reserv_List_id);
+		List<ForReservationVO> get_reserv_history = reservService.get_reserv_history(vo);
+		System.out.println("받아온 get_reserv_history : " + get_reserv_history);
+		model.addAttribute("get_reserv_history", get_reserv_history);
 		return "/reserv/reserv_search_id";
 	}
 

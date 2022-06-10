@@ -70,6 +70,13 @@
 		background-color: white;
 		border-bottom: solid 1px #b6bdc7;
 }
+.reserve th {
+    border-bottom: 1px solid #bababa;
+    text-align: center;
+    height: 30px;
+    background-color: #e25147;
+    color: white;
+}
 </style>
 
 <!-- 	<header>
@@ -152,7 +159,7 @@
 		</div>
 	</nav> -->
 	<!-- 장르 네비게이션바끝 -->
-<%--  <jsp:include page="header.jsp"></jsp:include> --%>
+  <jsp:include page="header.jsp"></jsp:include> 
 	<!--오른쪽 왼쪽나누는곳 -->
 	<div class="body" style="display: flex;">
 		<div class="body_left" style="display: column;">
@@ -160,7 +167,7 @@
 			<br>
 			<ul class="dpNavi">
 				<li class="home">
-						<a href="http://ticket.interpark.com" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="mypage?user_id=${user}" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;홈&gt;<strong>마이페이지</strong>
 						</a>
 			</ul>
@@ -340,7 +347,7 @@
 		
 			<!--  최근 구매내역-->
 			<div class="shopping" >
-				<h3 style="font:40px; margin-left: 220px;"><strong>나의후기내역</strong></h3>
+				<h3 style="font:40px; margin-left: -400px;"><strong>나의후기내역</strong></h3>
 
 				<div class="totalselect">
 					<ul style="list-style: none;">
@@ -348,7 +355,6 @@
 						<li style="margin-left: 220px; font-size: 15px;">2017년, 2018년 주문 건에 대해서는 증빙 서류
 							발급이 불가능 하며, 상세 주문 내역 조회가 되지 않습니다.</li>
 					</ul>
-					<br>
 					<!-- 후기내역제목-->
 				<div class="review1" style="margin-left: 200px;">
 					<ul style="list-style: none;">
@@ -364,6 +370,8 @@
 								<th>제목</th>
 								<th>작성일</th>
 								<th>조회수</th>
+								<th>내용</th>
+								
 								<!-- <th style="border-bottom: 1px solid #bababa;text-align: center; height: 30px;">매수</th> -->
 							</tr>
 							</thead>
@@ -374,6 +382,7 @@
 									<td style="border-bottom: 1px solid #bababa; text-align: center;">${reviewList.gd_title }</td>
 									<td style="border-bottom: 1px solid #bababa; text-align: center;">${reviewList.rv_regdate }</td>
 									<td style="border-bottom: 1px solid #bababa; text-align: center;">${reviewList.rv_cnt }</td>
+									<td style="border-bottom: 1px solid #bababa; text-align: center;">${reviewList.rv_content}</td>
 								</tr>
 								</c:forEach>
 									</c:if> 

@@ -2,6 +2,7 @@ package com.iticket.app.service.impl;
 
 import java.util.List;
 
+import com.iticket.app.vo.ForReservationVO;
 import com.iticket.app.vo.ReservationVO;
 
 public interface ReservService {
@@ -11,5 +12,6 @@ public interface ReservService {
 	ReservationVO get_reserv(ReservationVO vo);
 	List<ReservationVO> get_reserv_List(ReservationVO vo);
 	List<ReservationVO> get_reserv_List_id(ReservationVO vo);
-	
+	List<ForReservationVO> get_reserv_history(ReservationVO vo);
+	ForReservationVO get_one_reserv_history(ReservationVO vo);
 }

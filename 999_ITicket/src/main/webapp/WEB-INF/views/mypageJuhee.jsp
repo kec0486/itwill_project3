@@ -49,6 +49,14 @@
     border-top: 1px solid black;
     margin-left: 20px;
 	}
+	.reserve th {
+    border-bottom: 1px solid #bababa;
+    text-align: center;
+    height: 30px;
+    background-color: #e25147;
+    color: white;
+}
+	
 </style>
 </head>
 <body>
@@ -140,7 +148,7 @@
 			<br>
 			<ul class="dpNavi">
 				<li class="home">
-						<a href="http://ticket.interpark.com" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="myreview?user_id=${user}" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;홈&gt;<strong>마이페이지</strong>
 						</a>
 			</ul>
@@ -192,7 +200,7 @@
 					<ul class="etc">
 						<li><a style="margin-left: 20px;"
 						
-							target="_self"  href="myreview?rv_num=${user}"><img
+							target="_self"  href="myreview?user_id=${user}"><img
 								src="//ticketimage.interpark.com/TicketImage/event/100913_my/mn_etc_02.gif"
 								alt="나의 후기" ></a>
 						</li>
@@ -333,7 +341,7 @@
 					<table class="reserve" border="1" style="margin-left: 220px; width: 700px;" >
 							<thead>
 							<tr>
-								<th>예매일</th>
+								<th style="background-color:#e25147; color: white;">예매일</th>
 								<th>예매번호</th>
 								<th>공연명</th>
 								<th>관람일</th>

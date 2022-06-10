@@ -13,9 +13,8 @@
   	</select>
   	
   	<select id="reviewList" parameterType="com.iticket.app.vo.ReviewVO" resultType="com.iticket.app.vo.ReviewVO">
-  	select gd_title,rv_regdate,rv_cnt
-  	from genre_detail g, review r
-  	where g.gd_num =r.gd_num
-  	and rv_num = #{rv_num}
+ 	 select gd_title,rv_regdate,rv_cnt,rv_content
+  	from  review 
+  	where user_id = #{user_id}<!-- jsp에서 요청한값 -->
   	</select>
 </mapper>
