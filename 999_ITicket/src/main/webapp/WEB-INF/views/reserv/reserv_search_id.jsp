@@ -9,36 +9,41 @@
 </head>
 <body>
 	예매 서치(id기반)
+	공연이름 공연시간 예매시간 좌석번호 가격 
 	<br>
-	<c:if test="${not empty get_reserv_List_id }">
-		<c:forEach var="reserv" items="${get_reserv_List_id }">
-			<tr>
-				<td>rv_num : ${reserv.rv_num }</td>
-				<td>st_num : ${reserv.st_num}</td>
-				<td>sd_num : ${reserv.sd_num}</td>
-				<td>user_id : ${reserv.user_id}</td>
-				<td>rv_date : ${reserv.rv_date }</td>
-				<br>
+	<c:if test="${not empty get_reserv_history }">
+		<c:forEach var="reserv" items="${get_reserv_history }">
+		<table border="2" align = "center">
+		<th>1</th>
+		<th>내역</th>
+		<th>취소</th>
+			<tr align = "center">
+				<td>행사(공연) 이름 </td>
+				<td>${reserv.gd_title }</td>
+				<td rowspan="5"  bgcolor="skyblue"><a href="get_reserv_del?rv_num=${reserv.rv_num }">${reserv.rv_num }</a>
+				</td>
 			</tr>
+			<tr align = "center">
+				<td>행사(공연) 상영 날짜</td>
+				<td>${reserv.sd_date} ${reserv.start_time}</td>
+			</tr>
+			<tr align = "center">
+				<td>좌석 번호</td>
+				<td> ${reserv.st_num}</td>
+			</tr>
+
+			<tr align = "center">
+				<td>예매 가격</td>
+				<td>${reserv.st_price }</td>
+			</tr>
+			<tr align = "center">
+				<td>예매 시간</td>
+				<td>${reserv.rv_date }</td>
+			</tr>
+		</table>
+		<br><br>
 		</c:forEach>
 	</c:if>
-
-	<c:forEach var="reserv" items="${get_reserv_List_id }">
-		<li><a href="get_reserv_del?rv_num=${reserv.rv_num }">${reserv.rv_num }</a>
-		</li>
-	</c:forEach>
-	
-	<c:if test="${not empty get_reserv.rv_num }">
-		<form action="delete_reserv_do">
-			<!-- 기본키 :  <input type="text" name="rv_num" value=1><br> -->
-			삭제할 예약 : <input name = "rv_num" value=${get_reserv.rv_num }> <br>
-			st_num : <input name = "st_num" value=${get_reserv.st_num }> 
-			sd_num : <input name = "sd_num" value=${get_reserv.sd_num }> 
-			<input type="submit" value="삭제하기" ><br>
-		</form>
-	</c:if>
-
-
 
 	<br>
 	<a href="reserv_ssh">뒤로가기</a>

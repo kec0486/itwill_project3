@@ -23,22 +23,41 @@
 </style>
 </head>
 <body>
-	예매 딜리트(삭제)
-	<br> rv_num : ${get_reserv.rv_num }
-	<br> st_num : ${get_reserv.st_num }
-	<br> sd_num : ${get_reserv.sd_num }
-	<br> user_id : ${get_reserv.user_id }
-	<br> rv_date : ${get_reserv.rv_date }
-	<br> 웹에 선언된 user_id : ${user}
-	<br>
-
 	<c:if test="${not empty get_reserv.rv_num }">
 		<form action="delete_reserv_do">
+			<table border="2" align = "center">
+		<th>1</th>
+		<th>내역</th>
+			<tr align = "center">
+				<td>행사(공연) 이름 </td>
+				<td>${get_reserv.gd_title }</td>
+
+				</td>
+			</tr>
+			<tr align = "center">
+				<td>행사(공연) 상영 날짜</td>
+				<td>${get_reserv.sd_date} ${get_reserv.start_time}</td>
+			</tr>
+			<tr align = "center">
+				<td>좌석 번호</td>
+				<td> ${get_reserv.st_num}</td>
+			</tr>
+
+			<tr align = "center">
+				<td>예매 가격</td>
+				<td>${get_reserv.st_price }</td>
+			</tr>
+			<tr align = "center">
+				<td>예매 시간</td>
+				<td>${get_reserv.rv_date }</td>
+			</tr>
+		</table>
+
 			<!-- 기본키 :  <input type="text" name="rv_num" value=1><br> -->
-			삭제할 예약 rv_num : <input name="rv_num" value=${get_reserv.rv_num }><br> 
-			삭제할 예약 st_num : <input name="st_num" value=${get_reserv.st_num }><br>
-			 삭제할 예약 sd_num : <input name="sd_num" value=${get_reserv.sd_num }> <br>
-			<button class="button" type="submit">삭제하기</button>
+			<input type = "hidden" name="rv_num" value=${get_reserv.rv_num }><br> 
+			<input type = "hidden" name="st_num" value=${get_reserv.st_num }><br>
+			<input type = "hidden" name="sd_num" value=${get_reserv.sd_num }> <br>
+			<button class="button" type="submit" >삭제하기</button>
 		</form>
 	</c:if>
 

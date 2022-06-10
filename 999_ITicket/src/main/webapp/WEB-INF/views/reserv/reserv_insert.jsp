@@ -92,11 +92,17 @@ function checkOnlyOne(element) {
 	<br>
 	<c:if test="${not empty getseatList_choose }">
 		Schedule.sd_num : ${Schedule.sd_num }
-		관람 인원 수 <br> 
-		<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this);getCheckboxValue(1)' />1명 
-		<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this);getCheckboxValue(2)' />2명 
-		<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this);getCheckboxValue(3)' />3명 
-		<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this);getCheckboxValue(4)' />4명 <br>
+		관람 인원 수 <br>
+		<form action="insert_cnt_do">
+			<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this);getCheckboxValue(1)' checked />1명 
+			<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this);getCheckboxValue(2)' />2명 
+			<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this);getCheckboxValue(3)' />3명 
+			<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this);getCheckboxValue(4)' />4명 <br>
+			<input type="submit" value="선택완료" /><br>
+		</form> 
+
+		<div id='result'></div><br>
+
 		
 		<div id='result'></div><br>
 	
@@ -125,19 +131,18 @@ function checkOnlyOne(element) {
 						%>
 					</c:otherwise>
 				</c:choose>
-
 				<c:if test="${get_seatsave_list.size() eq test_size}">
 					<a href="get_seat?st_num=${seat.st_num }&sd_num=${Schedule.sd_num}">${seat.st_num }</a>
 					<c:set var="i" value="${i+1 }" />
-
 				</c:if>
 			</c:forEach>
 			<%
 				a = 0;
+				pageContext.setAttribute("test_size", a);
 			%>
-			<c:if test="${i%j ==0 }">
+ 			<c:if test="${i%j ==0 }">
 				<br />
-			</c:if>
+			</c:if> 
 		</c:forEach>
 	</c:if>
 

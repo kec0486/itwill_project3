@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.iticket.app.dao.ReservDAO;
 import com.iticket.app.dao.SeatDAO;
+import com.iticket.app.vo.ForReservationVO;
 import com.iticket.app.vo.ReservationVO;
 import com.iticket.app.vo.SeatVO;
 
@@ -48,6 +49,18 @@ public class ReservImpl implements ReservService{
 	@Override
 	public List<ReservationVO> get_reserv_List_id(ReservationVO vo) {
 		return reservDAO.get_reserv_List_id(vo);
+	}
+
+	@Override
+	public List<ForReservationVO> get_reserv_history(ReservationVO vo) {
+
+		return reservDAO.get_reserv_history(vo);
+	}
+
+	@Override
+	public ForReservationVO get_one_reserv_history(ReservationVO vo) {
+
+		return reservDAO.get_one_reserv_history(vo);
 	}
 
 
