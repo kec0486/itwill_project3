@@ -57,6 +57,7 @@ public class SeatController {
 // 생략
 //	@GetMapping("/choose_seat")
 //	public String choose_seat(SeatVO vo, Model model) {
+		
 //		System.out.println("choose_seat 들어간 vo : "+ vo);
 //		List<SeatVO> seat_list = seatService.getseatList_choose(vo);
 //		System.out.println("choose_seat 들어간 seat_list : "+ seat_list);

@@ -23,7 +23,7 @@
 	</insert>
 	
 	<delete id="seatsave_delete" parameterType="com.iticket.app.vo.SeatSaveVO">
-		DELETE FROM SEATSAVE WHERE SS_NUM = #{ss_num}
+		DELETE FROM SEATSAVE WHERE st_num = #{st_num} AND sd_num = #{sd_num}
 	</delete>
 
 

@@ -10,6 +10,6 @@ public interface ReservService {
 	void delete_reserv(ReservationVO vo);
 	ReservationVO get_reserv(ReservationVO vo);
 	List<ReservationVO> get_reserv_List(ReservationVO vo);
-	
+	List<ReservationVO> get_reserv_List_id(ReservationVO vo);
 	
 }
