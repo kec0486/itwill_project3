@@ -112,6 +112,18 @@
 	.comCnt {
 		float: left;
 	}
+	.ReviewList {
+		border: 1px solid black;
+	}
+	.displayReview {
+		border: 1px solid black;
+	}
+	.likeCount{
+		float: left;
+	}
+	.userInfo{
+		float: right;
+	}
 </style>
 </head>
 <script>
@@ -150,7 +162,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include><!-- 최상단 상단 (로그인,회원가입,예매확인/취소, 마이페이지) -->
 	
-	<br><br><br><br><br><br><br><br><br>
+	<br><br>
 	
 	<div class="whole">
 		<h2>${detail.gd_title }</h2>
@@ -259,7 +271,6 @@
 				</c:if>
 			</div>
 			<div class="detailInfo">
-			
 				숨겨왔던 부가정보 입니다... 보고 싶지 않으셨다면 다른 버튼을 눌러주세요
 			</div>
 			<div class="reviewInfo">
@@ -269,15 +280,38 @@
 				<br>
 				<h2>이용 평점</h2>
 				<br>
-				<div>
+				<div class="reviewDetail">
 					<div class="comCnt">
-						<p>총 67개의 이용후기가 등록되었습니다. </p>
+						<strong>
+							총 <span>18</span>개의 이용후기가 등록되었습니다.						
+						</strong>
+						<!-- <p>총 67개의 이용후기가 등록되었습니다. </p> -->
 					</div>
 					<!-- 검색창이랑 글쓰기 버튼 있음 -->
 					<div class="writeBtn">
 						<a href="writeR?gd_num=${detail.gd_num }">이용후기 작성</a>					
 					</div>
+					<br><br><br>
+					<hr>
 				</div>
+				
+				<p>안녕하세요 저는 윤솔비라고 함</p>
+				<c:forEach var="review" items="${reviewList }">
+					<div class="displayReview">
+						<div class="likeCount">
+							<a>${review.rv_likecnt }</a>
+						</div>
+						<div class="userInfo">
+							<a>${review.user_id }</a>
+							<a>${review.rv_regdate }</a>
+						</div>
+						<br>
+						<strong>${review.rv_title }</strong>
+						<p>${review.rv_content }</p>
+						
+					</div>
+					<br>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

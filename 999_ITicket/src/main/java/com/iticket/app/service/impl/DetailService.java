@@ -9,4 +9,5 @@ public interface DetailService {
 	List<DetailVO> getNameList(DetailVO vo);
 	List<DetailVO> getExhiName();
 	List<DetailVO> getDetail_list(DetailVO vo);
+	List<DetailVO> getImgs();
 }

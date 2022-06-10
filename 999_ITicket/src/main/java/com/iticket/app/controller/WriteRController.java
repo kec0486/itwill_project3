@@ -16,7 +16,6 @@ import com.iticket.app.service.impl.ReviewService;
 import com.iticket.app.vo.DetailVO;
 import com.iticket.app.vo.ForReservationVO;
 import com.iticket.app.vo.ReviewVO;
-import com.iticket.app.vo.ScheduleVO;
 
 @Controller
 public class WriteRController {
@@ -24,7 +23,7 @@ public class WriteRController {
 	private DetailService detailService;
 	@Autowired
 	private ReviewService reviewService;
-	private DetailController detailController;
+//	private DetailController detailController;
 	
 	// go to review.jsp directly with detail info
 	@RequestMapping("writeR")
@@ -46,8 +45,7 @@ public class WriteRController {
 	public String insertReview(ReviewVO vo, DetailVO detail, Model model) {
 		System.out.println("reviewVO: " + vo);
 		reviewService.insertReivew(vo);
-		int inportant = vo.getGd_num();
-		return "redirect:/getDetail?gd_num=" + inportant;
+		return "redirect:/getDetail?gd_num=" + vo.getGd_num();
 	}
 	@GetMapping("getReservDate")
 	public String getReservDate(ReviewVO vo, Model model) {
@@ -56,10 +54,16 @@ public class WriteRController {
 		return "datePopup";
 	}
 	
-	@GetMapping("getOneResDate")
-	public String getOneResDate(ReviewVO vo, Model model) {
-		ScheduleVO date = reviewService.getOneRDate(vo);
-		return "review";
-	}
+//	@GetMapping("getOneResDate")
+//	public String getOneResDate(ReviewVO vo, Model model) {
+//		ScheduleVO date = reviewService.getOneRDate(vo);
+//		return "review";
+//	}
+	
+//	public String reviewList(DetailVO vo, Model model) {
+//		List<ReviewVO> list = reviewService.reviewList(vo);
+//		model.addAttribute("reviewList", list);
+//		return null;
+//	}
 	
 }

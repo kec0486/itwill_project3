@@ -30,8 +30,12 @@ public class DetailImpl implements DetailService{
 
 	@Override
 	public List<DetailVO> getDetail_list(DetailVO vo) {
-		// TODO Auto-generated method stub
 		return detailDAO.getDetail_list();
+	}
+
+	@Override
+	public List<DetailVO> getImgs() {
+		return detailDAO.getImgs();
 	}
 	
 }

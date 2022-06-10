@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iticket.app.dao.ReviewDAO;
+import com.iticket.app.vo.DetailVO;
 import com.iticket.app.vo.ForReservationVO;
 import com.iticket.app.vo.ReviewVO;
 import com.iticket.app.vo.ScheduleVO;
@@ -28,6 +29,11 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public ScheduleVO getOneRDate(ReviewVO vo) {
 		return reviewDAO.getOneRDate(vo);
+	}
+
+	@Override
+	public List<ReviewVO> reviewList(DetailVO vo) {
+		return reviewDAO.reviewList(vo);
 	}
 
 	

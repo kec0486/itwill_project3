@@ -8,7 +8,7 @@ public class ReviewVO {
 	private int rv_likecnt;
 	private String user_id;
 	private int gd_num;
-	private Date rv_regdate;
+	private String rv_regdate;
 	private int rv_cnt;
 	private String rv_title;
 	private String gd_title;
@@ -44,12 +44,6 @@ public class ReviewVO {
 	public void setGd_num(int gd_num) {
 		this.gd_num = gd_num;
 	}
-	public Date getRv_regdate() {
-		return rv_regdate;
-	}
-	public void setRv_regdate(Date rv_regdate) {
-		this.rv_regdate = rv_regdate;
-	}
 	public int getRv_cnt() {
 		return rv_cnt;
 	}
@@ -73,6 +67,12 @@ public class ReviewVO {
 	}
 	public void setWatch_date(String watch_date) {
 		this.watch_date = watch_date;
+	}
+	public String getRv_regdate() {
+		return rv_regdate;
+	}
+	public void setRv_regdate(String rv_regdate) {
+		this.rv_regdate = rv_regdate;
 	}
 	@Override
 	public String toString() {

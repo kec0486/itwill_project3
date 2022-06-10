@@ -28,4 +28,8 @@ public class DetailDAO {
 	public List<DetailVO> getDetail_list() {
 		return mybatis.selectList("detailDAO.getDetail_list");
 	}
+
+	public List<DetailVO> getImgs() {
+		return mybatis.selectList("detailDAO.getImgs");
+	}
 }

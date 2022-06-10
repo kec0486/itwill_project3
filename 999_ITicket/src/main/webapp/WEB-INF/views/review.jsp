@@ -11,7 +11,7 @@
 <style>
 	.Rcontainer {
 		margin-left: 24%;
-    	margin-top: 200px;
+    	margin-top: 20px;
     	width: 800px;
     	height: 440px;
 	}
@@ -93,6 +93,7 @@
 <jsp:include page="header.jsp"></jsp:include><!-- 최상단 상단 (로그인,회원가입,예매확인/취소, 마이페이지) -->
 <div class="Rcontainer">
 	<h2>공연관람후기</h2>
+	<br>
 	<form action="insertReview" name="writeForm" method="post">
 	<table class="reviewTable">
 		<tr>

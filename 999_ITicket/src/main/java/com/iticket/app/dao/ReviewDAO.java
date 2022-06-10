@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iticket.app.vo.DetailVO;
 import com.iticket.app.vo.ForReservationVO;
 import com.iticket.app.vo.ReviewVO;
 import com.iticket.app.vo.ScheduleVO;
@@ -25,6 +26,10 @@ public class ReviewDAO {
 
 	public ScheduleVO getOneRDate(ReviewVO vo) {
 		return mybatis.selectOne("reviewDAO.getOneResDate", vo);
+	}
+
+	public List<ReviewVO> reviewList(DetailVO vo) {
+		return mybatis.selectList("reviewDAO.reviewList", vo);
 	}
 
 	
