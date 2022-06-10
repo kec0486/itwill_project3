@@ -54,4 +54,7 @@ public class MUsersDao {
 	public int updatepw(UsersVO vo) {
 		return sqlSession.update(NAMESPACE + ".updatepw", vo);
 	}
+	public UsersVO selectOne(UsersVO vo) {
+		return sqlSession.selectOne(NAMESPACE + ".selectOne", vo);
+	}
 }

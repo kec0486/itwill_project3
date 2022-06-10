@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iticket.app.service.impl.DetailService;
 import com.iticket.app.service.impl.ReservService;
+import com.iticket.app.service.impl.ScheduleService;
 import com.iticket.app.service.impl.SeatSaveService;
 import com.iticket.app.service.impl.SeatService;
 
@@ -28,6 +29,8 @@ import com.iticket.app.vo.SeatVO;
 
 @Controller
 public class ReservController {
+	@Autowired
+	private ScheduleService scheduleService;
 	@Autowired
 	private ReservService reservService;
 	@Autowired
@@ -86,7 +89,10 @@ public class ReservController {
 	@RequestMapping("get_Detail_insert")
 	public String reserv_insert_1(DetailVO dvo, Model model) {
 		DetailVO detail = detailService.getDetail(dvo);
-		model.addAttribute("detail", detail);
+		ScheduleVO svo = new ScheduleVO();
+		svo.setGd_num(detail.getGd_num());
+		List<ScheduleVO> schedule_list = scheduleService.get_schedule_list(svo);
+		model.addAttribute("get_schedule_list", schedule_list);
 		return "/reserv/reserv_insert";
 	}
 

@@ -8,9 +8,7 @@
 <title>예매 딜리트</title>
 </head>
 <body>
-	예매 서치(id기반)
-	공연이름 공연시간 예매시간 좌석번호 가격 
-	<br>
+	
 	<c:if test="${not empty get_reserv_history }">
 		<c:forEach var="reserv" items="${get_reserv_history }">
 		<table border="2" align = "center">

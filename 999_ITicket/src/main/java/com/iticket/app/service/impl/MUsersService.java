@@ -66,4 +66,7 @@ public class MUsersService {
 		dao.updatepw(vo);
 		return 1;
 	}
+	public UsersVO selectOne(UsersVO vo) {
+		return dao.selectOne(vo);
+	}
 }

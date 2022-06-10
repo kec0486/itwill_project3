@@ -44,14 +44,24 @@ public class LoginController {
 		return "idFind";
 	}
 	@PostMapping("/idFindPhone")
-	public String idFindPhoneOk(UsersVO vo, Model model) {
+	public String idFindPhoneOk(UsersVO vo, Model model,HttpServletRequest request) {
 		UsersVO user = service.idFindPhone(vo);
+		if(user == null) {
+			String msg = "입력된 회원정보가 존재하지 않습니다. 비회원일 경우 회원가입 후 이용해주세요.";
+			request.setAttribute("msg", msg);
+			return "idFind";
+		}
 		model.addAttribute("user", user);
 		return "idFindOk";
 	}
 	@PostMapping("/idFindEmail")
-	public String idFindEmailOk(UsersVO vo, Model model) {
+	public String idFindEmailOk(UsersVO vo, Model model,HttpServletRequest request) {
 		UsersVO user = service.idFindEmail(vo);
+		if(user == null) {
+			String msg = "입력된 회원정보가 존재하지 않습니다. 비회원일 경우 회원가입 후 이용해주세요.";
+			request.setAttribute("msg", msg);
+			return "idFind";
+		}
 		model.addAttribute("user", user);
 		return "idFindOk";
 	}
@@ -60,15 +70,25 @@ public class LoginController {
 		return "pwFind";
 	}
 	@PostMapping("/pwFindPhone")
-	public String pwFindPhoneOk(UsersVO vo, Model model) {
+	public String pwFindPhoneOk(UsersVO vo, Model model,HttpServletRequest request) {
 		UsersVO user = service.pwFindPhone(vo);
+		if(user == null) {
+			String msg = "입력된 회원정보가 존재하지 않습니다. 비회원일 경우 회원가입 후 이용해주세요.";
+			request.setAttribute("msg", msg);
+			return "pwFind";
+		}
 		model.addAttribute("user", user);
 		return "pwFindOk";
 	}
 	@PostMapping("/pwFindEmail")
-	public String pwFindEmailOk(UsersVO vo, Model model) {
+	public String pwFindEmailOk(UsersVO vo, Model model,HttpServletRequest request) {
 		UsersVO user = service.pwFindEmail(vo);
 		model.addAttribute("user", user);
+		if(user == null) {
+			String msg = "입력된 회원정보가 존재하지 않습니다. 비회원일 경우 회원가입 후 이용해주세요.";
+			request.setAttribute("msg", msg);
+			return "pwFind";
+		}
 		return "pwFindOk";
 	}
 	@PostMapping("/updatepw")

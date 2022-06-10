@@ -72,8 +72,8 @@
 				<input type="submit" value="로그인" class="loginBtn" ><br>
 			</div>
 			<div class="login_ckboxForm">
-				<input type="checkbox" class="login_ckbox" name="remember-me"> 자동로그인 
-				<input type="checkbox" class="login_ckbox" name="checkId" id="saveId" > 아이디저장
+				<label for="remember-me"><input type="checkbox" class="login_ckbox" name="remember-me" id="remember-me"> 자동로그인</label> 
+				<label for="saveId"><input type="checkbox" class="login_ckbox" name="checkId" id="saveId" > 아이디저장</label>
 			</div>
 		</form:form>
 		<div class="login_findjoin">

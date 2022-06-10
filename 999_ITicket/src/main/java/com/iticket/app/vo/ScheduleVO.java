@@ -4,22 +4,20 @@ import java.util.Date;
 
 public class ScheduleVO {
 	private int sd_num;
-	private Date sd_date;
+	private String sd_date;
 	private int gd_num;
 	private String start_time;
 	private int hl_buildingnum;
-	
-	
 	public int getSd_num() {
 		return sd_num;
 	}
 	public void setSd_num(int sd_num) {
 		this.sd_num = sd_num;
 	}
-	public Date getSd_date() {
+	public String getSd_date() {
 		return sd_date;
 	}
-	public void setSd_date(Date sd_date) {
+	public void setSd_date(String sd_date) {
 		this.sd_date = sd_date;
 	}
 	public int getGd_num() {
@@ -45,8 +43,6 @@ public class ScheduleVO {
 		return "ScheduleVO [sd_num=" + sd_num + ", sd_date=" + sd_date + ", gd_num=" + gd_num + ", start_time="
 				+ start_time + ", hl_buildingnum=" + hl_buildingnum + "]";
 	}
-	
-
 	
 	
 }

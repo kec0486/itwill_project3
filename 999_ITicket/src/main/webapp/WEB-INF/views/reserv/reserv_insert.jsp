@@ -16,26 +16,6 @@
 
 
 <script>
-var reserv_cnt = 0;
-
-function getCheckboxValue(cnt)  {
-	  // 선택된 목록 가져오기
-	  const query = 'input[name="view_cnt"]:checked';
-	  reserv_cnt = cnt; 
-	  const selectedEls = 
-	      document.querySelectorAll(query);
-	  
-	  // 선택된 목록에서 value 찾기
-	  let result = '';
-	  selectedEls.forEach((el) => {
-	    result += el.value + ' ';
-	  });
-	  console.log(cnt);
-	  // 출력
-	document.getElementById('result').innerText = result; 	  
-	}
-
-
 function checkOnlyOne(element) {
 	  
 	  const checkboxes 
@@ -57,7 +37,7 @@ function checkOnlyOne(element) {
 
 	<br>
 	<c:forEach var="Detail" items="${getDetail_list }">
-		<table border="1" width="400" height="100">
+		<table border="1" width="400" height="100" align = "center">
 			<tr align="center">
 				<td><a href="get_Detail_insert?gd_num=${Detail.gd_num }">${Detail.gd_title }</a>
 				</td>
@@ -67,16 +47,11 @@ function checkOnlyOne(element) {
 		</li> --%>
 	</c:forEach>
 
-	<c:if test="${not empty detail }">
-		<a href="get_schedule_list?gd_num=${detail.gd_num }">상영시간 선택하기</a>
-		<br>
-	</c:if>
-
 	<c:if test="${not empty get_schedule_list }">
 		<c:forEach var="schedule" items="${get_schedule_list }">
-			<table border="1" width="400" height="100">
+			<table border="1" width="400" height="100" align = "center">
 				<tr align="center">
-					<td><a href="get_schedule?sd_num=${schedule.sd_num }">${schedule.sd_date }
+					<td><a href="get_schedule?sd_num=${schedule.sd_num }&view_cnt=1">${schedule.sd_date }
 							: ${schedule.start_time }</a></td>
 				</tr>
 			</table>
@@ -84,28 +59,21 @@ function checkOnlyOne(element) {
 		</c:forEach>
 	</c:if>
 
-	<%-- 	<c:if test="${not empty Schedule }">
-		Schedule 데이터 : ${Schedule}<br>
-		<a href="choose_seat?hl_buildingnum=${Schedule.hl_buildingnum }">좌석 선택하기</a><br>
-	</c:if> --%>
-
 	<br>
 	<c:if test="${not empty getseatList_choose }">
 		Schedule.sd_num : ${Schedule.sd_num }
 		관람 인원 수 <br>
-		<form action="insert_cnt_do">
-			<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this);getCheckboxValue(1)' checked />1명 
-			<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this);getCheckboxValue(2)' />2명 
-			<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this);getCheckboxValue(3)' />3명 
-			<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this);getCheckboxValue(4)' />4명 <br>
+		<form action="get_schedule">
+			<input type='checkbox' name='view_cnt' value='1' onclick='checkOnlyOne(this);' checked />1명 
+			<input type='checkbox' name='view_cnt' value='2' onclick='checkOnlyOne(this);' />2명 
+			<input type='checkbox' name='view_cnt' value='3' onclick='checkOnlyOne(this);' />3명 
+			<input type='checkbox' name='view_cnt' value='4' onclick='checkOnlyOne(this);' />4명 <br>
+			<input type="hidden" name="sd_num" value=${Schedule.sd_num }>
 			<input type="submit" value="선택완료" /><br>
 		</form> 
-
-		<div id='result'></div><br>
-
-		
-		<div id='result'></div><br>
-	
+		<br><br>
+		카운트 숫자 : ${cnt }
+		<br><br><br>
 		<c:set var="i" value="0" />
 		<c:set var="j" value="5" />
 

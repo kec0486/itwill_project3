@@ -32,7 +32,10 @@ public class ScheduleController {
 	}
 	
 	@RequestMapping("get_schedule")
-	public String getschedule(ScheduleVO vo, Model model) {
+	public String getschedule(ScheduleVO vo, Model model,int view_cnt) {
+		System.out.println("==============================");
+		System.out.println("view_cnt : " + view_cnt);
+		System.out.println("==============================");
 		ScheduleVO Schedule = scheduleService.getSchedule(vo);
 		System.out.println("ScheduleVO : " + vo);
 		System.out.println("Schedule : " + Schedule);
@@ -51,7 +54,7 @@ public class ScheduleController {
 		System.out.println("choose_seat 들어간 vo : "+ tempvo);
 		List<SeatVO> seat_list = seatService.getseatList_choose(tempvo);
 		System.out.println("choose_seat 들어간 seat_list : "+ seat_list);
-		
+		model.addAttribute("cnt", view_cnt);
 		model.addAttribute("Schedule", Schedule);
 		model.addAttribute("get_seatsave_list", get_seatsave_list);
 		model.addAttribute("getseatList_choose", seat_list);
