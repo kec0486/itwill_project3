@@ -19,7 +19,7 @@
 		padding: 0;
 		overflow: hidden;
 		min-height: 0;
-		width: 800px;
+		width: 750px;
 		background-color: white;
 		border-bottom: solid 1px #b6bdc7;
 	}
@@ -50,7 +50,7 @@
 		border-style: hidden;
 	}
 	.whole {
-		margin-left: 18%;
+		margin-left: 26%;
 	}
 	.prdLikeIcon {
 		float: left;
@@ -124,6 +124,11 @@
 	.userInfo{
 		float: right;
 	}
+	.infoPrice{
+		display: inline-block;
+		max-width: 39rem;
+		vertical-align: top;
+	}
 </style>
 </head>
 <script>
@@ -157,15 +162,31 @@
 			$(".detailInfo").hide();
 			$(".reviewInfo").show();
 		});
+		
+		
 	});
 </script>
 <body>
 	<jsp:include page="header.jsp"></jsp:include><!-- 최상단 상단 (로그인,회원가입,예매확인/취소, 마이페이지) -->
 	
-	<br><br>
-	
+	<br>	
 	<div class="whole">
-		<h2>${detail.gd_title }</h2>
+		<c:if test="${detail.gr_num eq 1 }">
+			<h2>뮤지컬 ${detail.gd_title }</h2>
+		</c:if>
+		<c:if test="${detail.gr_num eq 2 }">
+			<h2>${detail.gd_title }</h2>
+		</c:if>
+		<c:if test="${detail.gr_num eq 3 }">
+			<h2>연극 ${detail.gd_title }</h2>
+		</c:if>
+		<c:if test="${detail.gr_num eq 4 }">
+			<h2> ${detail.gd_title }</h2>
+		</c:if>
+		<c:if test="${detail.gr_num eq 5 }">
+			<h2> ${detail.gd_title }</h2>
+		</c:if>
+		
 		<div class="likePart">
 			<div class="prdLikeIcon">
 				<!-- 별이든 하트든 별점 평균점수에 맞춰서 채워짐 -->
@@ -207,9 +228,52 @@
 					</li>
 				</ul>
 				<ul>
-					<li>
+					<li class="priceInfo">
 						<strong>가격&nbsp;</strong>
-						<a> ${detail.gd_price }</a>
+						<div class="infoPrice">
+							<c:if test="${detail.gr_num eq 1 }">
+								<ul>
+									<li>
+										<a>S석 <strong>90,000원</strong></a>
+										<p>A석 <strong>50,000원</strong></p>
+									</li>
+								</ul>
+							</c:if>
+							<c:if test="${detail.gr_num eq 2 }">
+								<ul>
+									<li>
+										<a>S석 <strong>90,000원</strong></a>
+										<p>A석 <strong>70,000원</strong></p>
+										<p>B석 <strong>50,000원</strong></p>
+									</li>
+								</ul>
+							</c:if>
+							<c:if test="${detail.gr_num eq 3 }">
+								<ul>
+									<li>
+										<a>S석 <strong>90,000원</strong></a>
+										<p>A석 <strong>70,000원</strong></p>
+										<p>B석 <strong>50,000원</strong></p>
+									</li>
+								</ul>
+							</c:if>
+							<c:if test="${detail.gr_num eq 4 }">
+								<ul>
+									<li>
+										<a>S석 <strong>90,000원</strong></a>
+										<p>A석 <strong>70,000원</strong></p>
+										<p>B석 <strong>50,000원</strong></p>
+									</li>
+								</ul>
+							</c:if>
+							<c:if test="${detail.gr_num eq 5 }">
+								<ul>
+									<li>
+										<strong>90,000원</strong>
+									</li>
+								</ul>
+							</c:if>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -221,7 +285,16 @@
 					<c:if test="${detail.gr_num eq 1}">
 						<a class="audiBtn" href="#">공연정보</a>
 					</c:if>
+					<c:if test="${detail.gr_num eq 2 }">
+					
+					</c:if>
+					<c:if test="${detail.gr_num eq 3 }">
+					
+					</c:if>
 					<c:if test="${detail.gr_num eq 4}">
+
+					</c:if>
+					<c:if test="${detail.gr_num eq 5 }">
 						<a class="audiBtn" href="#">이용정보</a>
 					</c:if>
 				</li> 
@@ -303,12 +376,11 @@
 						</div>
 						<div class="userInfo">
 							<a>${review.user_id }</a>
-							<a>${review.rv_regdate }</a>
+							<a class="reviewDate">${review.rv_regdate }</a>
 						</div>
 						<br>
 						<strong>${review.rv_title }</strong>
 						<p>${review.rv_content }</p>
-						
 					</div>
 					<br>
 				</c:forEach>

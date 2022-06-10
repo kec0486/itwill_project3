@@ -32,4 +32,16 @@ public class DetailDAO {
 	public List<DetailVO> getImgs() {
 		return mybatis.selectList("detailDAO.getImgs");
 	}
+
+	public List<DetailVO> getConcert() {
+		return mybatis.selectList("detailDAO.getConcert");
+	}
+
+	public List<DetailVO> getPlaying() {
+		return mybatis.selectList("detailDAO.getPlaying");
+	}
+
+	public List<DetailVO> getClassic() {
+		return mybatis.selectList("detailDAO.getClassic");
+	}
 }

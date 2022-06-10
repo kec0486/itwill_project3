@@ -18,7 +18,7 @@ public class ExhibitionController {
 	@RequestMapping("exhibition")
 	public String goExhilist(DetailVO vo, Model model) {
 		List<DetailVO> list = detailService.getExhiName();
-		model.addAttribute("exhibi", list);
+		model.addAttribute("exhibiList", list);
 		return "exhibition";
 	}
 }

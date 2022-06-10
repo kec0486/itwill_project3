@@ -66,7 +66,7 @@
                             </li>
 
                             <li class="mypageli">
-                                <a href="mypage?user_id=${user}">마이페이지</a>
+                                <a href="mypage">마이페이지</a>
                             </li>
                         </ul>
                     </div>
@@ -188,7 +188,7 @@
                             </ul>
                         </li>
                         <li class="#">
-                            <a href="#">콘서트</a>
+                            <a href="concert">콘서트</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">콘서트</a>
@@ -225,7 +225,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">연극</a>
+                            <a href="playing">연극</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">연극</a>
@@ -250,7 +250,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">클래식/무용</a>
+                            <a href="classic">클래식/무용</a>
                             <ul>
                                 <li>
                                     <a href="#" id="gnbTitle">클래식/무용</a>
@@ -277,30 +277,6 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">스포츠</a>
-                            <ul>
-                                <li>
-                                    <a href="#" id="gnbTitle">스포츠</a>
-                                    <a href="#">야구</a>
-                                    <a href="#">축구</a>
-                                    <a href="#">E스포츠</a>
-                                    <a href="#">MD샵</a>
-                                </li>
-                                <li class="notice">
-                                    <a href="#">티켓오픈 공지</a>
-                                    <a href="#">지역별/</a>
-                                    <a href="#">날짜별 예매</a>
-                                </li>
-                                <li class="recommend">
-                                    <span>스포츠<br>추천</span>
-                                    <a href="#"><img src="resources/images/22000970_p_s.jpg" alt="데스노트"></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="resources/images/" alt=""></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
                             <a href="exhibition">전시/행사</a>
                             <ul>
                                 <li>
@@ -319,33 +295,6 @@
                                 </li>
                                 <li class="recommend">
                                     <span>전시/행사<br>추천</span>
-                                    <a href="#"><img src="resources/images/22000970_p_s.jpg" alt="데스노트"></a>
-                                    <a href="#"><img src="resources/images/22001534_p_s.jpg" alt="아이다"></a>
-                                    <a href="#"><img src="resources/images/22004658_p_s.jpg" alt="하데스타운"></a>
-                                    <a href="#"><img src="resources/images/22006220_p_s.jpg" alt="지킬엔하이드"></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="resources/images/" alt=""></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">아동/가족</a>
-                            <ul>
-                                <li>
-                                    <a href="#" id="gnbTitle">아동/가족</a>
-                                    <a href="#">뮤지컬</a>
-                                    <a href="#">연극</a>
-                                    <a href="#">클래식/무용</a>
-                                    <a href="#">전시/행사</a>
-                                </li>
-                                <li class="notice">
-                                    <a href="#">티켓오픈 공지</a>
-                                    <a href="#">지역별/</a>
-                                    <a href="#">날짜별 예매</a>
-                                </li>
-                                <li class="recommend">
-                                    <span>아동/가족<br>추천</span>
                                     <a href="#"><img src="resources/images/22000970_p_s.jpg" alt="데스노트"></a>
                                     <a href="#"><img src="resources/images/22001534_p_s.jpg" alt="아이다"></a>
                                     <a href="#"><img src="resources/images/22004658_p_s.jpg" alt="하데스타운"></a>

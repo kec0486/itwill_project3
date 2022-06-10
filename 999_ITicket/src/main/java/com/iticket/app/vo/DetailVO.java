@@ -19,6 +19,8 @@ public class DetailVO {
 	private String poster;
 	private String img1;
 	private String img2;
+	private String header;
+	private String mini_poster;
 	private String searchKeyword;
 	private String deletesearchKeyword;
 	
@@ -124,7 +126,6 @@ public class DetailVO {
 	public void setDeletesearchKeyword(String deletesearchKeyword) {
 		this.deletesearchKeyword = deletesearchKeyword;
 	}
-	
 	@Override
 	public String toString() {
 		return "DetailVO [gd_num=" + gd_num + ", gd_actor=" + gd_actor + ", gd_startTime=" + gd_startTime
@@ -132,8 +133,8 @@ public class DetailVO {
 				+ gd_age + ", gd_term=" + gd_term + ", gd_plan=" + gd_plan + ", gd_runningtime=" + gd_runningtime
 				+ ", gd_servicenumber=" + gd_servicenumber + ", gd_average=" + gd_average + ", gd_price=" + gd_price
 				+ ", hl_buildingnum=" + hl_buildingnum + ", gr_num=" + gr_num + ", poster=" + poster + ", img1=" + img1
-				+ ", img2=" + img2 + ", searchKeyword=" + searchKeyword + ", deletesearchKeyword=" + deletesearchKeyword
-				+ "]";
+				+ ", img2=" + img2 + ", header=" + header + ", mini_poster=" + mini_poster + ", searchKeyword="
+				+ searchKeyword + ", deletesearchKeyword=" + deletesearchKeyword + "]";
 	}
 	//--------------------------------------
 	public String getPoster() {
@@ -153,6 +154,18 @@ public class DetailVO {
 	}
 	public void setImg2(String img2) {
 		this.img2 = img2;
+	}
+	public String getHeader() {
+		return header;
+	}
+	public void setHeader(String header) {
+		this.header = header;
+	}
+	public String getMini_poster() {
+		return mini_poster;
+	}
+	public void setMini_poster(String mini_poster) {
+		this.mini_poster = mini_poster;
 	}
 	
 

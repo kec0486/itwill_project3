@@ -10,4 +10,7 @@ public interface DetailService {
 	List<DetailVO> getExhiName();
 	List<DetailVO> getDetail_list(DetailVO vo);
 	List<DetailVO> getImgs();
+	List<DetailVO> getConcert(DetailVO vo);
+	List<DetailVO> getPlaying(DetailVO vo);
+	List<DetailVO> getClassic(DetailVO vo);
 }

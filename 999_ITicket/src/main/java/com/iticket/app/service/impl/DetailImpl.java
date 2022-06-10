@@ -37,5 +37,20 @@ public class DetailImpl implements DetailService{
 	public List<DetailVO> getImgs() {
 		return detailDAO.getImgs();
 	}
+
+	@Override
+	public List<DetailVO> getConcert(DetailVO vo) {
+		return detailDAO.getConcert();
+	}
+
+	@Override
+	public List<DetailVO> getPlaying(DetailVO vo) {
+		return detailDAO.getPlaying();
+	}
+
+	@Override
+	public List<DetailVO> getClassic(DetailVO vo) {
+		return detailDAO.getClassic();
+	}
 	
 }

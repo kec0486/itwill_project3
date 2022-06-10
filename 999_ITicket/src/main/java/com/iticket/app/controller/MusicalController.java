@@ -27,5 +27,7 @@ public class MusicalController {
 		model.addAttribute("getNameList", list);
 		return "musical";
 	}
+	
+	
 
 }

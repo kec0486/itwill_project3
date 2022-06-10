@@ -20,12 +20,26 @@
   	
  	<select id="getExhiNames" resultType="com.iticket.app.vo.DetailVO">
  		SELECT * FROM GENRE_DETAIL
- 		WHERE GR_NUM = 4
+ 		WHERE GR_NUM = 5
  		ORDER BY GD_TITLE
  	</select>
  	<select id="getImgs" resultType="com.iticket.app.vo.DetailVO">
  		SELECT POSTER, IMG1, IMG2, HEADER, MINI, GD_NUM
  		FROM GENRE_DETAIL
  	</select>
- 	
+ 	<select id="getConcert" resultType="com.iticket.app.vo.DetailVO">
+ 		SELECT * FROM GENRE_DETAIL
+ 		WHERE GR_NUM = 2
+ 		ORDER BY GD_TITLE
+ 	</select>
+ 	<select id="getPlaying" resultType="com.iticket.app.vo.DetailVO">
+ 		SELECT * FROM GENRE_DETAIL
+ 		WHERE GR_NUM = 3
+ 		ORDER BY GD_TITLE
+ 	</select>
+ 	<select id="getClassic" resultType="com.iticket.app.vo.DetailVO">
+ 		SELECT * FROM GENRE_DETAIL
+ 		WHERE GR_NUM = 4
+ 		ORDER BY GD_TITLE
+ 	</select>
   </mapper>

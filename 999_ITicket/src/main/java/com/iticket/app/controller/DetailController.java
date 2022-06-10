@@ -41,5 +41,11 @@ public class DetailController {
 		model.addAttribute("imgList", list);
 		return "nav";
 	}
-
+	
+	@GetMapping("classic")
+	public String goClassis(DetailVO vo, Model model) {
+		List<DetailVO> list = detailService.getClassic(vo);
+		model.addAttribute("classicList", list);
+		return "classic";
+	}
 }

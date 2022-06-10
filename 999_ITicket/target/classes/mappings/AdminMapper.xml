@@ -52,6 +52,7 @@
 	</select>
 	
 	<!-- 상품삭제 -->
+	<!-- 상품삭제 -->
 	<delete id="deleteDetail" parameterType="com.iticket.app.vo.DetailVO">
 	DELETE  FROM  GENRE_DETAIL 
 	WHERE gd_num LIKE '%'|| #{gd_num} ||'%'
