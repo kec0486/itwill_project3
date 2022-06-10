@@ -19,5 +19,6 @@
 		where hl_buildingnum = #{hl_buildingnum}
 		order by st_num  
 	</select>
+	
 
 </mapper>
