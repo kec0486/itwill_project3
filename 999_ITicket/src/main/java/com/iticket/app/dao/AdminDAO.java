@@ -39,15 +39,15 @@ public class AdminDAO {
 			}
 			return mybatis.selectList("Admin.getuserlist",vo);
 		}
-	// 상품삭제
-	public void getDelete(DetailVO vo) {
-		if (vo != null && vo.getDeletesearchKeyword() == null) {
-			vo.setDeletesearchKeyword("");
-		}
-		System.out.println("mybatis사용getDelete() :" + vo);
-		mybatis.delete("Admin.deleteDetail", vo);
+		// 상품삭제
+		public void getDelete(DetailVO vo) {
+			if (vo != null && vo.getDeletesearchKeyword() == null) {
+				vo.setDeletesearchKeyword("");
+			}
+			System.out.println("mybatis사용getDelete() :" + vo);
+			mybatis.delete("Admin.deleteDetail", vo);
 
-	}
+		}
 	//상품업데이트
 	public void updateBoard(DetailVO vo) {
 		System.out.println("mybatis사용 update()실행");

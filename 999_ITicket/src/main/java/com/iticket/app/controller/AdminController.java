@@ -27,6 +27,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;// 이름이 겹쳐도됨
 	
+	
 	// 회원정보리스트조회
 	@GetMapping("/admin/userlist")
 	public String getUserList(UsersVO vo, Model model) {

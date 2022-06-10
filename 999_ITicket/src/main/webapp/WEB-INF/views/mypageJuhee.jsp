@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +24,35 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>마이페이지</title>
-<link rel="stylesheet" href="resources/css/juhee.css">
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
+<script src="resources/js/jquery-3.6.0.js"></script>
+<script src="resources/js/motion.js"></script>
+
+<style>
+
+	
+	h1, h3, p { text-align: center; }
+	table { border-collapse: collapse; }
+	table, th, td {
+		border: 1px solid black;
+		margin: 0 auto;
+	}
+	th { background-color: #e2514 }
+	.center { text-align: center; }
+	
+	.border-none, .border-none td { border: none; }
+	.reserve th{
+	border-bottom: 1px solid #bababa; text-align: center; height: 30px;
+	}
+	#myinfoWrap1{
+	border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-left: 20px;
+	}
+</style>
 </head>
 <body>
-	<header>
+<!-- 	<header>
 		<div class="header_container">
 			<div class="nav_container" id="nav_menu">
 				<div class="menu_container">
@@ -48,8 +75,8 @@
 			</div>
 		</div>
 	</header>
-	<!-- 상단바 -->
-
+	회색상단바
+검은색 왼쪽 시작 
 	<div class="bar">
 		<div class="home">
 			<h1>
@@ -66,7 +93,7 @@
 			</form>
 		</div>
 	</div>
-	<!-- 티겟인터파크바 -->
+	티겟인터파크 검색은색바끝
 
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"
 		style="height: 20px;">
@@ -75,84 +102,8 @@
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" style="margin-left: 300px;">전체목록</a>
-					<div class="dropdown-menu">
-						<div class="di1">
-							<ul class="musical">
-								<li><a href="#">뮤지컬</a></li>
-								<li><a href="#">오지널/내한공연</a></li>
-								<li><a href="#">라이선스</a></li>
-								<li><a href="#">창작뮤지컬</a></li>
-								<li><a href="#">넌버벌 퍼포먼스</a></li>
-								<li><a href="#">패키지 공연</a></li>
-								<li><a href="#">MD샵</a></li>
-							</ul>
-							<br>
-							<ul class="consert1">
-								<li><a href="#">콘서트</a></li>
-								<li><a href="#">발라드</a></li>
-								<li><a href="#">락/메탈</a></li>
-								<li><a href="#">랩/힙합</a></li>
-								<li><a href="#">재즈/소울</a></li>
-								<li><a href="#">디너쇼</a></li>
-								<li><a href="#">포크/트로트</a></li>
-								<li><a href="#">내한공연</a></li>
-								<li><a href="#">페스티벌</a></li>
-								<li><a href="#">팬클럽</a></li>
-								<li><a href="#">인디</a></li>
-								<li><a href="#">토크/강연</a></li>
-								<li><a href="#">MB샵</a></li>
-
-							</ul>
-						</div>
-						<!--첫번째 끝부분 -->
-
-						<div class="di2">
-							<ul class="theater" style="margin-left: 180px;">
-								<li><a href="#">연극</a></li>
-								<li><a href="#">전체</a></li>
-								<li><a href="#">패키지공연</a></li>
-								<li><a href="#">주간랭킹순</a></li>
-								<li><a href="#">MD샵</a></li>
-							</ul>
-							<br>
-
-							<ul class="classic" style="margin-left: 270px;">
-								<li><a href="#">클래식</a></li>
-								<li><a href="#">오페라</a></li>
-								<li><a href="#">발레/무용</a></li>
-								<li><a href="#">국악</a></li>
-								<li><a href="#">주간랭킹순</a></li>
-							</ul>
-							<br>
-							<ul class="sports" style="margin-left: 270px;">
-								<li><a href="#">스포츠</a></li>
-								<li><a href="#">야구</a></li>
-								<li><a href="#">축구</a></li>
-								<li><a href="#">E스포츠</a></li>
-								<li><a href="#">MD샵</a></li>
-							</ul>
-							<br>
-							<ul class="show" style="margin-left: 270px;">
-								<li><a href="#">전시</a></li>
-								<li><a href="#">뮤지엄</a></li>
-								<li><a href="#">아동체험전</a></li>
-								<li><a href="#">행사/축제</a></li>
-								<li><a href="#">클래스</a></li>
-								<li><a href="#">주간랭킹순</a></li>
-								<li><a href="#">MD샵</a></li>
-
-							</ul>
-
-
-						</div>
-
-
-						<!--두번번째 끝부분 -->
-					</div></li>
+				</li>
 			</ul>
-
-
-
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav">
 					<li class="nav-item1"><a class="nav-link" href="#">뮤지컬</a></li>
@@ -161,39 +112,43 @@
 					<li class="nav-item3"><a class="nav-link" href="#">클래식/무용</a></li>
 					<li class="nav-item4"><a class="nav-link" href="#">스포츠</a></li>
 					<li class="nav-item5"><a class="nav-link" href="#">전시행사</a></li>
-					<!-- 보이는장르 -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" role="button"
+					보이는장르
+					<li class="nav-item dropdown">                                                             
+					<a class="nav-link dropdown-toggle" href="#" role="button"
 						data-bs-toggle="dropdown">랭킹</a>
 						<ul class="dropdown-menu">
-							<!-- 전체 -->
+							전체
 							<li><a class="dropdown-item" href="#">뮤지컬</a></li>
 							<li><a class="dropdown-item" href="#">콘서트</a></li>
 							<li><a class="dropdown-item" href="#">연극</a></li>
 							<li><a class="dropdown-item" href="#">클래식/무용</a></li>
 							<li><a class="dropdown-item" href="#">스포츠</a></li>
 							<li><a class="dropdown-item" href="#">전시행사</a></li>
-						</ul></li>
-					<!-- 랭킹에 있는 장르 -->
+						</ul>
+				  </li>
+					랭킹에 있는 장르
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
 	<!-- 장르 네비게이션바끝 -->
-
-	<!--마이페이지 시작  -->
+ <jsp:include page="header.jsp"></jsp:include>
+	<!--오른쪽 왼쪽나누는곳 -->
 	<div class="body" style="display: flex;">
-
-
 		<div class="body_left" style="display: column;">
+			<!-- 홈>마의페이지 -->
+			<br>
 			<ul class="dpNavi">
-				<li class="home"><p>
-						<a href="http://ticket.interpark.com" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;홈&gt;<strong>마이페이지</strong>
+				<li class="home">
+						<a href="http://ticket.interpark.com" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;홈&gt;<strong>마이페이지</strong>
 						</a>
 			</ul>
-			<div id="myinfoWrap">
+			<!-- 홈>마의페이지끝 -->
+			<!--왼쪽나의 페이지 시작  -->
+			<div id="myinfoWrap1">
 				<br>
-				<div class="mypage">
+				<div class="mypage1">
 					<h3>
 						<img class="my"
 							src="//openimage.interpark.com/_mypage_n/title/tit_mypage.gif"
@@ -205,10 +160,8 @@
 								href="http://incorp.interpark.com/member/MemberGoodService.do?_method=GoodServiceChk"
 								class="grade" target="_blank"><span class="welcome">WELCOME</span></a>회원입니다.
 						</div>
-
 						<p class="btn">
-							<a
-								href="http://incorp.interpark.com/member/MemberGoodService.do?_method=GoodServiceChk"
+							<a  href="http://incorp.interpark.com/member/MemberGoodService.do?_method=GoodServiceChk"
 								target="_blank"><img
 								src="//ticketimage.interpark.com/TicketImage/event/100913_my/btn_memb_level.gif"
 								alt="등급별 혜택"></a> <a
@@ -219,252 +172,34 @@
 					</div>
 					<div class="possess">
 						<ul class="left">
-							<!-- 왼쪽회원전체 -->
-							<li class="line_o">
-								<div class="pos_1">
-									<div class="tit_Ipont">
-										<img
-											src="http://openimage.interpark.com/_mypage_n/title/tit_ipoint.gif"
-											alt="I-Point">
-									</div>
-									<div class="btn_i_q">
-										<a href="javascript:;"
-											onmouseover="j$('#layer_question').show()"
-											onmouseout="j$('#layer_question').hide()"> <img
-											src="//openimage.interpark.com/_mypage_n/icon/icon_ipoint.gif"
-											alt="I-Point_q">
-										</a>
-									</div>
-									<!-- 아이포인트  -->
-									<div id="layer_question" class="layer_question_wrap"
-										style="display: none;">
-										<div class="layer_content">
-											<div class="text">
-												<span class="line_o tit">I-Point</span><br> <span>상품구매나
-													이벤트 등에<br>사용하실 수 있는 포인트<br>입니다.
-												</span>
-											</div>
-										</div>
-									</div>
-									<!-- 아이포인트  마침 -->
-									<!-- [D] 해당 ID값으로 변경(통합아이포인트)/ ipoint 클래스 추가-->
-									<div id="ipoint2" class="ipoint">
-										<a
-											href="http://ipointmall.interpark.com/ipoint/MyIpointDtl.do?_method=initial&amp;wid1=cus&amp;wid2=ipoint">0</a>
-									</div>
-								</div>
-							</li>
-							<!-- smoney -->
-
-							<li class="line_o">
-								<div class="smoney">
-									<div class="tit_smoney">
-										<img
-											src="//openimage.interpark.com/_mypage_n/title/tit_money.gif"
-											alt="S-Money">
-									</div>
-									<div id="smoney_num">
-										<a
-											href="https://www.interpark.com/mypage/smoney/SMFntTradeList.do?_method=initial&amp;useSSL=YES">0</a>
-									</div>
-								</div>
-							</li>
-							<!-- 끝 -->
-							<!-- 도서연동 -->
-							<li>
-								<div class="pos_2">
-									<div class="tit_giftcard">
-										<img
-											src="//openimage.interpark.com/_mypage_n/title/tit_giftcard.gif"
-											alt="도서상품권">
-									</div>
-									<div class="btn_g_q">
-										<a href="javascript:;" onmouseover="javascript:Bookinfo('1');"
-											onmouseout="javascript:Bookinfo('0');"> <img
-											src="//openimage.interpark.com/_mypage_n/icon/icon_ipoint.gif"
-											alt="giftcard_q">
-										</a>
-									</div>
-									<!-- 도서상품권 ? 20161123-->
-									<div id="layer_question2" class="layer_question_wrap2 wide"
-										style="display: none;">
-										<!-- wide 클래스 추가 -->
-										<div class="layer_content2">
-											<div class="title_txt">도서상품권</div>
-											<p>
-												인터파크도서에서 현금처럼 자유롭게 사용가능한 유가증권입니다.<br>아이디에 발급된 상품권은 등록
-												과정 없이 주문 시 편리하게 사용할 수 있습니다.<br> 상품권 종류에 따라 사용범위 또는
-												사용횟수가 제한될 수 있습니다.
-											</p>
-											<p>
-												<span class="g_b">- 사용가능매수</span><br> <span
-													class="g_b2">해당 아이디에 발급되어 사용이 가능한 상품권 수량</span>
-											</p>
-											<p>
-												<span class="g_b">- 사용가능금액</span><br> <span
-													class="g_b2">해당 아이디에 발급되어 사용이 가능한 상품권 금액의 총 합계</span>
-											</p>
-											<p>
-												<span class="g_b3">- 유효기간 만료일이 경과될 경우, 상품권 잔액은 자동으로
-													소멸됩니다.</span>
-											</p>
-											<p>
-												<span class="g_b3">- 구매하신 상품권은 메일 보내기 기능을 이용해 선물이
-													가능합니다.</span>
-											</p>
-											<p>
-												<span class="g_b3">- 지류발급 및 구매 상품권은 "인터파크도서 상품권 등록하기"
-													에서 상품권 번호</span><br> <span class="g_b2">를 입력하신 후 사용할 수
-													있습니다.</span>
-											</p>
-										</div>
-									</div>
-									<!-- 도서상품권  마침  -->
-								</div>
-							</li>
-							<li>
-								<div class="txt_g">
-									<div id="buy_txt1">
-										<img
-											src="//openimage.interpark.com/_mypage_n/title/txt_buy1.gif"
-											alt="등록가능매수">
-									</div>
-									<div id="buy_txt2">
-										<img
-											src="//openimage.interpark.com/_mypage_n/title/txt_buy2.gif"
-											alt="사용가능금액">
-									</div>
-								</div>
-								<div class="buy_r">
-									<div id="buy1">
-										<a
-											href="https://book.interpark.com/gcorder/GiftcertList.do?_method=initial&amp;useSSL=YES&amp;menuIdx=15"
-											target="blank">0</a>
-									</div>
-									<div id="buy2">
-										<a
-											href="https://book.interpark.com/gcorder/GiftcertList.do?_method=initial&amp;useSSL=YES&amp;menuIdx=15"
-											target="blank">0</a>
-									</div>
-								</div>
-							</li>
-							<!-- 도서연동 -->
 						</ul>
 					</div>
 				</div>
-				<div class="bg_bottom"></div>
+				<div class="bg_bottom" style="border-bottom: 1px soild gray;"></div>
 			</div>
-			<!-- 왼쪽페이지끝 -->
-
+			<!-- 왼쪽나의페이지끝-->
+			<!-- 예매/취소내역 -->
 			<br>
 			<div class="totalmy">
 				<div class="lnbWrap">
 					<p class="top"></p>
-					<div>
-						<h3>
-							<img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/lnb_tit_01.gif"
-								alt="예매/취소내역">
+					<div style="margin-left: 10px;">
+						<h3 style="font-size: 15px; text-align: left; margin-left: 10px;"><strong>
+							예매
+							</strong>	
 						</h3>
-						<ul>
-							<li><a
-								href="http://ticket.interpark.com/Gate/TPLogin.asp?CPage=C"
-								target="_self">공연/스포츠/전시/레저</a></li>
-							<li><a
-								href="http://movie.interpark.com/Movie/Gate/TPLogin.asp?CPage=C"
-								target="_self">영화</a></li>
-							<!-- <li><a href='http://movie.interpark.com/Movie/Mart/BookedList.asp'  target='_self'>기프티샵</a></li> -->
-							<li><a
-								href="http://ticket.interpark.com/Ticket/Waiting/MyWaitingList.asp"
-								target="_self">예매대기 서비스</a></li>
-							<li><a
-								href="http://www.interpark.com/mypage/common/MyPage.do?_method=initial"
-								target="_self">쇼핑 주문/배송 내역</a></li>
-							<li><a
-								href="http://book.interpark.com/member/MyPage.do?logintgt=mypage"
-								target="_self">도서 주문/배송 내역</a></li>
-							<li><a href="http://tour.interpark.com/mypage/Default.aspx"
-								target="_self">여행 예약/결제 내역</a></li>
-
-						</ul>
-					</div>
-					<div>
-						<h3>
-							<img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/lnb_tit_02.gif"
-								alt="증빙서류">
-						</h3>
-						<ul>
-							<li><a
-								href="http://ticket.interpark.com/Point/MyTicket/MyReceiptTotal.asp"
-								target="_self">입금증</a></li>
-							<li><a
-								href="https://ticket.interpark.com/Point/MyTicket/MyReceipt.asp"
-								target="_self">현금영수증</a></li>
-							<li><a
-								href="http://ticket.interpark.com/Point/MyTicket/MyCredit.asp"
-								target="_self">신용카드 매출전표</a></li>
-
-						</ul>
-					</div>
-					<div class="bdn">
-						<h3>
-							<img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/lnb_tit_03.gif"
-								alt="예매권/쿠폰">
-						</h3>
-						<ul>
-							<li><a
-								href="http://ticket.interpark.com/Ticket/MyTicket/MyPlayVoucher.asp"
-								target="_self">공연예매권/스포츠예매권</a></li>
-							<li><a
-								href="http://ticket.interpark.com/Point/MyTicket/MyCoupon.asp"
-								target="_self">공연할인쿠폰</a></li>
-							<li><a
-								href="http://ticket.interpark.com/Ticket/MyTicket/MHVoucher.asp"
-								target="_self">문화예매권</a></li>
-							<li><a
-								href="http://movie.interpark.com/Point/MyTicket/MyVoucher.asp"
-								target="_self">영화예매권</a></li>
-							<li><a
-								href="http://movie.interpark.com/Point/MyTicket/MyCoupon.asp?rb=Movie&amp;Status=37024"
-								target="_self">영화할인쿠폰</a></li>
-						</ul>
 					</div>
 					<ul class="etc">
-						<li><a
-							href="http://ticket.interpark.com/Ticket/MyTicket/Personal_Main.asp"
-							target="_self"><img
-								src="//ticketimage.interpark.com/TicketImage/myscrap/mn_etc_myscrap.gif"
-								alt="나의 티켓캐스트"></a></li>
-						<li><a href="https://ticket.interpark.com/Contents/Toping"
-							target="_self"><img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/mn_etc_01.gif"
-								alt="나의 TOPING"></a></li>
-						<li><a
-							href="http://ticket.interpark.com/Point/MyTicket/MyReview.asp"
-							target="_self"><img
+						<li><a style="margin-left: 20px;"
+						
+							target="_self"  href="myreview?rv_num=${user}"><img
 								src="//ticketimage.interpark.com/TicketImage/event/100913_my/mn_etc_02.gif"
-								alt="나의 후기"></a></li>
-						<li><a
-							href="http://ticket.interpark.com/Point/MyTicket/MyEvent.asp"
-							target="_self"><img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/mn_etc_03.gif"
-								alt="참여 이벤트"></a></li>
-						<li><a
-							href="http://ticket.interpark.com/Point/MyTicket/IPoint/MyDepositList.asp"
-							target="_self"><img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/mn_etc_04.gif"
-								alt="아이포인트받기"></a></li>
-						<li class="bgn"><a
-							href="https://ticket.interpark.com/HelpDesk/SosList.asp"
-							target="_self"><img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/mn_etc_05.gif"
-								alt="1:1 문의하기"></a></li>
+								alt="나의 후기" ></a>
+						</li>
 					</ul>
 				</div>
 			</div>
-			<!--totalmy -->
+			<!--왼쪽마이페이지끝 -->
 		</div>
 		<!--마이 페이지끝  -->
 
@@ -477,23 +212,22 @@
 			<br>
 			<div class="timeSelect">
 				<!--예매 확인 취소 내역  -->
-				<h3>
+			<!-- 	<h3>
 					<img
 						src="//ticketimage.interpark.com/TicketImage/event/100913_my/ttl_reserveinfo.gif"
 						alt="예매내역 확인·취소" style="margin-left: 210px;">
-				</h3>
-				<div class="text" style="margin-left: 210px;">
+				</h3> -->
+				<!-- <div class="text" style="margin-left: 210px;">
 					<br>
 					<p class="all">
 						<strong class="txtRed">황주희</strong>님의 지난 <span class="txtDGray">일주일간</span>의
 						티켓 예매내역 입니다.
 					 <hr>
-					</p>
 
-				</div>
-				<!-- 기간선택 -->
+				</div> -->
+				<!-- 조회기간선택 -->
 				<div class="box">
-					<form name="TopOption" id="TopOption" method="post"
+					<!-- <form name="TopOption" id="TopOption" method="post"
 						action="TPTotalBooked.asp">
 						<input type="hidden" name="OtherMemberCode" id="OtherMemberCode"
 							value="134347263"> <input type="hidden"
@@ -501,14 +235,15 @@
 							type="hidden" name="PeriodSearch" id="PeriodSearch" value="">
 						<input type="hidden" name="MemBizCD" id="MemBizCD" value="">
 						<input type="hidden" name="SViewOption" id="SViewOption" value="">
-						<br>
-						<p class="title" style="margin-left: 210px;">
+						<br> -->
+						<!-- <p class="title" style="margin-left: 210px;">
 							<img
 								src="//ticketimage.interpark.com/TicketImage/event/100913_my/ttl_times.gif"
 								alt="조회기간선택">
-						</p>
+						</p> -->
 						<br>
-						<div class="period" style="margin-left: 210px; ">
+						<!-- 7,14일기간 -->
+					<!-- 	<div class="period" style="margin-left: 210px; ">
 							<br>
 							<div>
 								<img
@@ -536,7 +271,7 @@
 										border="0" alt="3개월"
 										onclick="CancelInfo.PeriodSearch('03','01009');"
 										style="cursor: pointer;">
-								<!-- <span>주문일자별</span> -->
+								<span>주문일자별</span>
 								<select name="Option" id="Option"
 										style="width: 65px; height: 19px;" class="select">
 											<option value="B">예매일</option>
@@ -574,44 +309,54 @@
 											border="0" style="cursor: pointer; margin-left: 7px;">
 							</div>
 				
-						</div>
+						</div>7,14기간끝 -->
+						
 							
-					</form>
+					<!-- </form> -->
 				</div>
 
 				<!-- //기간선택 -->
 			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div class="shopping">
-				<img
-					src="http://openimage.interpark.com/_mypage_n/title/ts_list_buying_last.gif"
-					alt="쇼핑 구매내역" style="margin-left: 210px;">
+		
+			<!--  최근 구매내역-->
+			<div class="shopping" >
+				<h3 style="font:40px; margin-left: 220px;"><strong>최근 구매내역</strong></h3>
 
 				<div class="totalselect">
 					<ul style="list-style: none;">
-						<li style="margin-left: 220px">I-Point는 마이페이지에서 수동으로 구매 확정을
+						<li style="margin-left: 220px; font-size: 15px;">I-Point는 마이페이지에서 수동으로 구매 확정을
 							하셔야 적립되며, 기한 내 적립하지 않으면 자동 소멸됩니다.</li>
-						<li style="margin-left: 220px">2017년, 2018년 주문 건에 대해서는 증빙 서류
+						<li style="margin-left: 220px; font-size: 15px;">2017년, 2018년 주문 건에 대해서는 증빙 서류
 							발급이 불가능 하며, 상세 주문 내역 조회가 되지 않습니다.</li>
 					</ul>
-					<ul style="list-style: none;">
-						<hr style="margin-left: 200px;">
-						<li><a style="margin-left: 280px; list-style: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;예매일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;예매번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연명&nbsp;&nbsp;&nbsp;&nbsp;관람일&nbsp;&nbsp;&nbsp;&nbsp;매수&nbsp;&nbsp;&nbsp;&nbsp;취소가능일&nbsp;&nbsp;&nbsp;&nbsp;상태</a></li>
-						<hr style="margin-left: 200px;">
-						<li><a class="no" style="margin-left: 350px;">대상 여건이 존재하지
-								않습니다.</a></li>
-					</ul>
+					<br>
+					<table class="reserve" border="1" style="margin-left: 220px; width: 700px;" >
+							<thead>
+							<tr>
+								<th>예매일</th>
+								<th>예매번호</th>
+								<th>공연명</th>
+								<th>관람일</th>
+								<!-- <th style="border-bottom: 1px solid #bababa;text-align: center; height: 30px;">매수</th> -->
+							</tr>
+							</thead>
+							<tbody style="border: 1px solid red;">
+							 <c:if test="${not empty ReservationList}">
+								<c:forEach var="list" items="${ReservationList}"> 
+								<tr> 
+									<td style="border-bottom: 1px solid #bababa; text-align: center;">${list.rv_date }</td>
+									<td style="border-bottom: 1px solid #bababa; text-align: center;">${list.rv_num }</td>
+									<td style="border-bottom: 1px solid #bababa; text-align: center;">${list.gd_title }</td>
+									<td style="border-bottom: 1px solid #bababa; text-align: center;">${list.sd_date }</td>
+								<!-- <td style="border-bottom: 1px solid #bababa; text-align: center;">5</td> -->
+								</tr>
+								</c:forEach>
+									</c:if> 
+							</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
-
 
 
 
