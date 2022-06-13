@@ -32,5 +32,17 @@ public class ReviewDAO {
 		return mybatis.selectList("reviewDAO.reviewList", vo);
 	}
 
+	public void deleteReview(ReviewVO vo) {
+		mybatis.delete("reviewDAO.deleteReivew", vo);
+	}
+
+	public void updateReview(ReviewVO vo) {
+		mybatis.update("reviewDAO.updateReview", vo);
+	}
+
+	public ReviewVO getOneReview(ReviewVO vo) {
+		return mybatis.selectOne("reviewDAO.getOneReivew", vo);
+	}
+
 	
 }

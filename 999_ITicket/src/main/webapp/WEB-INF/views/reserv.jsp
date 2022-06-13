@@ -89,7 +89,7 @@
 		float: left;
 	} */
 	.reviewInfo {
-		display: inline-block;
+		/* display: inline-block; */
 		width: 800px;
 	}
 	.writeBtn {
@@ -112,11 +112,16 @@
 	.comCnt {
 		float: left;
 	}
-	.ReviewList {
+	/*.ReviewList {
 		border: 1px solid black;
+		border-radius: 8px;
+		
 	}
+	*/
 	.displayReview {
-		border: 1px solid black;
+		border: 1px solid #dfe5ed;
+		border-radius: 1rem;
+		padding: 2.4rem;
 	}
 	.likeCount{
 		float: left;
@@ -269,7 +274,7 @@
 							<c:if test="${detail.gr_num eq 5 }">
 								<ul>
 									<li>
-										<strong>90,000원</strong>
+										<strong>25,000원</strong>
 									</li>
 								</ul>
 							</c:if>
@@ -282,21 +287,14 @@
 		<div class="info" id="infoId">
 			<ul>
 				<li>
-					<c:if test="${detail.gr_num eq 1}">
-						<a class="audiBtn" href="#">공연정보</a>
-					</c:if>
-					<c:if test="${detail.gr_num eq 2 }">
-					
-					</c:if>
-					<c:if test="${detail.gr_num eq 3 }">
-					
-					</c:if>
-					<c:if test="${detail.gr_num eq 4}">
-
-					</c:if>
-					<c:if test="${detail.gr_num eq 5 }">
-						<a class="audiBtn" href="#">이용정보</a>
-					</c:if>
+					<c:choose>
+						<c:when test="${detail.gr_num eq 5 }">
+							<a class="audiBtn" href="#">이용정보</a>
+						</c:when>
+						<c:otherwise>
+							<a class="audiBtn" href="#">공연정보</a>
+						</c:otherwise>
+					</c:choose>
 				</li> 
 				<li>
 					<a class="detailBtn" href="#">부가정보</a>
@@ -314,34 +312,36 @@
 		
 		<div class="information">
 			<div class="audiInfo">
-				<c:if test="${detail.gr_num eq 1}">
-					<h3 class="cast">캐스팅</h3>
-					<p>${detail.gd_actor }</p>
-					<img alt="안내 사진" src="resources/posterImages/${detail.img1 }">
-					<br>
-					<img alt="프로필 안내" src="resources/posterImages/${detail.img2 }">
-				</c:if>
-				<c:if test="${detail.gr_num eq 4}">
-					<h3>공연시간 정보</h3>
-					<p>예매가능시간: 관람 5분 전까지</p>
-					<br>
-					
-					<h3>공지사항</h3>
-					<ul>
-						<li>
-							<strong>* 중도입장불가</strong>
-							<div>예매한 시간 15전 전까지 도착해주시기 바랍니다.</div>
-						</li>
-						<li>
-							<strong>* 관람연령안내</strong>
-							<div>입장 가능 연령은 8세 이상 70세이하입니다.</div>
-							<div>만 14세 미만 청소년은 법정 대리인 동의서가 필수입니다</div>
-						</li>
-					</ul>
-					<br>
-					
-					<img alt="안내문 및 프로필" src="resources/posterImages/${detail.img2 }">
-				</c:if>
+				<c:choose>
+					<c:when test="${detail.gr_num eq 5}">
+						<h3>공연시간 정보</h3>
+						<p>예매가능시간: 관람 5분 전까지</p>
+						<br>
+						
+						<h3>공지사항</h3>
+						<ul>
+							<li>
+								<strong>* 중도입장불가</strong>
+								<div>예매한 시간 15전 전까지 도착해주시기 바랍니다.</div>
+							</li>
+							<li>
+								<strong>* 관람연령안내</strong>
+								<div>입장 가능 연령은 8세 이상 70세이하입니다.</div>
+								<div>만 14세 미만 청소년은 법정 대리인 동의서가 필수입니다</div>
+							</li>
+						</ul>
+						<br>
+						
+						<img alt="안내문 및 프로필" src="resources/posterImages/${detail.img2 }">
+					</c:when>
+					<c:otherwise>
+						<h3 class="cast">캐스팅</h3>
+						<p>${detail.gd_actor }</p>
+						<img alt="안내 사진" src="resources/posterImages/${detail.img1 }">
+						<br>
+						<img alt="프로필 안내" src="resources/posterImages/${detail.img2 }">	
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<div class="detailInfo">
 				숨겨왔던 부가정보 입니다... 보고 싶지 않으셨다면 다른 버튼을 눌러주세요
@@ -362,7 +362,9 @@
 					</div>
 					<!-- 검색창이랑 글쓰기 버튼 있음 -->
 					<div class="writeBtn">
-						<a href="writeR?gd_num=${detail.gd_num }">이용후기 작성</a>					
+						<a id="writeReview" onclick="checkRL()">
+							이용후기 작성
+						</a>					
 					</div>
 					<br><br><br>
 					<hr>
@@ -372,10 +374,14 @@
 				<c:forEach var="review" items="${reviewList }">
 					<div class="displayReview">
 						<div class="likeCount">
+							<c:if test="${user eq review.user_id }">
+								<a href="reviewUpdatePage?rv_num=${review.rv_num }">수정</a>
+								<a href="#" onclick="askDelR()">삭제</a>
+							</c:if>
 							<a>${review.rv_likecnt }</a>
 						</div>
 						<div class="userInfo">
-							<a>${review.user_id }</a>
+							<a>${review.user_id } | </a>
 							<a class="reviewDate">${review.rv_regdate }</a>
 						</div>
 						<br>
@@ -402,6 +408,28 @@
 			navbar.classList.add("sticky");
 		} else {
 			navbar.classList.remove("sticky");
+		}
+	}
+	
+	function checkRL() {
+		var id = '<%=(String)session.getAttribute("user") %>';
+		if (id == "null") {
+			if (confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?")) {
+				window.location.href = "login";
+			}
+			// 예매내역 확인도 해야함
+		//} else if (){
+		//	alert("예매내역이 없으면 후기를 쓸 수 없습니다.");
+		} else {
+			var getGdNum = ${detail.gd_num};
+			window.location.href = "writeR?gd_num=" + ${detail.gd_num};
+		}
+	}
+	
+	function askDelR() {
+/* 		alert("askDelR() 실행");
+ */		if(confirm("정말로 리뷰 글을 삭제하시겠습니까?")){
+			window.location.href = "reviewDelete?rv_num=" + ${review.rv_num } + "&gd_num=" + ${review.gd_num};
 		}
 	}
 </script>

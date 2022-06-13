@@ -12,4 +12,7 @@ public interface ReviewService {
 	List<ForReservationVO> getReservDate(ReviewVO vo);
 	ScheduleVO getOneRDate(ReviewVO vo);
 	List<ReviewVO> reviewList(DetailVO vo);
+	void deleteReview(ReviewVO vo);
+	void updateReview(ReviewVO vo);
+	ReviewVO getOneReview(ReviewVO vo);
 }

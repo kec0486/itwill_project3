@@ -66,4 +66,22 @@ public class WriteRController {
 //		return null;
 //	}
 	
+	@GetMapping("reviewDelete")
+	public String deleteReview(ReviewVO vo) {
+		reviewService.deleteReview(vo);
+		return "redirect:/getDetail?gd_num=" + vo.getGd_num();
+	}
+	
+	@GetMapping("reviewUpdatePage")
+	public String goUpdatePage(ReviewVO vo, Model model) {
+		ReviewVO review = reviewService.getOneReview(vo);
+		model.addAttribute("oneReview", review);
+		return "reviewUpdate";
+	}
+	
+	@PostMapping("reviewUpdate")
+	public String updateReview(ReviewVO vo) {
+		reviewService.updateReview(vo);
+		return "redirect:/getDetail?gd_num=" + vo.getGd_num();
+	}
 }

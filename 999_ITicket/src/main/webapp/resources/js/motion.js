@@ -176,4 +176,58 @@ $(function () {
         $(".allmenu").toggle();
     });
 
+
+
+    $(".ifr_ranking dl dd ul li:eq(0) button").click(function () {
+        $(".rank_all").show();
+        $(".rank_lic").hide();
+        $(".rank_creat").hide();
+        $(".ifr_ranking dl ul li:eq(0) button").css('border-bottom', '2px solid #333');
+        $(".ifr_ranking dl ul li:eq(1) button").css('border-bottom', 0);
+        $(".ifr_ranking dl ul li:eq(2) button").css('border-bottom', 0);
+    });
+    $(".ifr_ranking dl dd ul li:eq(1) button").click(function () {
+        $(".rank_lic").show();
+        $(".rank_all").hide();
+        $(".rank_creat").hide();
+        $(".ifr_ranking dl ul li:eq(0) button").css('border-bottom', 0);
+        $(".ifr_ranking dl ul li:eq(1) button").css('border-bottom', '2px solid #333');
+        $(".ifr_ranking dl ul li:eq(2) button").css('border-bottom', 0);
+    });
+    $(".ifr_ranking dl dd ul li:eq(2) button").click(function () {
+        $(".rank_creat").show();
+        $(".rank_lic").hide();
+        $(".rank_all").hide();
+        $(".ifr_ranking dl ul li:eq(0) button").css('border-bottom', 0);
+        $(".ifr_ranking dl ul li:eq(1) button").css('border-bottom', 0);
+        $(".ifr_ranking dl ul li:eq(2) button").css('border-bottom', '2px solid #333');
+    });
+
+    $(".sc_big ul li:eq(0) a").mouseover(function () {
+        $(".bn_big img").attr("src", "sub_images/con2_banner1.gif")
+    });
+    $(".sc_big ul li:eq(1) a").mouseover(function () {
+        $(".bn_big img").attr("src", "sub_images/con2_banner2.gif")
+    });
+    $(".sc_big ul li:eq(2) a").mouseover(function () {
+        $(".bn_big img").attr("src", "sub_images/con2_banner3.gif")
+    });
+    $(".sc_big ul li:eq(3) a").mouseover(function () {
+        $(".bn_big img").attr("src", "sub_images/con2_banner4.gif")
+    });
+    $(".sc_big ul li:eq(4) a").mouseover(function () {
+        $(".bn_big img").attr("src", "sub_images/con2_banner5.gif")
+    });
+    $(".sc_big ul li:eq(5) a").mouseover(function () {
+        $(".bn_big img").attr("src", "sub_images/con2_banner6.gif")
+    });
+
+
+
+
+
+
+
+
+
 });
