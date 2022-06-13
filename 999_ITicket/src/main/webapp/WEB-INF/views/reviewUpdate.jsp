@@ -192,13 +192,17 @@
 		
 		if (writeDate.val() == ''){
 			alert("날짜를 선택해주세요!");
-		} else if (rvTitle.val() == ''){
+		}
+		if (rvTitle.val() == ''){
 			alert("제목을 입력해주세요!");
-		} else if (scoreStar == false){
+		}
+		if (scoreStar == false){
 			alert("별점을 선택해주세요!");
-		} else if (writeCon.val() == ''){
+		}
+		if (writeCon.val() == ''){
 			alert("내용을 입력해주세요!");
 		}
+		
 		writeForm.submit();
 	}
 </script>
