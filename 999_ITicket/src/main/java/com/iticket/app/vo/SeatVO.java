@@ -4,6 +4,7 @@ public class SeatVO {
 	private int st_num;
 	private int st_able;
 	private int hl_buildingnum;
+	private int st_price;
 	
 	public int getSt_num() {
 		return st_num;
@@ -23,10 +24,19 @@ public class SeatVO {
 	public void setHl_buildingnum(int hl_buildingnum) {
 		this.hl_buildingnum = hl_buildingnum;
 	}
+	public int getSt_price() {
+		return st_price;
+	}
+	public void setSt_price(int st_price) {
+		this.st_price = st_price;
+	}
 	@Override
 	public String toString() {
-		return "SeatVO [st_num=" + st_num + ", st_able=" + st_able + ", hl_buildingnum=" + hl_buildingnum + "]";
+		return "SeatVO [st_num=" + st_num + ", st_able=" + st_able + ", hl_buildingnum=" + hl_buildingnum
+				+ ", st_price=" + st_price + "]";
 	}
+	
+	
 	
 	
 }
