@@ -22,7 +22,7 @@
   		
   	</select> -->
   	<select id="reviewList" parameterType="com.iticket.app.vo.DetailVO" resultType="com.iticket.app.vo.ReviewVO">
-  		select RV_CONTENT, RV_LIKECNT, USER_ID, GD_NUM, 
+  		select RV_NUM, RV_CONTENT, RV_LIKECNT, USER_ID, GD_NUM, 
   		RV_CNT, RV_TITLE, GD_TITLE, WATCH_DATE,
   		TO_CHAR(RV_REGDATE, 'YYYY-MM-DD') rv_regdate
   		from review
@@ -30,4 +30,20 @@
   		ORDER BY RV_NUM DESC
   	</select>
   	
+  	<delete id="deleteReivew" parameterType="com.iticket.app.vo.ReviewVO">
+  		delete from review where rv_num = ${rv_num}
+  	</delete>
+  	
+  	<update id="updateReview" parameterType="com.iticket.app.vo.ReviewVO">
+  		UPDATE REVIEW
+  		SET RV_TITLE = #{rv_title}, RV_CONTENT = #{rv_content}, RV_LIKECNT = #{rv_likecnt}
+  		WHERE RV_NUM = ${rv_num}
+  	</update>
+  	
+  	<select id="getOneReivew" parameterType="com.iticket.app.vo.ReviewVO" resultType="com.iticket.app.vo.ReviewVO">
+  		SELECT *
+  		FROM REVIEW
+  		WHERE RV_NUM = #{rv_num}
+  	</select>
+  		
   </mapper>
