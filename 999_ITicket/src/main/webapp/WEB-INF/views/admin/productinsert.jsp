@@ -13,7 +13,7 @@
 		border: 1px solid black;
 		margin: 0 auto;
 	}
-	th { background-color: orange; }
+	th { background-color: gray; }
 	.center { text-align: center; }
 	
 	.border-none, .border-none td { border: none; }
@@ -25,7 +25,7 @@
 	<h1>글등록 [productinsert]</h1>
 	<p><a href="../login">로그아웃</a></p>
 	
-	<form action="getinsert" method="get"><!--  여기서 부터해야됨-->
+	<form action="getinsert"method="post" enctype="multipart/form-data"><!--  여기서 부터해야됨-->
 	<table>
 		<tr>
 			<th width="70">공연행사번호</th>
@@ -109,6 +109,12 @@
 			<th>장르번호</th>
 			<td>
 				<input type="text" name="gr_num">
+			</td>
+		</tr>
+		<tr>
+			<th>업로드</th>
+			<td>
+				<input type="file" name="uploadFile">
 			</td>
 		</tr>
 		<tr>

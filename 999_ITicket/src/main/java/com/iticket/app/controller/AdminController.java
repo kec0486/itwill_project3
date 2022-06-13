@@ -51,7 +51,7 @@ public class AdminController {
 		return "admin/write"; 
 	}
 	//업데이트 컨트롤러
-	@GetMapping("/admin/updateBoard")
+	@PostMapping("/admin/updateBoard")
 	public String updateBoard(DetailVO vo,Model model) {
 		System.out.println("게시물수정");
 		System.out.println("vo"+vo);
@@ -90,12 +90,20 @@ public class AdminController {
 	}
 
 	// 상품추가
-	@GetMapping("/admin/getinsert")
-	public String getinsert(DetailVO vo, Model model) {
+	@PostMapping("/admin/getinsert")
+	public String getinsert(DetailVO vo, Model model) throws IllegalStateException, IOException {
 		System.out.println("게시글추가");
-		System.out.println("insert vo" + vo);
+		MultipartFile uploadFile =vo.getUploadFile();
+		System.out.println("uploadfile"+uploadFile);
+		//파일 업로드 관려mutipartFile인터페이스 주요메소드
+		if(uploadFile == null) {
+			System.out.println(":::: uploadFile파라미터 값이 전달되지 않습니다.");
+		}else if(!uploadFile.isEmpty()){
+			String fileName=uploadFile.getOriginalFilename();
+			vo.setPoster(fileName);
+			uploadFile.transferTo(new File("C:/mystudy/temps"+fileName));
+		}
 		adminService.getinsert(vo);
-
 		return getBoardList(vo, model);
 
 	}

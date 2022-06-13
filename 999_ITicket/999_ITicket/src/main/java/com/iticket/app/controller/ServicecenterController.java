@@ -1,0 +1,13 @@
+package com.iticket.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ServicecenterController {
+
+	/* @Autowired */
+	//고객센터조회 
+	
+	
+}
