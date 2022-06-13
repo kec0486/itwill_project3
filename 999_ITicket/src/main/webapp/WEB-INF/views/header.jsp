@@ -79,7 +79,7 @@
                         <a href="./"><img src="resources/images/logo.GIF" alt="로고"></a>
                     </h1>
                     <div class="search">
-                        <form action="search" method="post">
+                        <form action="search" method="get">
                             <fieldset>
                                 <legend>검색폼</legend>
                                 <div class="box">

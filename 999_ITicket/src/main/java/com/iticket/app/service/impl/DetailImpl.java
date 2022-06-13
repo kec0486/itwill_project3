@@ -1,5 +1,6 @@
 package com.iticket.app.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,56 @@ public class DetailImpl implements DetailService{
 	public List<DetailVO> getClassic(DetailVO vo) {
 		return detailDAO.getClassic();
 	}
-	
+	@Override
+	public int getCount(HashMap<String, Object> map) {
+		return detailDAO.getCount(map);
+	}
+	@Override
+	public int mucount(HashMap<String, Object> map) {
+		return detailDAO.mugetCount(map);
+	}
+	@Override
+	public int cocount(HashMap<String, Object> map) {
+		return detailDAO.cogetCount(map);
+	}
+	@Override
+	public int plcount(HashMap<String, Object> map) {
+		return detailDAO.plgetCount(map);
+	}
+	@Override
+	public int clexcount(HashMap<String, Object> map) {
+		return detailDAO.clexgetCount(map);
+	}
+	@Override
+	public List<DetailVO> list(HashMap<String, Object> map) {
+		return detailDAO.list(map);
+	}
+	@Override
+	public List<DetailVO> mu_list(HashMap<String, Object> map) {
+		return detailDAO.mu_list(map);
+	}
+	@Override
+	public List<DetailVO> co_list(HashMap<String, Object> map) {
+		return detailDAO.co_list(map);
+	}
+	@Override
+	public List<DetailVO> pl_list(HashMap<String, Object> map) {
+		return detailDAO.pl_list(map);
+	}
+	@Override
+	public List<DetailVO> clex_list(HashMap<String, Object> map) {
+		return detailDAO.clex_list(map);
+	}
+	@Override
+	public List<DetailVO> imminent_list(HashMap<String, Object> map) {
+		return detailDAO.imminent_list(map);
+	}
+	@Override
+	public DetailVO next(int gd_num) {
+		return detailDAO.next(gd_num);
+	}
+	@Override
+	public DetailVO prev(int gd_num) {
+		return detailDAO.prev(gd_num);
+	}
 }

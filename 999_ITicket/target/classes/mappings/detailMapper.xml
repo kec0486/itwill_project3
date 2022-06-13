@@ -10,8 +10,122 @@
   	
   	<select id="getDetail_list" resultType="com.iticket.app.vo.DetailVO">
  		SELECT * FROM GENRE_DETAIL
+ 		ORDER BY GD_NUM DESC
  	</select>
- 	
+	<!-- 전체 글의 갯수 -->
+	 <select id="count" resultType="int" parameterType="hashmap">
+	 	select NVL(count(*),0) cnt from GENRE_DETAIL
+	 	where gd_title like '%'||#{keyword}||'%'
+	 </select>
+	 <select id="mucount" resultType="int" parameterType="hashmap">
+	 	select NVL(count(*),0) cnt from GENRE_DETAIL
+	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 1
+	 </select>
+	 <select id="cocount" resultType="int" parameterType="hashmap">
+	 	select NVL(count(*),0) cnt from GENRE_DETAIL
+	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 2
+	 </select>
+	 <select id="plcount" resultType="int" parameterType="hashmap">
+	 	select NVL(count(*),0) cnt from GENRE_DETAIL
+	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 3
+	 </select>
+	 <select id="clexcount" resultType="int" parameterType="hashmap">
+	 	select NVL(count(*),0) cnt from GENRE_DETAIL
+	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 4 or gr_num = 5
+	 </select>
+	 <select id="list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%'
+	 				order by gd_num desc
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <select id="mu_list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%' and gr_num = 1
+	 				order by gd_num desc
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <select id="co_list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%' and gr_num = 2
+	 				order by gd_num desc
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <select id="pl_list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%' and gr_num = 3
+	 				order by gd_num desc
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <select id="clex_list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%' and gr_num = 4 or gr_num = 5
+	 				order by gd_num desc
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <select id="imminent_list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%' 
+	 				and gd_endtime > SYSDATE
+	 				order by gd_endtime
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <select id="sale_list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%'
+	 				and gd_endtime > SYSDATE
+	 				order by gd_endtime
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <!-- 이전글 -->
+	 <select id="prev" parameterType="int" resultType="com.iticket.app.vo.DetailVO">
+	<![CDATA[ 	select * from
+			(
+			select * from GENRE_DETAIL where gd_num<#{gd_num} order by gd_num desc
+			) where rownum=1 ]]>
+	 </select>
+	 <!-- 다음글 -->
+	 <select id="next" parameterType="int" resultType="com.iticket.app.vo.DetailVO">
+	 <![CDATA[	 	select * from
+			(
+			select * from GENRE_DETAIL where gd_num>#{gd_num} order by gd_num asc
+			) where rownum=1 ]]>
+	 </select>
   	<select id="getMusicalName" resultType="com.iticket.app.vo.DetailVO">
   		SELECT * FROM GENRE_DETAIL
   		WHERE GR_NUM = 1

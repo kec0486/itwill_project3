@@ -1,5 +1,6 @@
 package com.iticket.app.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -43,5 +44,46 @@ public class DetailDAO {
 
 	public List<DetailVO> getClassic() {
 		return mybatis.selectList("detailDAO.getClassic");
+	}
+	public int getCount(HashMap<String, Object> map) {
+		return mybatis.selectOne("detailDAO.count",map);
+	}
+	//장르 키워드 검색
+	public int mugetCount(HashMap<String, Object> map) {
+		return mybatis.selectOne("detailDAO.mucount",map);
+	}
+	public int cogetCount(HashMap<String, Object> map) {
+		return mybatis.selectOne("detailDAO.cocount",map);
+	}
+	public int plgetCount(HashMap<String, Object> map) {
+		return mybatis.selectOne("detailDAO.plcount",map);
+	}
+	public int clexgetCount(HashMap<String, Object> map) {
+		return mybatis.selectOne("detailDAO.clexcount",map);
+	}
+	
+	public List<DetailVO> list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.list",map);
+	}
+	public List<DetailVO> mu_list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.mu_list",map);
+	}
+	public List<DetailVO> co_list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.co_list",map);
+	}
+	public List<DetailVO> pl_list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.pl_list",map);
+	}
+	public List<DetailVO> clex_list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.clex_list",map);
+	}
+	public List<DetailVO> imminent_list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.imminent_list",map);
+	}
+	public DetailVO prev(int gd_num) {
+		return mybatis.selectOne("detailDAO.prev",gd_num);
+	}
+	public DetailVO next(int gd_num) {
+		return mybatis.selectOne("detailDAO.next",gd_num);
 	}
 }

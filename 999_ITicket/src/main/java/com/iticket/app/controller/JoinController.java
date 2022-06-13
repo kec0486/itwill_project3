@@ -17,7 +17,10 @@ public class JoinController {
 	}
 	@PostMapping("/join")
 	public String join(UsersVO vo) {
+		if(vo == null) {
+			return "join";
+		}
 		service.insert(vo);
-		return "main";
+		return "login";
 	}
 }
