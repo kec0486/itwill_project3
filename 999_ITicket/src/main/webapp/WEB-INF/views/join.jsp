@@ -18,7 +18,7 @@
 	.contents {
 		width: 500px;
     	height: 700px;
-    	margin: 100px auto 50px;
+    	margin: 30px auto 50px;
 	}
 	.joinstyle {
 		height: 35px;
@@ -52,6 +52,7 @@
 		width: 93%;
 	    display: inline-block;
 	    text-align: center;
+        margin: 30px 0 50px;
 	}
 	.headerLogo {
 		 display: inline-block;
@@ -67,10 +68,10 @@
 	<a href="./" class="headerLogo">
 		<span class="blind"><img src="resources/images/logo.GIF" class="logo"></span>
 	</a>
-	<span class="join_title">정보입력</span>
 </div>
 <div class="contents">
 	<div class="contents_join">
+		<span class="join_title">정보입력</span>
 		<form:form action="join" method="post" id="joinForm">
 			<div class="joinstyle">
 			아이디<input type="text" name="user_id" id="user_id" class="joinInput" placeholder="6~20자 영문, 숫자" value="${users.user_id }"><br>
