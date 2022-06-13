@@ -1,5 +1,7 @@
 package com.iticket.app.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class DetailVO {
 	private int gd_num;
 	private String gd_actor;
@@ -126,16 +128,7 @@ public class DetailVO {
 	public void setDeletesearchKeyword(String deletesearchKeyword) {
 		this.deletesearchKeyword = deletesearchKeyword;
 	}
-	@Override
-	public String toString() {
-		return "DetailVO [gd_num=" + gd_num + ", gd_actor=" + gd_actor + ", gd_startTime=" + gd_startTime
-				+ ", gd_endTime=" + gd_endTime + ", gd_title=" + gd_title + ", gd_location=" + gd_location + ", gd_age="
-				+ gd_age + ", gd_term=" + gd_term + ", gd_plan=" + gd_plan + ", gd_runningtime=" + gd_runningtime
-				+ ", gd_servicenumber=" + gd_servicenumber + ", gd_average=" + gd_average + ", gd_price=" + gd_price
-				+ ", hl_buildingnum=" + hl_buildingnum + ", gr_num=" + gr_num + ", poster=" + poster + ", img1=" + img1
-				+ ", img2=" + img2 + ", header=" + header + ", mini_poster=" + mini_poster + ", searchKeyword="
-				+ searchKeyword + ", deletesearchKeyword=" + deletesearchKeyword + "]";
-	}
+	
 	//--------------------------------------
 	public String getPoster() {
 		return poster;
@@ -168,7 +161,26 @@ public class DetailVO {
 		this.mini_poster = mini_poster;
 	}
 	
+	//--------------------------------
+		private MultipartFile uploadFile;
 
+		public MultipartFile getUploadFile() {
+			return uploadFile;
+		}
+		public void setUploadFile(MultipartFile uploadFile) {
+			this.uploadFile = uploadFile;
+		}
+		@Override
+		public String toString() {
+			return "DetailVO [gd_num=" + gd_num + ", gd_actor=" + gd_actor + ", gd_startTime=" + gd_startTime
+					+ ", gd_endTime=" + gd_endTime + ", gd_title=" + gd_title + ", gd_location=" + gd_location
+					+ ", gd_age=" + gd_age + ", gd_term=" + gd_term + ", gd_plan=" + gd_plan + ", gd_runningtime="
+					+ gd_runningtime + ", gd_servicenumber=" + gd_servicenumber + ", gd_average=" + gd_average
+					+ ", gd_price=" + gd_price + ", hl_buildingnum=" + hl_buildingnum + ", gr_num=" + gr_num
+					+ ", poster=" + poster + ", img1=" + img1 + ", img2=" + img2 + ", header=" + header
+					+ ", mini_poster=" + mini_poster + ", searchKeyword=" + searchKeyword + ", deletesearchKeyword="
+					+ deletesearchKeyword + ", uploadFile=" + uploadFile + "]";
+		}
 
 
 

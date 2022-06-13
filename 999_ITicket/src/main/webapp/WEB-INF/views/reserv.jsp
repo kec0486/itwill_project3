@@ -121,10 +121,12 @@
 	.displayReview {
 		border: 1px solid #dfe5ed;
 		border-radius: 1rem;
-		padding: 2.4rem;
+		padding: 25px;
+		font-size: 14px;
 	}
 	.likeCount{
 		float: left;
+		
 	}
 	.userInfo{
 		float: right;
@@ -133,6 +135,26 @@
 		display: inline-block;
 		max-width: 39rem;
 		vertical-align: top;
+	}
+	.likeCount img{
+		width: 27px;
+		height: 23px;
+	}
+	.updateBtn{
+		border: 1px solid #ccc;
+		text-align: center;
+		background-color: white;
+		border-radius: 0.4rem;
+		padding: 2px;
+		color: #666;
+	}
+	.deleteBtn{
+		border: 1px solid #ccc;
+		text-align: center;
+		background-color: white;
+		border-radius: 0.4rem;
+		padding: 2px;
+		color: #666;
 	}
 </style>
 </head>
@@ -195,11 +217,40 @@
 		<div class="likePart">
 			<div class="prdLikeIcon">
 				<!-- 별이든 하트든 별점 평균점수에 맞춰서 채워짐 -->
+				
+				<%-- <c:if test="${detail.gd_average <= 8 && detail.gd_average > 6 }">
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+				</c:if>
+				<c:if test="${detail.gd_average <= 6 && detail.gd_average > 4 }">
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+				</c:if>
+				<c:if test="${detail.gd_average <= 4 && detail.gd_average > 2 }">
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+				</c:if>
+				<c:if test="${detail.gd_average <= 2 && detail.gd_average > 0 }">
+					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+					<a><img alt="별점" src="resources/images/icon_star.png"></a>
+				</c:if> --%>
 				<a>별점 아이콘</a>
 			</div>
 			<div class="prdLikeScore">
 				<!-- 리뷰게시판에 매긴 별점 평균내서 나오게 하지 -->
-				<a>별점 점수</a>
+				<a>별점 점수 <strong>${detail.gd_average }</strong></a>
 			</div>
 		</div>
 		
@@ -302,7 +353,7 @@
 				<li>
 					<a class="reviewBtn" href="#">
 						관람후기
-						<span>(35)</span>
+						<span>(${reviewCount })</span>
 					</a>
 				</li>
 			</ul>
@@ -351,12 +402,15 @@
 				<p>게시판 운영 규정에 어긋난다고 판단되는 게시글은 사전 통보없이 블라인드 처리될 수 있습니다.</p>
 				<p>특히 티켓 매매 및 양도의 댓글은 발견 즉시 임의 삭제 되며 전화번호, 이메일 등의 개인정보는 악용될 우려가 있으므로 게시를 삼가 주시기 바랍니다.</p>
 				<br>
-				<h2>이용 평점</h2>
+				<h2>이용 평점 ${detail.gd_average }</h2>
+				<span class="averageStar">
+					<%-- ${detail.gd_average } --%>
+				</span>
 				<br>
 				<div class="reviewDetail">
 					<div class="comCnt">
 						<strong>
-							총 <span>18</span>개의 이용후기가 등록되었습니다.						
+							총 <span>${reviewCount }</span>개의 이용후기가 등록되었습니다.						
 						</strong>
 						<!-- <p>총 67개의 이용후기가 등록되었습니다. </p> -->
 					</div>
@@ -374,17 +428,58 @@
 				<c:forEach var="review" items="${reviewList }">
 					<div class="displayReview">
 						<div class="likeCount">
-							<c:if test="${user eq review.user_id }">
-								<a href="reviewUpdatePage?rv_num=${review.rv_num }">수정</a>
-								<a href="#" onclick="askDelR()">삭제</a>
+							<%-- <div>
+								<c:if test="${user eq review.user_id }">
+									<a href="reviewUpdatePage?rv_num=${review.rv_num }">${review.rv_num } 수정</a>
+									<a href="#" onclick="askDelR()">삭제</a>
+								</c:if>
+							</div> --%>
+							<c:if test="${review.rv_likecnt eq 2 }">
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
 							</c:if>
-							<a>${review.rv_likecnt }</a>
+							<c:if test="${review.rv_likecnt eq 4 }">
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+							</c:if>
+							<c:if test="${review.rv_likecnt eq 6 }">
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+							</c:if>
+							<c:if test="${review.rv_likecnt eq 8 }">
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star.png"></a>
+							</c:if>
+							<c:if test="${review.rv_likecnt eq 10 }">
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
+							</c:if>
+							<%-- <a>${review.rv_likecnt }</a> --%>
 						</div>
 						<div class="userInfo">
+							<c:if test="${user eq review.user_id }">
+								<a class="updateBtn" href="reviewUpdatePage?rv_num=${review.rv_num }">수정</a>
+								<a class="deleteBtn" href="reviewDelete?rv_num=${review.rv_num }&gd_num=${review.gd_num}" >삭제</a>
+							</c:if>
 							<a>${review.user_id } | </a>
 							<a class="reviewDate">${review.rv_regdate }</a>
 						</div>
-						<br>
+						<br><br>
 						<strong>${review.rv_title }</strong>
 						<p>${review.rv_content }</p>
 					</div>
@@ -412,7 +507,8 @@
 	}
 	
 	function checkRL() {
-		var id = '<%=(String)session.getAttribute("user") %>';
+		alert("checkRL() 실행");
+		var id = '<%=(String)session.getAttribute("user")%>';
 		if (id == "null") {
 			if (confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?")) {
 				window.location.href = "login";
@@ -427,10 +523,15 @@
 	}
 	
 	function askDelR() {
-/* 		alert("askDelR() 실행");
- */		if(confirm("정말로 리뷰 글을 삭제하시겠습니까?")){
-			window.location.href = "reviewDelete?rv_num=" + ${review.rv_num } + "&gd_num=" + ${review.gd_num};
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 		alert("askDelR() 실행");
+ 		if(confirm("정말로 리뷰 글을 삭제하시겠습니까?")){
+ 			/* <c:forEach items="${reviewList}" var="review">
+ 			</c:forEach> */
+			//window.location.href = "reviewDelete?rv_num=" /* ${review.rv_num } +  "&gd_num="  + ${review.gd_num} */;
 		}
 	}
+	
+	
 </script>
 </html>

@@ -120,29 +120,29 @@
 		<tr>
 			<th>별점<th>
 			<td height="30">
-				<input class="scoreStar" type="radio" name="rv_likecnt" value="5">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="10">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				 <a>강력 좋음</a>
-				<input class="scoreStar" type="radio" name="rv_likecnt" value="4">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="8">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>좋음</a>
-				<input class="scoreStar" type="radio" name="rv_likecnt" value="3">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="6">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>보통임</a>
-				<input class="scoreStar" type="radio" name="rv_likecnt" value="2">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="4">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>약간 아쉽</a>
-				<input class="scoreStar" type="radio" name="rv_likecnt" value="1">
+				<input class="scoreStar" type="radio" name="rv_likecnt" value="2">
 				<img alt="별점" src="http://ticketimage.interpark.com/TicketImage/event/community/s_star_icon.gif">
 				<a>실망 그 자체</a>
 			</td>
@@ -188,21 +188,41 @@
 <script>
 	function checkReview() {
 		var writeDate = $('input[name=gd_regdate]'); //날짜
+		console.log("gd_regdate : " + JSON.stringify(writeDate.data));
 		var rvTitle = $('input[name=rv_title]'); //리뷰제목
+		console.log("rv_title: " + rvTitle);
 		var scoreStar = $('input[name=rv_likecnt]').is(':checked'); //별점
 		console.log("scoreStar.val() : " + scoreStar);
 		var writeCon = $('input[name=rv_content]'); //내용
+		console.log("rv_content: " + writeCon);
 		
-		if (writeDate.val() == ''){
-			alert("날짜를 선택해주세요!");
-		} else if (rvTitle.val() == ''){
-			alert("제목을 입력해주세요!");
-		} else if (scoreStar == false){
+		if (writeDate.val() == "" || scoreStar == false || rvTitle.val() == "" || writeCon.val() == ''){
+			if (writeDate.val() == "null"){
+				alert("날짜를 선택해주세요!");
+				return false;
+			}else if (scoreStar == false){
+				alert("별점을 선택해주세요!");
+				return false;
+			}else if (rvTitle.val() == undefined){
+				alert("제목을 입력해주세요!");
+				return false;
+			}else if (writeCon.val() == ''){
+				alert("내용을 입력해주세요!");
+				return false;
+			}
+		}
+		/* } else if (scoreStar == false){
 			alert("별점을 선택해주세요!");
+			return false;
+		} else if (rvTitle.val() == undefined){
+			alert("제목을 입력해주세요!");
+			return false;
 		} else if (writeCon.val() == ''){
 			alert("내용을 입력해주세요!");
-		}
-		writeForm.submit();
+			return false;
+		} */
+		return true;
+		
 	}
 	
 	function openReservDate() {
