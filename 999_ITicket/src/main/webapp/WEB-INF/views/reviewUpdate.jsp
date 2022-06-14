@@ -192,6 +192,7 @@
 		
 		if (writeDate.val() == ''){
 			alert("날짜를 선택해주세요!");
+			return false;
 		}
 		if (rvTitle.val() == ''){
 			alert("제목을 입력해주세요!");

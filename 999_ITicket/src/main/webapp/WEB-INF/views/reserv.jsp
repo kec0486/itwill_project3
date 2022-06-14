@@ -156,6 +156,31 @@
 		padding: 2px;
 		color: #666;
 	}
+	.reservBtn{
+		border: 1px solid #ef3f43;
+		background-color: #ef3f43;
+		color: white;
+		border-radius: 8px;
+  		padding: 5px;
+  		margin: 0px;
+  		font-size: 17px;
+	}
+	#scrollTopPc {
+	 	position: fixed;
+	  	bottom: 201px; /* 윗쪽 끝에서부터의 거리 */
+	  	right: 450px; /* 오른쪽 끝에서부터의 거리 */
+	  	cursor: pointer;
+	  	z-index: 99;
+	  	border: 1px solid #e1e4e9;
+	  	border-radius: 10px;
+	  	width: 53px;
+	  	height: 52px;
+	}
+	#scrollTopPc img {
+		width: 24px;
+		margin-left: 14px;
+		margin-top: 5px;
+	}
 </style>
 </head>
 <script>
@@ -217,40 +242,11 @@
 		<div class="likePart">
 			<div class="prdLikeIcon">
 				<!-- 별이든 하트든 별점 평균점수에 맞춰서 채워짐 -->
-				
-				<%-- <c:if test="${detail.gd_average <= 8 && detail.gd_average > 6 }">
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-				</c:if>
-				<c:if test="${detail.gd_average <= 6 && detail.gd_average > 4 }">
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-				</c:if>
-				<c:if test="${detail.gd_average <= 4 && detail.gd_average > 2 }">
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-				</c:if>
-				<c:if test="${detail.gd_average <= 2 && detail.gd_average > 0 }">
-					<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-					<a><img alt="별점" src="resources/images/icon_star.png"></a>
-				</c:if> --%>
 				<a>별점 아이콘</a>
 			</div>
 			<div class="prdLikeScore">
 				<!-- 리뷰게시판에 매긴 별점 평균내서 나오게 하지 -->
-				<a>별점 점수 <strong>${detail.gd_average }</strong></a>
+				<a>별점 점수<strong>${detail.gd_average }</strong></a>
 			</div>
 		</div>
 		
@@ -274,7 +270,7 @@
 				<ul>
 					<li>
 						<strong>공연시간&nbsp;</strong>
-						<a> ${detail.gd_runningtime }</a>
+						<a> ${detail.gd_runningtime }분</a>
 					</li>
 				</ul>
 				<ul>
@@ -330,6 +326,11 @@
 								</ul>
 							</c:if>
 						</div>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a class="reservBtn" href="get_schedule_list?gd_num=${detail.gd_num }">상영시간 선택하기</a><br>
 					</li>
 				</ul>
 			</div>
@@ -428,12 +429,6 @@
 				<c:forEach var="review" items="${reviewList }">
 					<div class="displayReview">
 						<div class="likeCount">
-							<%-- <div>
-								<c:if test="${user eq review.user_id }">
-									<a href="reviewUpdatePage?rv_num=${review.rv_num }">${review.rv_num } 수정</a>
-									<a href="#" onclick="askDelR()">삭제</a>
-								</c:if>
-							</div> --%>
 							<c:if test="${review.rv_likecnt eq 2 }">
 								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
 								<a><img alt="별점" src="resources/images/icon_star.png"></a>
@@ -469,7 +464,6 @@
 								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
 								<a><img alt="별점" src="resources/images/icon_star_on.png"></a>
 							</c:if>
-							<%-- <a>${review.rv_likecnt }</a> --%>
 						</div>
 						<div class="userInfo">
 							<c:if test="${user eq review.user_id }">
@@ -485,6 +479,11 @@
 					</div>
 					<br>
 				</c:forEach>
+			</div>
+		</div>
+		<div>
+			<div onclick="topFunction()" id="scrollTopPc" class="hidden-md hidden-sm hidden-xs">
+    			<img src="resources/images/topButton.png">
 			</div>
 		</div>
 	</div>
@@ -531,6 +530,25 @@
 			//window.location.href = "reviewDelete?rv_num=" /* ${review.rv_num } +  "&gd_num="  + ${review.gd_num} */;
 		}
 	}
+	
+	window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            document.getElementById("scrollTopPc").style.display = "block";
+            document.getElementById("scrollTopMob").style.display = "block";
+            document.getElementById("scrollDownPc").style.display = "block";
+            document.getElementById("scrollDownMob").style.display = "block";
+        } else {
+            document.getElementById("scrollTopPc").style.display = "none";
+            document.getElementById("scrollTopMob").style.display = "none";
+            document.getElementById("scrollDownPc").style.display = "none";
+            document.getElementById("scrollDownMob").style.display = "none";
+        }
+    }
+    
+    function topFunction() {
+        $('html,body').animate( {scrollTop:0 }, 500);
+    }
 	
 	
 </script>
