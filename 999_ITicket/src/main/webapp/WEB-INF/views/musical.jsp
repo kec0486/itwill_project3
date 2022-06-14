@@ -31,7 +31,7 @@
 	                <dl>
 	                    <dt>
 	                        <a href="getDetail?gd_num=${detail.gd_num }">
-	                            <img src="resources/sub_images/${detail.mini_poster }" alt="${detail.gd_title }">
+	                            <img src="resources/posterImages/${detail.poster }" width="128px" height="126px" alt="${detail.gd_title }">
 	                        </a>
 	                    </dt>
 	

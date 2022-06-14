@@ -39,7 +39,18 @@ public class HomeController {
 	private DetailService dservice;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpServletRequest req) {
+	public String home(HttpServletRequest req, Model model, DetailVO vo) {
+		List<DetailVO> list = dservice.getNameList(vo);
+		List<DetailVO> pList = dservice.getPlaying(vo);
+		List<DetailVO> cList = dservice.getClassic(vo);
+		List<DetailVO> ccList = dservice.getConcert(vo);
+		List<DetailVO> exList = dservice.getExhiName();
+		System.out.println("list: " + list);
+		model.addAttribute("musicalList", list);
+		model.addAttribute("playingList", pList);
+		model.addAttribute("classicList", cList);
+		model.addAttribute("concertList", ccList);
+		model.addAttribute("exhibiList", exList);
 		return "home";
 	}
 //	@GetMapping("/main")
