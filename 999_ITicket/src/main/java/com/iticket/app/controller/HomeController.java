@@ -110,15 +110,6 @@ public class HomeController {
 		map.put("endRow", endRow);
 		ModelAndView mv=new ModelAndView();
 		List<DetailVO> all_list= null;			
-		if(seq == null) {
-			all_list=dservice.list(map);	
-		}else if(seq.equals("imminent")) {
-			all_list=dservice.imminent_list(map);	
-		}else if(seq.equals("sale")) {
-			all_list=dservice.list(map);			
-		}else if(seq.equals("average")) {
-			all_list=dservice.list(map);			
-		}
 		if(genre == null) {
 			all_list=dservice.list(map);
 		}else if(genre.equals("1")) {
@@ -137,6 +128,27 @@ public class HomeController {
 			all_list=dservice.ex_list(map);
 			pu=new PageUtil(pageNum, 5, 5, excount);
 		}
+		int count = 0;
+		List<DetailVO> seq_list= null;
+		if(seq == null) {
+			seq_list=dservice.list(map);	
+		}else if(seq.equals("imminent")) {
+
+			seq_list=dservice.imminent_list(map);
+			
+			for(DetailVO list : all_list) {
+				count++;
+			}
+			pu=new PageUtil(pageNum, 5, 5, count);
+		}else if(seq.equals("sale")) {
+			seq_list=dservice.sale_list(map);	
+			
+			for(DetailVO list : all_list) {
+				count++;
+			}
+			pu=new PageUtil(pageNum, 5, 5, count);
+		}
+		
 		for(DetailVO list : all_list) {
 			String genre_name = dservice.genreSelectOne(list.getGr_num());
 			mv.addObject("genre_name",genre_name);
@@ -149,6 +161,7 @@ public class HomeController {
 		mv.addObject("clexcount",clexcount);
 		mv.addObject("excount",excount);
 		mv.addObject("all_list",all_list);
+		mv.addObject("seq_list",seq_list);
 		mv.addObject("pu",pu);
 		mv.addObject("genre",genre);
 		mv.addObject("keyword",keyword);

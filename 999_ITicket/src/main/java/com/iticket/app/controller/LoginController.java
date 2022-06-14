@@ -75,7 +75,7 @@ public class LoginController {
 	public String updatepw(UsersVO vo, Model model) {
 		System.out.println(vo);
 		service.updatepw(vo);
-		return "pwFindOk";
+		return "pwFind";
 	}
 //	@PostMapping("/login")
 //	public String login(UsersVO vo,HttpSession session,Model model) {

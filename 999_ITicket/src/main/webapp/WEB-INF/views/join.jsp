@@ -72,165 +72,231 @@
 <div class="contents">
 	<div class="contents_join">
 		<span class="join_title">정보입력</span>
-		<form:form action="join" method="post" id="joinForm">
+		<form:form action="join" method="post" onsubmit="return joinCheck()">
 			<div class="joinstyle">
-			아이디<input type="text" name="user_id" id="user_id" class="joinInput" placeholder="6~20자 영문, 숫자" value="${users.user_id }"><br>
-			<div id="uErrorText"></div>
+				아이디<input type="text" name="user_id" id="user_id" class="joinInput" placeholder="6~20자 영문, 숫자" value="${users.user_id }">
+				<div id="u_idErrorText"></div>
 			</div>
 			<div class="joinstyle">
-			비밀번호<input type="password" id="user_pw" name="user_pw" class="joinInput" placeholder="8~12자 영문, 숫자, 특수문자"><br>
+				비밀번호<input type="password" id="user_pw" name="user_pw" class="joinInput" placeholder="8~12자 영문, 숫자, 특수문자"><br>
+				<div id="u_pwErrorText"></div>
 			</div>
-			<div class="uErrorText"></div>
 			<div class="joinstyle">
-			비밀번호확인<input type="password" id="user_pw1" class="joinInput" placeholder="8~12자 영문, 숫자, 특수문자"><br>
+				비밀번호확인<input type="password" id="user_pw1" class="joinInput" placeholder="8~12자 영문, 숫자, 특수문자"><br>
+				<div id="u_pw1ErrorText"></div>
 			</div>
-			<div class="uErrorText"></div>
 			<div class="joinstyle">
-			이름<input type="text" name="user_name" id="user_name" class="joinInput" value="${users.user_name }" placeholder="홍길동"><br>
+				이름<input type="text" name="user_name" id="user_name" class="joinInput" value="${users.user_name }" placeholder="홍길동"><br>
+				<div id="u_nameErrorText"></div>
 			</div>
-			<div class="uErrorText"></div>
 			<div class="joinstyle">
-			이메일<input type="email" name="email" id="email" class="joinInput" value="${users.email }" placeholder="hong@google.com"><br>
+				이메일<input type="email" name="email" id="email" class="joinInput" value="${users.email }" placeholder="hong@google.com"><br>
+				<div id="u_emailErrorText"></div>
 			</div>
-			<div class="uErrorText"></div>
 			<div class="joinstyle">
-			휴대폰<input type="text" name="phone" id="phone" class="joinInput" placeholder="01012345678"><br>
+				휴대폰<input type="text" name="phone" id="phone" class="joinInput" placeholder="01012345678"><br>
+				<div id="u_phoneErrorText"></div>
 			</div>
-			<div class="uErrorText"></div>
 			만 14세 미만 회원은 법정대리인(부모님) 동의를 받은 경우만 회원가입이 가능합니다.<br>
 			<input type="submit" value="가입완료" class="join_btn">
 		</form:form>
 	</div>
 </div>
 <script type="text/javascript">
-	/* function joinCheck() {
-		alert("확인");
-		let id = $("#user_id").val();
-		if(id == ""){
-			alert("확인1");
-			$("#uErrorText").text("아이디입력바람");
-			return false;
-		}
-		return false;
-	} */
-	$("#joinForm").submit(function(e){
-		e.preventDefault();
-		//id 유효성 검사 정규식
-		var RegExp = /^[a-z0-9]{6,12}$/;
-		//비밀번호 유효성 검사
-		var p_RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,20}$/;
-        //이메일 유효성검사
-        var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        //이름 유효성검사 정규식
-        var n_RegExp = /^[가-힣]{2,15}$/;
-        //전화번호 유효성검사 정규식
-        var t_RegExp = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g;
+	/* $(function() {
+	    $("#test").on("keyup", function() {
+	        var flag = true;
+	        flag = $(this).val().length > 0 ? false : true;
+	        $("#btn-submit").attr("disabled", flag);
+	    });
+	}); */
+	var RegExp = /^[a-z0-9]{6,12}$/;
+	//비밀번호 유효성 검사
+	var p_RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,20}$/;
+    //이메일 유효성검사
+    var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    //이름 유효성검사 정규식
+    var n_RegExp = /^[가-힣]{2,15}$/;
+    //전화번호 유효성검사 정규식
+    //var t_RegExp = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g;
+     var objId = document.getElementById("user_id"); //아이디
+     var objPwd = document.getElementById("user_pw"); //비번
+     var objPwd1 = document.getElementById("user_pw1"); //비번
+     var objName = document.getElementById("user_name"); //이름
+     var objEmail = document.getElementById("email"); //메일
+     var objPhone = document.getElementById("phone"); //전화번호
+	 function joinCheck() {
         
-        var objId = document.getElementById("user_id"); //아이디
-        var objPwd = document.getElementById("user_pw"); //비번
-        var objPwd1 = document.getElementById("user_pw1"); //비번
-        var objName = document.getElementById("user_name"); //이름
-        var objEmail = document.getElementById("email"); //메일
-        var objPhone = document.getElementById("phone"); //전화번호
         //아이디
         if(objId.value==''){
-            alert("아이디를 입력해주세요.");
+            $("#u_idErrorText").html("아이디를 입력해주세요.").css("color","red");
             objId.focus();
-            return;
+            return false;
         }
         if(!RegExp.test(objId.value)){ //아이디 유효성검사
-            alert("아이디는 6~12자의 영문 소문자와 숫자로만 입력해주세요.");        
+        	$("#u_idErrorText").html("아이디는 6~12자의 영문 소문자와 숫자로만 입력해주세요.").css("color","red");        
             objId.focus();
-            return;
+            return false;
         }
-        /* var idInvalidCheck;
-        $.ajax({
-			type:"POST",
-			url:"${cp}/idInvalid",
-			data:{
-				'id':objId.val()
-			},
-			dataType:"json",
-			success:function(data){
-				if(data == true){
-					idInvalidCheck = true;
-					$('#idInput').removeClass('is-invalid');
-					$('#idInput').addClass('is-valid');
-					$('#invalid-feedback').css('display','none');
-				    $('#valid-feedback').css('display','block');
-					alert('사용가능한 아이디입니다.');
-				}else{
-					idInvalidCheck = false;
-					alert('이미 사용중인 아이디입니다.');
-				}
-			}
-		}) */
-        //비밀번호
+      	//비밀번호
         if(objPwd.value==''){
-            alert("비밀번호를 입력해주세요.");
+        	$("#u_pwErrorText").html("비밀번호를 입력해주세요.").css("color","red");
             objPwd.focus();
-            return;
+            return false;
         }
         if (!p_RegExp.test(objPwd.value)) {
-            alert("비밀번호는 6~20자의 영문자,숫자,특수문자 조합으로 입력해주세요.");
+        	$("#u_pwErrorText").html("비밀번호는 6~20자의 영문자,숫자,특수문자 조합으로 입력해주세요.").css("color","red");
             objPwd.focus();
-            return;
+            return false;
           };
           if(objPwd1.value==''){
-              alert("비밀번호확인을 입력해주세요.");
+        	  $("#u_pw1ErrorText").html("비밀번호확인을 입력해주세요.").css("color","red");
               objPwd1.focus();
-              return;
+              return false;
           }
           if(objPwd.value != objPwd1.value){
-              alert("비밀번호가 일치하지 않습니다.");
+        	  $("#u_pw1ErrorText").html("비밀번호가 일치하지 않습니다.").css("color","red");
               objPwd1.focus();
-              return;
+              return false;
           }
         //이름
           if(objName.value==''){
-              alert("이름을 입력해주세요.");
+        	  $("#u_nameErrorText").html("이름을 입력해주세요.").css("color","red");
               objName.focus();
-              return;
+              return false;
           }
 		//이메일
         if(objEmail.value==''){
-            alert("이메일을 입력해주세요.");
+        	$("#u_emailErrorText").html("이메일을 입력해주세요.").css("color","red");
             objEmail.focus();
-            return;
+            return false;
         }
         if(!e_RegExp.test(objEmail.value)){ //이메일 유효성 검사
-            alert("올바른 이메일 형식이 아닙니다.");
+        	$("#u_emailErrorText").html("올바른 이메일 형식이 아닙니다.").css("color","red");
             objEmail.focus();
-            return;
+            return false;
         }
         //전화번호
         if(objPhone.value==''){
-            alert("전화번호를 입력해주세요.");
+        	$("#u_phoneErrorText").html("전화번호를 입력해주세요.").css("color","red");
             objPhone.focus();
-            return;
+            return false;
         }
-        if(!t_RegExp.test(objPhone.value)){
-            alert("올바른 연락처 형식을 입력해주세요.");
+        /* if(!t_RegExp.test(objPhone.value)){
+        	$("#u_phoneErrorText").html("올바른 연락처 형식을 입력해주세요.").css("color","red");
             objPhone.focus();
-            return;
+            return false;
+        } */
+        alert("회원가입이 완료되었습니다. 아이티켓에 오신것을 환영합니다.")
+        return true;
+
+	}
+	$('#user_id').change(function(){
+		var objId = $("#user_id").val();
+		//아이디
+        if(objId==''){
+            $("#u_idErrorText").html("아이디를 입력해주세요.").css("color","red");
+            objId.focus();
+            return false;
         }
-		//let params=$(this).serialize();
-		/* $.ajax({
-			type:"POST",
-			url:"${cp}/join",
-			data:params,
-			dataType:"json",
-			success:function(data){
-				if(data>0){
-					$(".btn-joinClose").click();
-					$('#alert_join_success').show();
-				}else{
-					alert('서버가 불안정하여 회원가입에 실패했습니다. 이용에 불편을 드려서 죄송합니다.');
-				}
+        if(!RegExp.test(objId)){ //아이디 유효성검사
+        	$("#u_idErrorText").html("아이디는 6~12자의 영문 소문자와 숫자로만 입력해주세요.").css("color","red");        
+            objId.focus();
+            return false;
+        }
+		console.log(objId);
+    	$.ajax({
+		type:"POST",
+		url:"idInvalid",
+		data:{
+			"id": objId
+		}, 
+		dataType:"text",
+		success:function(data){
+			 if(data == "fail"){
+				 $("#u_idErrorText").html('사용가능한 아이디입니다.').css("color","black");
+			}else{
+				 $("#u_idErrorText").html('이미 사용 중이거나 탈퇴한 아이디입니다.').css("color","red");
 			}
-		}) */
-		return true;
+		}
+		});
 	});
+	$('#user_pw').change(function(){
+		var objPwd = $("#user_pw").val();
+		//비밀번호 유효성 검사
+		var p_RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,20}$/;
+		
+		if(objPwd==''){
+        	$("#u_pwErrorText").html("비밀번호를 입력해주세요.").css("color","red");
+            objPwd.focus();
+            return false;
+        }else if (!p_RegExp.test(objPwd)) {
+        	$("#u_pwErrorText").html("비밀번호는 6~20자의 영문자,숫자,특수문자 조합으로 입력해주세요.").css("color","red");
+            objPwd.focus();
+            return false;
+          }else {
+        	 $("#u_pwErrorText").html("");
+          	return true;
+         };
+	});
+	$('#user_pw1').change(function(){
+		 if(objPwd1.value==''){
+       	  $("#u_pw1ErrorText").html("비밀번호확인을 입력해주세요.").css("color","red");
+             objPwd1.focus();
+             return false;
+         }else if(objPwd.value != objPwd1.value){
+       	  $("#u_pw1ErrorText").html("비밀번호가 일치하지 않습니다.").css("color","red");
+             objPwd1.focus();
+             return false;
+         }else {
+        	 $("#u_pw1ErrorText").html("");
+        	 return true;
+         }
+	});
+	$('#user_name').change(function(){
+		if(objName.value==''){
+      	  $("#u_nameErrorText").html("이름을 입력해주세요.").css("color","red");
+            objName.focus();
+            return false;
+        }else {
+        	$("#u_nameErrorText").html("");
+        	return true;
+        }
+	});
+	$('#email').change(function(){
+		//이메일
+        if(objEmail.value==''){
+        	$("#u_emailErrorText").html("이메일을 입력해주세요.").css("color","red");
+            objEmail.focus();
+            return false;
+        }else
+        if(!e_RegExp.test(objEmail.value)){ //이메일 유효성 검사
+        	$("#u_emailErrorText").html("올바른 이메일 형식이 아닙니다.").css("color","red");
+            objEmail.focus();
+            return false;
+        }else {
+        	$("#u_emailErrorText").html("");
+        	return true;
+        }
+	});
+	$('#phone').change(function(){
+		//전화번호
+        if(objPhone.value==''){
+        	$("#u_phoneErrorText").html("전화번호를 입력해주세요.").css("color","red");
+            objPhone.focus();
+            return false;
+        }/*else
+         if(!t_RegExp.test(objPhone.value)){
+        	$("#u_phoneErrorText").html("올바른 연락처 형식을 입력해주세요.").css("color","red");
+            objPhone.focus();
+            return false;
+        } */else {
+        	$("#u_phoneErrorText").html("");
+        	return true;
+        }
+	});
+
+	
 </script>
 </body>
 </html>

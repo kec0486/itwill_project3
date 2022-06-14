@@ -114,11 +114,11 @@
 		<div class="category">
 			<ul>
 				<li><a href="search?keyword=${keyword }">전체(${cnt })</a></li>
-				<li><a href="search?keyword=${keyword }&genre=1">뮤지컬(${muCount })</a></li>
-				<li><a href="search?keyword=${keyword }&genre=2">콘서트(${cocount })</a></li>
-				<li><a href="search?keyword=${keyword }&genre=3">연극(${plcount })</a></li>
-				<li><a href="search?keyword=${keyword }&genre=4">클래식/무용(${clexcount })</a></li>
-				<li><a href="search?keyword=${keyword }&genre=5">전시/행사(${excount })</a></li>
+				<li><a href="search?genre=1&keyword=${keyword }">뮤지컬(${muCount })</a></li>
+				<li><a href="search?genre=2&keyword=${keyword }">콘서트(${cocount })</a></li>
+				<li><a href="search?genre=3&keyword=${keyword }">연극(${plcount })</a></li>
+				<li><a href="search?genre=4&keyword=${keyword }">클래식/무용(${clexcount })</a></li>
+				<li><a href="search?genre=5&keyword=${keyword }">전시/행사(${excount })</a></li>
 			</ul>
 			<div class="select_seq">
 				<span><a href="search?keyword=${keyword }">정확도순</a></span> | 
@@ -130,26 +130,71 @@
 		</div>
 		<div class="searchView">
 			<ul class="itemList">
-				<c:if test="${seq.param eq imminent }"></c:if>
-				<c:forEach var="list" items="${all_list }">
-					<li>
-						<div class="itemPhoth"><a href="getDetail?gd_num=${list.gd_num }"><img src="resources/posterImages/${list.poster }"></a>
-						</div>
-						<div class="itemData">
-							<div class="itemTitle"><h3><a href="getDetail?gd_num=${list.gd_num }">${list.gd_title }</a></h3></div>
-							<br>
-							<div class="itemText">
-								<div class="itemContents">${genre_name } | ${list.gd_runningtime }분 | ${list.gd_age }</div>
-								<div class="itemActor">출연:${list.gd_actor }</div>
-							</div>
-						</div>
-						<div class="itemInfo">
-							<div class="itemLocation">${list.gd_location }</div>
-							<div class="itemDate">${list.gd_startTime } ~ ${list.gd_endTime }</div>
-						</div>
-					</li>
-					<hr>
-				</c:forEach>
+				<c:choose>
+					<c:when test="${seq.param eq imminent }">
+						<c:forEach var="list" items="${seq_list }">
+							<li>
+								<div class="itemPhoth"><a href="getDetail?gd_num=${list.gd_num }"><img src="resources/posterImages/${list.poster }"></a>
+								</div>
+								<div class="itemData">
+									<div class="itemTitle"><h3><a href="getDetail?gd_num=${list.gd_num }">${list.gd_title }</a></h3></div>
+									<br>
+									<div class="itemText">
+										<div class="itemContents">${genre_name } | ${list.gd_runningtime }분 | ${list.gd_age }</div>
+										<div class="itemActor">출연:${list.gd_actor }</div>
+									</div>
+								</div>
+								<div class="itemInfo">
+									<div class="itemLocation">${list.gd_location }</div>
+									<div class="itemDate">${list.gd_startTime } ~ ${list.gd_endTime }</div>
+								</div>
+							</li>
+							<hr>
+						</c:forEach>
+					</c:when>
+					<c:when test="${seq.param eq sale }">
+						<c:forEach var="list" items="${seq_list }">
+							<li>
+								<div class="itemPhoth"><a href="getDetail?gd_num=${list.gd_num }"><img src="resources/posterImages/${list.poster }"></a>
+								</div>
+								<div class="itemData">
+									<div class="itemTitle"><h3><a href="getDetail?gd_num=${list.gd_num }">${list.gd_title }</a></h3></div>
+									<br>
+									<div class="itemText">
+										<div class="itemContents">${genre_name } | ${list.gd_runningtime }분 | ${list.gd_age }</div>
+										<div class="itemActor">출연:${list.gd_actor }</div>
+									</div>
+								</div>
+								<div class="itemInfo">
+									<div class="itemLocation">${list.gd_location }</div>
+									<div class="itemDate">${list.gd_startTime } ~ ${list.gd_endTime }</div>
+								</div>
+							</li>
+							<hr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="list" items="${all_list }">
+							<li>
+								<div class="itemPhoth"><a href="getDetail?gd_num=${list.gd_num }"><img src="resources/posterImages/${list.poster }"></a>
+								</div>
+								<div class="itemData">
+									<div class="itemTitle"><h3><a href="getDetail?gd_num=${list.gd_num }">${list.gd_title }</a></h3></div>
+									<br>
+									<div class="itemText">
+										<div class="itemContents">${genre_name } | ${list.gd_runningtime }분 | ${list.gd_age }</div>
+										<div class="itemActor">출연:${list.gd_actor }</div>
+									</div>
+								</div>
+								<div class="itemInfo">
+									<div class="itemLocation">${list.gd_location }</div>
+									<div class="itemDate">${list.gd_startTime } ~ ${list.gd_endTime }</div>
+								</div>
+							</li>
+							<hr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div>
 		<!-- 페이징처리 -->

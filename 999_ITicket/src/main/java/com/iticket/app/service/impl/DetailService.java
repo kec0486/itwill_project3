@@ -27,6 +27,7 @@ public interface DetailService {
 	List<DetailVO> clex_list(HashMap<String, Object> map);
 	List<DetailVO> ex_list(HashMap<String, Object> map);
 	List<DetailVO> imminent_list(HashMap<String, Object> map);
+	List<DetailVO> sale_list(HashMap<String, Object> map);
 	DetailVO next(int gd_num);
 	DetailVO prev(int gd_num);
 	String genreSelectOne(int gr_num);
