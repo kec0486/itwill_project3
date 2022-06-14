@@ -1,6 +1,7 @@
 package com.iticket.app.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -89,10 +90,7 @@ public class HomeController {
 		int cocount=dservice.cocount(map);//콘서트글의 갯수
 		int plcount=dservice.plcount(map);//연극글의 갯수
 		int clexcount=dservice.clexcount(map);//클래식/무용글의 갯수
-		System.out.println(muCount);
-		System.out.println(cocount);
-		System.out.println(plcount);
-		System.out.println(clexcount);
+		int excount=dservice.excount(map);//클래식/무용글의 갯수
 		PageUtil pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 		int startRow=pu.getStartRow();
 		int endRow=pu.getEndRow();
@@ -120,6 +118,12 @@ public class HomeController {
 			all_list=dservice.pl_list(map);
 		}else if(genre.equals("4")) {
 			all_list=dservice.clex_list(map);
+		}else if(genre.equals("5")) {
+			all_list=dservice.ex_list(map);
+		}
+		for(DetailVO list : all_list) {
+			String genre_name = dservice.genreSelectOne(list.getGr_num());
+			mv.addObject("genre_name",genre_name);
 		}
 		
 		mv.addObject("cnt",totalRowCount);
@@ -127,6 +131,7 @@ public class HomeController {
 		mv.addObject("cocount",cocount);
 		mv.addObject("plcount",plcount);
 		mv.addObject("clexcount",clexcount);
+		mv.addObject("excount",excount);
 		mv.addObject("all_list",all_list);
 		mv.addObject("pu",pu);
 		mv.addObject("keyword",keyword);

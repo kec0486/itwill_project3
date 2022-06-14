@@ -17,10 +17,7 @@
                             <li class="ranking_btn ranking2"><button>콘서트</button></li>
                             <li class="ranking_btn ranking3"><button>연극</button></li>
                             <li class="ranking_btn ranking4"><button>클래식/무용</button></li>
-                            <li class="ranking_btn ranking5"><button>스포츠</button></li>
-                            <li class="ranking_btn ranking6"><button>레저</button></li>
                             <li class="ranking_btn ranking7"><button>전시/행사</button></li>
-                            <li class="ranking_btn ranking8"><button>아동/가족</button></li>
                         </ul>
                         <a href="#"><img src="resources/images/rankingMore.gif" alt="랭킹 더보기"></a>
                     </div>

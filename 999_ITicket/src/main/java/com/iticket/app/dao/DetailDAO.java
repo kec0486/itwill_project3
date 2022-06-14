@@ -61,7 +61,9 @@ public class DetailDAO {
 	public int clexgetCount(HashMap<String, Object> map) {
 		return mybatis.selectOne("detailDAO.clexcount",map);
 	}
-	
+	public int exgetCount(HashMap<String, Object> map) {
+		return mybatis.selectOne("detailDAO.excount",map);
+	}
 	public List<DetailVO> list(HashMap<String, Object> map){
 		return mybatis.selectList("detailDAO.list",map);
 	}
@@ -77,6 +79,9 @@ public class DetailDAO {
 	public List<DetailVO> clex_list(HashMap<String, Object> map){
 		return mybatis.selectList("detailDAO.clex_list",map);
 	}
+	public List<DetailVO> ex_list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.ex_list",map);
+	}
 	public List<DetailVO> imminent_list(HashMap<String, Object> map){
 		return mybatis.selectList("detailDAO.imminent_list",map);
 	}
@@ -85,5 +90,8 @@ public class DetailDAO {
 	}
 	public DetailVO next(int gd_num) {
 		return mybatis.selectOne("detailDAO.next",gd_num);
+	}
+	public String genreSelectOne(int gr_num) {
+		return mybatis.selectOne("detailDAO.genreSelectOne",gr_num);
 	}
 }

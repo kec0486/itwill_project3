@@ -19,12 +19,15 @@ public interface DetailService {
 	int cocount(HashMap<String, Object> map);
 	int plcount(HashMap<String, Object> map);
 	int clexcount(HashMap<String, Object> map);
+	int excount(HashMap<String, Object> map);
 	List<DetailVO> list(HashMap<String, Object> map);
 	List<DetailVO> mu_list(HashMap<String, Object> map);
 	List<DetailVO> co_list(HashMap<String, Object> map);
 	List<DetailVO> pl_list(HashMap<String, Object> map);
 	List<DetailVO> clex_list(HashMap<String, Object> map);
+	List<DetailVO> ex_list(HashMap<String, Object> map);
 	List<DetailVO> imminent_list(HashMap<String, Object> map);
 	DetailVO next(int gd_num);
 	DetailVO prev(int gd_num);
+	String genreSelectOne(int gr_num);
 }

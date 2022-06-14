@@ -12,6 +12,10 @@
  		SELECT * FROM GENRE_DETAIL
  		ORDER BY GD_NUM DESC
  	</select>
+ 	<select id="genreSelectOne" resultType="String" parameterType="int">
+ 		SELECT gr_name FROM GENRE
+ 		where gr_num = #{gr_num}
+ 	</select>
 	<!-- 전체 글의 갯수 -->
 	 <select id="count" resultType="int" parameterType="hashmap">
 	 	select NVL(count(*),0) cnt from GENRE_DETAIL
@@ -31,7 +35,11 @@
 	 </select>
 	 <select id="clexcount" resultType="int" parameterType="hashmap">
 	 	select NVL(count(*),0) cnt from GENRE_DETAIL
-	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 4 or gr_num = 5
+	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 4
+	 </select>
+	 <select id="excount" resultType="int" parameterType="hashmap">
+	 	select NVL(count(*),0) cnt from GENRE_DETAIL
+	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 5
 	 </select>
 	 <select id="list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
 	 		select * from
@@ -83,7 +91,18 @@
 	 			select aa.*,rownum rnum from
 	 			(
 	 				select * from GENRE_DETAIL
-	 				where gd_title like '%'||#{keyword}||'%' and gr_num = 4 or gr_num = 5
+	 				where gd_title like '%'||#{keyword}||'%' and gr_num = 4
+	 				order by gd_num desc
+	 			)aa
+	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	 </select>
+	 <select id="ex_list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
+	 		select * from
+	 		(
+	 			select aa.*,rownum rnum from
+	 			(
+	 				select * from GENRE_DETAIL
+	 				where gd_title like '%'||#{keyword}||'%' and gr_num = 5
 	 				order by gd_num desc
 	 			)aa
 	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
