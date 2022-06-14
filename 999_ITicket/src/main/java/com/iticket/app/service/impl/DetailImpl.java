@@ -74,6 +74,10 @@ public class DetailImpl implements DetailService{
 		return detailDAO.clexgetCount(map);
 	}
 	@Override
+	public int excount(HashMap<String, Object> map) {
+		return detailDAO.exgetCount(map);
+	}
+	@Override
 	public List<DetailVO> list(HashMap<String, Object> map) {
 		return detailDAO.list(map);
 	}
@@ -94,6 +98,10 @@ public class DetailImpl implements DetailService{
 		return detailDAO.clex_list(map);
 	}
 	@Override
+	public List<DetailVO> ex_list(HashMap<String, Object> map) {
+		return detailDAO.ex_list(map);
+	}
+	@Override
 	public List<DetailVO> imminent_list(HashMap<String, Object> map) {
 		return detailDAO.imminent_list(map);
 	}
@@ -104,5 +112,9 @@ public class DetailImpl implements DetailService{
 	@Override
 	public DetailVO prev(int gd_num) {
 		return detailDAO.prev(gd_num);
+	}
+	@Override
+	public String genreSelectOne(int gr_num) {
+		return detailDAO.genreSelectOne(gr_num);
 	}
 }

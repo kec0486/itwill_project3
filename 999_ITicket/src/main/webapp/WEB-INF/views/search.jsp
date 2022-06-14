@@ -42,7 +42,7 @@
 	}
 	.category ul li {
 	    display: table-cell;
-	    width: 20%;
+	    width: 15%;
 	    text-align: center;
 	}
 	.select_seq {
@@ -118,6 +118,7 @@
 				<li><a href="search?keyword=${keyword }&genre=2">콘서트(${cocount })</a></li>
 				<li><a href="search?keyword=${keyword }&genre=3">연극(${plcount })</a></li>
 				<li><a href="search?keyword=${keyword }&genre=4">클래식/무용(${clexcount })</a></li>
+				<li><a href="search?keyword=${keyword }&genre=5">전시/행사(${excount })</a></li>
 			</ul>
 			<div class="select_seq">
 				<span><a href="search?keyword=${keyword }">정확도순</a></span> | 
@@ -138,7 +139,7 @@
 							<div class="itemTitle"><h3><a href="getDetail?gd_num=${list.gd_num }">${list.gd_title }</a></h3></div>
 							<br>
 							<div class="itemText">
-								<div class="itemContents">${list.gr_num } | ${list.gd_runningtime }분 | ${list.gd_age }</div>
+								<div class="itemContents">${genre_name } | ${list.gd_runningtime }분 | ${list.gd_age }</div>
 								<div class="itemActor">출연:${list.gd_actor }</div>
 							</div>
 						</div>
