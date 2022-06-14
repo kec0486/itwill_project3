@@ -106,6 +106,10 @@ public class DetailImpl implements DetailService{
 		return detailDAO.imminent_list(map);
 	}
 	@Override
+	public List<DetailVO> sale_list(HashMap<String, Object> map) {
+		return detailDAO.sale_list(map);
+	}
+	@Override
 	public DetailVO next(int gd_num) {
 		return detailDAO.next(gd_num);
 	}

@@ -24,7 +24,7 @@
 	    height: 750px;
 	    margin: 0 auto;
 	    text-align: center;
-	    margin-top: 200px;
+	    margin-top: 400px;
 	    position: relative;
 	}
 	.iInput {
@@ -59,20 +59,11 @@
 	.naver_id_login {
 		margin: 20px 0;
 	}
-	.logout_filter {
-		padding-bottom: 80px;
-	    font-size: 25px;
-	    font-weight: bold;
-	}
-	.logout_filter span {
-		color: red;
-	}
 </style>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="loginForm">
-		<div id="logout_filter" class="logout_filter"></div>
 		<form:form method="post" action="login" class="login" onsubmit="return loginCheck()">
 			<div class="login_iInput">
 				<input type="text" name="username" id="username" placeholder="아이디" class="iInput" maxlength="100"><br>
@@ -81,8 +72,8 @@
 				<input type="submit" value="로그인" class="loginBtn" ><br>
 			</div>
 			<div class="login_ckboxForm">
-				<input type="checkbox" class="login_ckbox" name="remember-me"> 자동로그인 
-				<input type="checkbox" class="login_ckbox" name="checkId" id="saveId" > 아이디저장
+				<label for="remember-me"><input type="checkbox" class="login_ckbox" name="remember-me" id="remember-me"> 자동로그인</label> 
+				<label for="saveId"><input type="checkbox" class="login_ckbox" name="checkId" id="saveId" > 아이디저장</label>
 			</div>
 		</form:form>
 		<div class="login_findjoin">
@@ -121,7 +112,6 @@
 		saveid();
 		return true;
 	}
-
  function fnInit(){
      var cookieid = getCookie("saveid");
      console.log(cookieid);
@@ -131,7 +121,6 @@
      }
      
  }    
-
  function setCookie(name, value, expiredays) {
      var todayDate = new Date();
      todayDate.setTime(todayDate.getTime() + 0);
@@ -145,7 +134,6 @@
      
      console.log(document.cookie);
  }
-
  function getCookie(Name) {
      var search = Name + "=";
      console.log("search : " + search);
@@ -168,7 +156,6 @@
      }
      return "";
  }
-
  function saveid() {
      var expdate = new Date();
      if ($("#saveId").is(":checked")){
@@ -181,11 +168,6 @@
      }
  }
 </script>
-<c:if test="${not empty param.logout }">
-	<script>
-		$("#logout_filter").html("정상적으로 <span>로그아웃</span> 처리 되었습니다.");
-	</script>
-</c:if>
 <c:if test="${not empty param.error }">
 	<script>
 		$("#login_filter").html("아이디 혹은 비밀번호가 맞지 않습니다.");

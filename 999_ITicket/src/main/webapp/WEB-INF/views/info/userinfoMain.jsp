@@ -92,6 +92,10 @@
 	    background-color: red;
 	    margin: 50px 5px;
 	}
+	.info_filter {
+		margin-left: 120px;
+    	color: red;
+	}
 </style>
 </head>
 <body>
@@ -100,9 +104,9 @@
 		<div class="infoLogo"><b>IT</b>icket</div>
 		<div class="infoTab">
 			<div class="Info">${user }님의<br> 회원정보관리입니다.</div>
-			<div><a href="userinfoMain?order=1" class="info_a info_b">회원정보수정</a></div>
+			<div><a href="userinfoMain?order=1" class="info_a">회원정보수정</a></div>
 			<div><a href="userinfoMain?order=2" class="info_a">비밀번호변경</a></div>
-			<div><a href="userinfoMain?order=3" class="info_a">로그인관리</a></div>
+			<!-- <div><a href="userinfoMain?order=3" class="info_a">로그인관리</a></div> -->
 			<div><a href="userinfoMain?order=4" class="info_a">회원탈퇴</a></div>
 		</div>
 		<div class="infoMain">
@@ -113,16 +117,30 @@
 				<span class="infoText_red">비밀번호를 다시 한 번 확인합니다.</span><br>
 				<div class="infoText_sub">비밀번호가 타인에게 노출되지 않도록 항상 주의해주세요.</div>
 			</div>
-			<form action="userinfoMainOk?order=${order }" method="post">
+			<form action="userinfoMainOk?order=${order }" method="post" onsubmit="return pwCheck()">
 				<span class="infoAuth">아이디</span><span class="infoAuth_text">${user }</span><br>
 				<span class="infoAuth">비밀번호</span><input type="password" name="user_pw" class="infoAuth_text"><br>
-				<div id="pw_value" class="pw_value"></div>
-				<a href="userinfo"><button class="infoBtn_re">취소</button></a>
+				<div id="info_filter" class="info_filter">${msg }</div>
+				<button type="button" class="infoBtn_re" onclick="goMain()">취소</button>
 				<button type="submit" class="infoBtn_smt">확인</button>
 			</form>
 		</div>
 		
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
+<script type="text/javascript">
+	function pwCheck() {
+		let pwd = $('input[name=user_pw]');
+		if(pwd.val() == '') {
+			$("#info_filter").html('비밀번호를 입력해주세요');
+			pwd.focus();
+			return false;
+		}
+		return true;
+	}
+	function goMain() {
+		location.href = "userinfo";
+	}
+</script>
 </body>
 </html>

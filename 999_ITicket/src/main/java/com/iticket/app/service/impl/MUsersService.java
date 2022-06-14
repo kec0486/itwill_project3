@@ -59,6 +59,9 @@ public class MUsersService {
 	public UsersVO pwFindEmail(UsersVO vo) {
 		return dao.pwFindEmail(vo);
 	}
+	public UsersVO selectOne(UsersVO vo) {
+		return dao.selectOne(vo);
+	}
 	public int updatepw(UsersVO vo) {
 		String pwd=vo.getUser_pw();
 		System.out.println(pwd);

@@ -187,29 +187,30 @@
 </body>
 <script>
 	function checkReview() {
-		var writeDate = $('input[name=gd_regdate]'); //날짜
+		var writeDate = document.getElementById("getDate"); //날짜
 		console.log("gd_regdate : " + JSON.stringify(writeDate.data));
-		var rvTitle = $('input[name=rv_title]'); //리뷰제목
+		var rvTitle = document.getElementById("reviewTitle") //리뷰제목
 		console.log("rv_title: " + rvTitle);
 		var scoreStar = $('input[name=rv_likecnt]').is(':checked'); //별점
 		console.log("scoreStar.val() : " + scoreStar);
-		var writeCon = $('input[name=rv_content]'); //내용
+		var writeCon = document.getElementById("reviewContent"); //내용
 		console.log("rv_content: " + writeCon);
 		
-		if (writeDate.val() == "" || scoreStar == false || rvTitle.val() == "" || writeCon.val() == ''){
-			if (writeDate.val() == "null"){
-				alert("날짜를 선택해주세요!");
-				return false;
-			}else if (scoreStar == false){
-				alert("별점을 선택해주세요!");
-				return false;
-			}else if (rvTitle.val() == undefined){
-				alert("제목을 입력해주세요!");
-				return false;
-			}else if (writeCon.val() == ''){
-				alert("내용을 입력해주세요!");
-				return false;
-			}
+		if (writeDate.value == ""){
+			alert("날짜를 선택해주세요!");
+			return false;
+		}
+		if (scoreStar == false){
+			alert("별점을 선택해주세요!");
+			return false;
+		}
+		if (rvTitle.value == ""){
+			alert("제목을 입력해주세요!");
+			return false;
+		}
+		if (writeCon.value == ""){
+			alert("내용을 입력해주세요!");
+			return false;
 		}
 		/* } else if (scoreStar == false){
 			alert("별점을 선택해주세요!");
@@ -221,7 +222,7 @@
 			alert("내용을 입력해주세요!");
 			return false;
 		} */
-		writeForm.submit();
+		document.writeForm.submit();
 		
 	}
 	

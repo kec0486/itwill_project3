@@ -150,27 +150,27 @@
             <div class="banner_wrap">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="getDetail?gd_num=21">
                             <img src="resources/sub_images/banner_img1.gif" alt="뮤지컬 〈실비아, 살다〉 상품 페이지 본창이동">
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="getDetail?gd_num=42">
                             <img src="resources/sub_images/banner_img2.gif" alt="뮤지컬 〈은밀하게 위대하게:THE LAST〉 상품 페이지 본창이동">
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="getDetail?gd_num=19">
                             <img src="resources/sub_images/banner_img3.gif" alt="뮤지컬 〈사의찬미〉 상품 페이지 본창이동">
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="getDetail?gd_num=43">
                             <img src="resources/sub_images/banner_img4.gif" alt="뮤지컬 〈클림트〉 상품 페이지 본창이동">
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="getDetail?gd_num=24">
                             <img src="resources/sub_images/banner_img5.gif" alt="뮤지컬 〈니진스키〉 상품 페이지 본창이동">
                         </a>
                     </li>
@@ -192,15 +192,16 @@
                 </div>
                 
                 <ul class="issue_list">
-                    <li>
-                        <a href="#">
-                            <img src="resources/sub_images/issue_img1.gif" alt="난세 상품 페이지 본창이동">
-                            <span class="issue_txt1">난세</span>
-                            <span class="issue_txt2">서경대학교 공연예술센터</span>
-                            <span class="issue_txt3">프리뷰 할인 40%</span>
-                        </a>
-                    </li>
-                    <li>
+                	<c:forEach var="detail" items="${getNameList }">
+	                    <li>
+	                        <a href="getDetail?gd_num=${detail.gd_num }">
+	                            <img src="resources/posterImages/${detail.poster }" width="95px" height="116px" alt="뮤지컬">
+	                            <span class="issue_txt1">${detail.gd_title }</span>
+	                            <span class="issue_txt2">${detail.gd_location }</span>
+	                        </a>
+	                    </li>
+                	</c:forEach>
+                    <!-- <li>
                         <a href="#">
                             <img src="resources/sub_images/issue_img2.gif" alt="실비아, 살다 상품 페이지 본창이동">
                             <span class="issue_txt1">실비아, 살다</span>
@@ -319,7 +320,7 @@
                             <span class="issue_txt2">한전아트센터</span>
                             <span class="issue_txt3">서초구민 할인 20%</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </section>

@@ -115,10 +115,10 @@
                 <div class="performance_wrap">
                     <ul class="subTap">
                         <li class="tap1"><a href="#">인기뮤지컬</a></li>
-                        <li class="tap2"><a href="#">인기 콘서트</a></li>
-                        <li class="tap3"><a href="#">인기 연극</a></li>
-                        <li class="tap4"><a href="#">인기 클래식</a></li>
-                        <li class="tap5"><a href="#">인기 전시/행사</a></li>
+                        <li class="tap2"><a href="#">인기콘서트</a></li>
+                        <li class="tap3"><a href="#">인기연극</a></li>
+                        <li class="tap4"><a href="#">인기클래식</a></li>
+                        <li class="tap5"><a href="#">인기전시/행사</a></li>
                     </ul>
                     <ul class="contents1 contents_control">
                     	<c:forEach var="detail" items="${musicalList }" begin="0" end="4">
@@ -165,7 +165,7 @@
                     	</c:forEach>
                     </ul>
                     <ul class="contents5 contents_control">
-                    	<c:forEach var="detail" items="${exhibiList }" begin="0" end="4">
+                    	<c:forEach var="detail" items="${exhibiList }" begin="0" end="3">
 		                        <li>
 		                            <a href="getDetail?gd_num=${detail.gd_num }">
 		                                <img src="resources/posterImages/${detail.poster }" alt="전시/행사">
@@ -174,6 +174,13 @@
 		                            </a>
 		                        </li>
                     	</c:forEach>
+                    	<li>
+                            <a href="getDetail?gd_num=34">
+                                <img src="resources/posterImages/inThisLifePoster.jpg" alt="전시/행사">
+                                <span class="prdTxt"><야생에서 현생으로></span>
+                                <span class="prdDate">2022-10-15 ~ 2022-10-15</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </section>

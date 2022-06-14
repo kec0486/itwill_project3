@@ -85,6 +85,9 @@ public class DetailDAO {
 	public List<DetailVO> imminent_list(HashMap<String, Object> map){
 		return mybatis.selectList("detailDAO.imminent_list",map);
 	}
+	public List<DetailVO> sale_list(HashMap<String, Object> map){
+		return mybatis.selectList("detailDAO.sale_list",map);
+	}
 	public DetailVO prev(int gd_num) {
 		return mybatis.selectOne("detailDAO.prev",gd_num);
 	}

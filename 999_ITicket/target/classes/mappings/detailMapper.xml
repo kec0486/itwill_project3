@@ -41,6 +41,7 @@
 	 	select NVL(count(*),0) cnt from GENRE_DETAIL
 	 	where gd_title like '%'||#{keyword}||'%' and gr_num = 5
 	 </select>
+	 
 	 <select id="list" parameterType="hashmap" resultType="com.iticket.app.vo.DetailVO">
 	 		select * from
 	 		(
@@ -124,10 +125,11 @@
 	 		(
 	 			select aa.*,rownum rnum from
 	 			(
-	 				select * from GENRE_DETAIL
-	 				where gd_title like '%'||#{keyword}||'%'
-	 				and gd_endtime > SYSDATE
-	 				order by gd_endtime
+	 				select * from genre_detail
+					where gd_title like '%'||#{keyword}||'%' and gd_num in (select count(*) from reservation r, schedule sd, genre_detail gd
+                											where r.sd_num = sd.sd_num and sd.gd_num = gd.gd_num 
+                											group by gd.gd_num)
+					order by gd_num desc
 	 			)aa
 	 	<![CDATA[	)where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	 </select>

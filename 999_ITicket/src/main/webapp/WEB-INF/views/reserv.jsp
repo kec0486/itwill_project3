@@ -535,14 +535,8 @@
     function scrollFunction() {
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
             document.getElementById("scrollTopPc").style.display = "block";
-            document.getElementById("scrollTopMob").style.display = "block";
-            document.getElementById("scrollDownPc").style.display = "block";
-            document.getElementById("scrollDownMob").style.display = "block";
         } else {
             document.getElementById("scrollTopPc").style.display = "none";
-            document.getElementById("scrollTopMob").style.display = "none";
-            document.getElementById("scrollDownPc").style.display = "none";
-            document.getElementById("scrollDownMob").style.display = "none";
         }
     }
     

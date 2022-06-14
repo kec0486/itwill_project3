@@ -119,10 +119,18 @@
 		<div class="Search_title">
 			<button type="button" class="findBtn" id="Search">등록된 휴대폰번호로 찾기</button>
 			<div class="Search_contents" id="Search_contents">
+<<<<<<< HEAD
 				<form action="idFindPhone" method="post" onsubmit="return findCheck()">
 					<input type="text" name="user_name" id="user_name" placeholder="이름" class="iinput"><br>
 					<input type="text" name="phone" id="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
 					<div id="find_filter"></div>
+=======
+				<form action="idFindPhone" method="post">
+					<input type="text" name="user_name" id="user_name" placeholder="이름" class="iinput"><br>
+					<div id="u_nameErrorText"></div>
+					<input type="text" name="phone" id="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
+					<div id="u_phoneErrorText"></div>
+>>>>>>> branch 'master' of https://github.com/kec0486/itwill_project3.git
 					<input type="submit" value="확인" class="FindBtn"><br>
 				</form>
 			</div>
@@ -132,9 +140,16 @@
 		</div>
 		<div class="Search_contents" id="Search_contents1">
 			<form action="idFindEmail" method="post">
+<<<<<<< HEAD
 				<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
 				<input type="text" name="email" placeholder="이메일" class="iinput"><br>
 				<div id="find_filter">${msg }</div>
+=======
+				<input type="text" name="user_name" id="user_name" placeholder="이름" class="iinput"><br>
+				<div id="u_nameErrorText"></div>
+				<input type="text" name="email" id="email" placeholder="이메일" class="iinput"><br>
+				<div id="u_emailErrorText"></div>
+>>>>>>> branch 'master' of https://github.com/kec0486/itwill_project3.git
 				<input type="submit" value="확인" class="FindBtn"><br>
 			</form>
 		</div>
@@ -158,6 +173,7 @@
 			});
 		});
 	});
+<<<<<<< HEAD
 	function findCheck() {
 		let name = $('#user_name');
 		let phone = $('#phone');
@@ -172,6 +188,19 @@
 		}
 		return true;
 	}
+=======
+	$("#user_name").change(function(){
+		var user_name = $("#user_name").val();
+		if(user_name == ""){
+			$("#u_nameErrorText").html("이름을 입력해주세요.").css("color","red");
+			user_name.focus();
+			return false;
+		}else {
+			$("#u_nameErrorText").html("");
+			return true;
+		}
+	});
+>>>>>>> branch 'master' of https://github.com/kec0486/itwill_project3.git
 </script>
 </body>
 </html>
