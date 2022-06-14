@@ -122,8 +122,8 @@
 			</ul>
 			<div class="select_seq">
 				<span><a href="search?keyword=${keyword }">정확도순</a></span> | 
-				<span><a href="search?keyword=${keyword }&seq=imminent">공연임박순</a></span> | 
-				<span><a href="search?keyword=${keyword }&seq=sale">판매많은순</a></span> <%-- | 
+				<span><a href="search?seq=imminent&keyword=${keyword }">공연임박순</a></span> | 
+				<span><a href="search?seq=sale&keyword=${keyword }">판매많은순</a></span> <%-- | 
 				<span><a href="search?keyword=${keyword }&seq=average">평점높은순</a></span> --%>
 			</div>
 			<hr>

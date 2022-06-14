@@ -125,6 +125,7 @@
         var n_RegExp = /^[가-힣]{2,15}$/;
         //전화번호 유효성검사 정규식
         var t_RegExp = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g;
+        
         var objId = document.getElementById("user_id"); //아이디
         var objPwd = document.getElementById("user_pw"); //비번
         var objPwd1 = document.getElementById("user_pw1"); //비번
@@ -211,9 +212,9 @@
         if(!t_RegExp.test(objPhone.value)){
             alert("올바른 연락처 형식을 입력해주세요.");
             objPhone.focus();
-            return false;
+            return;
         }
-		let params=$(this).serialize();
+		//let params=$(this).serialize();
 		/* $.ajax({
 			type:"POST",
 			url:"${cp}/join",
@@ -228,6 +229,7 @@
 				}
 			}
 		}) */
+		return true;
 	});
 </script>
 </body>

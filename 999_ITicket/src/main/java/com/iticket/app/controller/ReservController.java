@@ -267,7 +267,7 @@ public class ReservController {
 			seatsaveService.seatsave_insert(save_vo);
 			reservService.insert_reserv(reserv_vo);
 		}		
-		return "/reserv/reserv_ssh";
+		return "main";
 	}
 		
 }
