@@ -119,9 +119,10 @@
 		<div class="Search_title">
 			<button type="button" class="findBtn" id="Search">등록된 휴대폰번호로 찾기</button>
 			<div class="Search_contents" id="Search_contents">
-				<form action="idFindPhone" method="post">
-					<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
-					<input type="text" name="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
+				<form action="idFindPhone" method="post" onsubmit="return findCheck()">
+					<input type="text" name="user_name" id="user_name" placeholder="이름" class="iinput"><br>
+					<input type="text" name="phone" id="phone" placeholder="휴대폰번호 (-없이 입력)" class="iinput"><br>
+					<div id="find_filter"></div>
 					<input type="submit" value="확인" class="FindBtn"><br>
 				</form>
 			</div>
@@ -133,6 +134,7 @@
 			<form action="idFindEmail" method="post">
 				<input type="text" name="user_name" placeholder="이름" class="iinput"><br>
 				<input type="text" name="email" placeholder="이메일" class="iinput"><br>
+				<div id="find_filter">${msg }</div>
 				<input type="submit" value="확인" class="FindBtn"><br>
 			</form>
 		</div>
@@ -156,6 +158,20 @@
 			});
 		});
 	});
+	function findCheck() {
+		let name = $('#user_name');
+		let phone = $('#phone');
+		if(name.val() == ''){
+			$('#find_filter').html("이름을 입력해주세요.");
+			name.focus;
+			return false;
+		}else if(phone.val() == ''){
+			$('#find_filter').html("휴대폰번호을 입력해주세요.");
+			phone.focus;
+			return false;
+		}
+		return true;
+	}
 </script>
 </body>
 </html>
