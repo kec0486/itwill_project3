@@ -56,7 +56,12 @@
     background-color: #e25147;
     color: white;
 }
-	
+.box input {
+padding: 17px;
+	}
+	.shopping{
+	margin-left: 60px;
+	}
 </style>
 </head>
 <body>
@@ -164,17 +169,13 @@
 					</h3>
 					<div class="level">
 						<div class="myinfo_txt">
-							<span class="name">황주희</span>님은 현재<br> <a
+							<span class="name">${user}</span>님은 현재<br> <a
 								href="http://incorp.interpark.com/member/MemberGoodService.do?_method=GoodServiceChk"
 								class="grade" target="_blank"><span class="welcome">WELCOME</span></a>회원입니다.
 						</div>
-						<p class="btn">
-							<a  href="http://incorp.interpark.com/member/MemberGoodService.do?_method=GoodServiceChk"
-								target="_blank"><img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/btn_memb_level.gif"
-								alt="등급별 혜택"></a> <a
-								href="https://incorp.interpark.com/member/memberjoin.do?_method=upMemberFront"><img
-								src="//ticketimage.interpark.com/TicketImage/event/100913_my/btn_memb_modify.gif"
+							<p class="btn">
+							 <a href="userinfo">
+							 <img src="//ticketimage.interpark.com/TicketImage/event/100913_my/btn_memb_modify.gif"
 								alt="회원정보수정"></a>
 						</p>
 					</div>
