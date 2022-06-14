@@ -155,20 +155,20 @@
 		<!-- 페이징처리 -->
 		<div class="pageing">
 			<c:if test="${pu.startPageNum>5 }">
-				<a href="search?pageNum=${pu.startPageNum-1 }&keyword=${keyword}" class="page"><img src="resources/images/20220614_014726.png"></a>
+				<a href="search?pageNum=${pu.startPageNum-1 }&keyword=${keyword}&genre=${genre}" class="page"><img src="resources/images/20220614_014726.png"></a>
 			</c:if>
 			<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 				<c:choose>
 					<c:when test="${pu.pageNum==i }"><!-- 현재페이지 -->
-						<a href="search?pageNum=${i }&keyword=${keyword}" class="current_page page">${i }</a>
+						<a href="search?pageNum=${i }&keyword=${keyword}&genre=${genre}" class="current_page page">${i }</a>
 					</c:when>
 					<c:otherwise>
-						<a href="search?pageNum=${i }&keyword=${keanother}" class="another_page page">${i }</a>
+						<a href="search?pageNum=${i }&keyword=${keanother}&genre=${genre}" class="another_page page">${i }</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${pu.endPageNum<pu.totalPageCount }">
-				<a href="search?pageNum=${pu.endPageNum+1 }&keyword=${keyword}" class="page"><img src="resources/images/20220614_011845.png"></a>
+				<a href="search?pageNum=${pu.endPageNum+1 }&keyword=${keyword}&genre=${genre}" class="page"><img src="resources/images/20220614_011845.png"></a>
 			</c:if>
 		</div>
 	</div>
