@@ -27,12 +27,12 @@
 	
 	<form action="getinsert"method="post" enctype="multipart/form-data"><!--  여기서 부터해야됨-->
 	<table>
-		<tr>
+		<!-- <tr>
 			<th width="70">공연행사번호</th>
 			<td>
 				<input type="text" name="gd_num">
 			</td>
-		</tr>
+		</tr> -->
 		<tr>
 			<th>연기자</th>
 			<td>

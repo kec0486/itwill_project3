@@ -36,7 +36,7 @@
 	<!-- 상품추가 -->
 	<insert id="getinsert" parameterType="com.iticket.app.vo.DetailVO">
 		insert into genre_detail(gd_num, gd_actor, gd_startTime, gd_endTime, gd_title,gd_location, gd_age, gd_term, gd_plan, gd_runningtime, gd_servicenumber, gd_price, hl_buildingnum, gr_num, poster)
-		values(#{gd_num},#{gd_actor},#{gd_startTime},#{gd_endTime},#{gd_title},#{gd_location},
+		values((SELECT NVL(MAX(gd_num),0)+1 FROM genre_detail),#{gd_actor},#{gd_startTime},#{gd_endTime},#{gd_title},#{gd_location},
 		        #{gd_age}, #{gd_term}, #{gd_plan}, #{gd_runningtime}, #{gd_servicenumber},#{gd_price}, #{hl_buildingnum},#{gr_num},#{poster})
 	</insert>
 	<!-- 하나의 삼품조회 -->
