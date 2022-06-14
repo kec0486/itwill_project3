@@ -112,14 +112,19 @@ public class HomeController {
 			all_list=dservice.list(map);
 		}else if(genre.equals("1")) {
 			all_list=dservice.mu_list(map);
+			pu=new PageUtil(pageNum, 5, 5, muCount);
 		}else if(genre.equals("2")) {
 			all_list=dservice.co_list(map);
+			pu=new PageUtil(pageNum, 5, 5, cocount);
 		}else if(genre.equals("3")) {
 			all_list=dservice.pl_list(map);
+			pu=new PageUtil(pageNum, 5, 5, plcount);
 		}else if(genre.equals("4")) {
 			all_list=dservice.clex_list(map);
+			pu=new PageUtil(pageNum, 5, 5, clexcount);
 		}else if(genre.equals("5")) {
 			all_list=dservice.ex_list(map);
+			pu=new PageUtil(pageNum, 5, 5, excount);
 		}
 		for(DetailVO list : all_list) {
 			String genre_name = dservice.genreSelectOne(list.getGr_num());
@@ -134,6 +139,7 @@ public class HomeController {
 		mv.addObject("excount",excount);
 		mv.addObject("all_list",all_list);
 		mv.addObject("pu",pu);
+		mv.addObject("genre",genre);
 		mv.addObject("keyword",keyword);
 		return mv;
 	}
