@@ -11,12 +11,18 @@ public class ForReservationVO {
 	private int st_num;
 	private String rv_date;
 	private int sd_num;
-	
+	private String user_id;
 	public String getGd_title() {
 		return gd_title;
 	}
 	public void setGd_title(String gd_title) {
 		this.gd_title = gd_title;
+	}
+	public String getSd_date() {
+		return sd_date;
+	}
+	public void setSd_date(String sd_date) {
+		this.sd_date = sd_date;
 	}
 	public String getStart_time() {
 		return start_time;
@@ -29,12 +35,6 @@ public class ForReservationVO {
 	}
 	public void setRv_num(int rv_num) {
 		this.rv_num = rv_num;
-	}
-	public String getSd_date() {
-		return sd_date;
-	}
-	public void setSd_date(String sd_date) {
-		this.sd_date = sd_date;
 	}
 	public int getSt_price() {
 		return st_price;
@@ -66,12 +66,19 @@ public class ForReservationVO {
 	public void setSd_num(int sd_num) {
 		this.sd_num = sd_num;
 	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	@Override
 	public String toString() {
 		return "ForReservationVO [gd_title=" + gd_title + ", sd_date=" + sd_date + ", start_time=" + start_time
 				+ ", rv_num=" + rv_num + ", st_price=" + st_price + ", reserv_time=" + reserv_time + ", st_num="
-				+ st_num + ", rv_date=" + rv_date + ", sd_num=" + sd_num + "]";
+				+ st_num + ", rv_date=" + rv_date + ", sd_num=" + sd_num + ", user_id=" + user_id + "]";
 	}
+	
 	
 	
 	

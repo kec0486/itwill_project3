@@ -66,7 +66,7 @@
                             </li>
 
                             <li class="mypageli">
-                                <a href="mypage">마이페이지</a>
+                                <a href="mypage?user_id=${user }">마이페이지</a>
                             </li>
                         </ul>
                     </div>
